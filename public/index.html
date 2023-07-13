@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Image Gallery</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="batman.png" alt="Image 1">
+            <p>Image 1 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="endgame.jpeg" alt="Image 2">
+            <p>Image 2 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="jaws.jpg" alt="Image 3">
+            <p>Image 3 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="joker.jpg" alt="Image 4">
+            <p>Image 4 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="king.jpg" alt="Image 5">
+            <p>Image 5 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="lastofus.jpg" alt="Image 6">
+            <p>Image 6 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="pooh.jpg" alt="Image 7">
+            <p>Image 7 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="shrek.png" alt="Image 8">
+            <p>Image 8 description</p>
+        </div>
+        <div class="gallery-item">
+            <img src="titanic.jpg" alt="Image 9">
+            <p>Image 9 description</p>
+        </div>
+        <div class="gallery-item10">
+            <img src="wick.jpg" alt="Image 10">
+            <p>radomtext ... xyz</p>
+        </div>
+    </div>
+
+    <h2>Message from the server:</h2>
+    <p id="message"> </p>
+
+    <script>
+        fetch('http://localhost:3000/getData')
+          .then(response => response.json())
+          .then(json => {
+            document.getElementById('message').textContent = json.plot;
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        </script>
+
+
+</body>
+</html>

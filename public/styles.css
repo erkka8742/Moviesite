@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(1, 1, 43);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2em;
+    padding: 2.5em;
+    padding-top: 7%;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 350px; /* Set a fixed height */
+    object-fit: contain; /* Resize the images to cover the container without distortion */
+    border-radius: 12%;
+}
