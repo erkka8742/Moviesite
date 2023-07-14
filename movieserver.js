@@ -52,7 +52,7 @@ scrapeSite('https://www.imdb.com/chart/boxoffice/?ref_=hm_cht_sm').then(allMatch
     let movie10 = allMatches[9]
 });
 
-//IMDb rating: löytyy ratingit
+//IMDb rating: löytyy ratingittgtg
 
 
 //what movie
