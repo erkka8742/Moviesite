@@ -2,54 +2,110 @@
 <html>
 <head>
     <title>Moviesite</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Moviesite</h1>
     <h2>Top 10 movies in theaters</h1>
-    <div class="gallery">
-        <div class="gallery-item">
-            <img id = "image1" alt="Image 1">
-            <p id="movie1_text" ></p>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image1" class="img-fluid"/>
+                        </div>
+                        <div class="overlay">
+                            <p class="movie-name" id="movie-name"></p>
+                            <p class="movie-text" id="movie1_text"></p>
+                            <p class="movie-score" id="movie1_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image2" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie2_text"></p>
+                            <p class="movie-score" id="movie2_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image3" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie3_text"></p>
+                            <p class="movie-score" id="movie3_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image4" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie4_text"></p>
+                            <p class="movie-score" id="movie4_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image5" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie5_text"></p>
+                            <p class="movie-score" id="movie5_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image6" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie6_text"></p>
+                            <p class="movie-score" id="movie6_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image7" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie7_text"></p>
+                            <p class="movie-score" id="movie7_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image8" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie8_text"></p>
+                            <p class="movie-score" id="movie8_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image9" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie9_text"></p>
+                            <p class="movie-score" id="movie9_score"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="image-box">
+                        <img src="" id="image10" class="img-fluid"/>
+                        <div class="overlay">
+                            <p class="movie-text" id="movie10_text"></p>
+                            <p class="movie-score" id="movie10_score"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="gallery-item">
-            <img id = "image2" alt="Image 2">
-            <p>Image 2 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image3" alt="Image 3">
-            <p>Image 3 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image4" alt="Image 4">
-            <p>Image 4 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image5" alt="Image 5">
-            <p>Image 5 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image6" alt="Image 6">
-            <p>Image 6 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image7" alt="Image 7">
-            <p>Image 7 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image8" alt="Image 8">
-            <p>Image 8 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image9" alt="Image 9">
-            <p>Image 9 description</p>
-        </div>
-        <div class="gallery-item">
-            <img id = "image10" alt="Image 10">
-            <p>radomtext ... xyz</p>
-        </div>
-    </div>
-
+    
 
 
     <script>
@@ -67,7 +123,6 @@
             movie9 = json[8]
             movie10 = json[9]
 
-            document.getElementById('movie1_text').textContent = movie1.plot;
             document.getElementById('image1').src = movie1.poster;
             document.getElementById('image2').src = movie2.poster;
             document.getElementById('image3').src = movie3.poster;
@@ -78,6 +133,30 @@
             document.getElementById('image8').src = movie8.poster;
             document.getElementById('image9').src = movie9.poster;
             document.getElementById('image10').src = movie10.poster;
+
+            
+
+            document.getElementById('movie1_text').textContent = movie1.plot;
+            document.getElementById('movie2_text').textContent = movie2.plot;
+            document.getElementById('movie3_text').textContent = movie3.plot;
+            document.getElementById('movie4_text').textContent = movie4.plot;
+            document.getElementById('movie5_text').textContent = movie5.plot;
+            document.getElementById('movie6_text').textContent = movie6.plot;
+            document.getElementById('movie7_text').textContent = movie7.plot;
+            document.getElementById('movie8_text').textContent = movie8.plot;
+            document.getElementById('movie9_text').textContent = movie9.plot;
+            document.getElementById('movie10_text').textContent = movie10.plot;
+            
+            document.getElementById('movie1_score').textContent = movie1.score;
+            document.getElementById('movie2_score').textContent = movie2.score;
+            document.getElementById('movie3_score').textContent = movie3.score;
+            document.getElementById('movie4_score').textContent = movie4.score;
+            document.getElementById('movie5_score').textContent = movie5.score;
+            document.getElementById('movie6_score').textContent = movie6.score;
+            document.getElementById('movie7_score').textContent = movie7.score;
+            document.getElementById('movie8_score').textContent = movie8.score;
+            document.getElementById('movie9_score').textContent = movie9.score;
+            document.getElementById('movie10_score').textContent = movie10.score;
           })
           .catch((error) => {
             console.error('Error:', error);
