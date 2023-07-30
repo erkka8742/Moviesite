@@ -33,12 +33,10 @@ while (allMatches.length < 1) {
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537');
     await page.goto(url, {waitUntil: 'networkidle0'});
 
-    content = await page.content();  // Get the whole HTML content of the page
-
-    // Use regex to find what you need in the HTML content
+    content = await page.content();  
     const regex = /title" aria-hidden="true">(.*?)\(/g;
     let match;
-    while ((match = regex.exec(content)) !== null && allMatches.length < 10) {
+    while ((match = regex.exec(content)) !== null && allMatches.length < 15) {
         allMatches.push(match[1]);
     }
     await browser.close();
@@ -50,6 +48,12 @@ re_plot = ""
 re_rating = ""
 re_poster = ""
 re_score = ""
+numbers = 15
+function convertMinToHours(min) {
+    var hours = Math.floor(min / 60);
+    var minutes = min % 60;
+    return hours + "h " + minutes + "m";
+}
 
 // tämä tehdään jokaiselle elokuvalle erikseen
 async function findInfo(movie) {
@@ -63,7 +67,8 @@ async function findInfo(movie) {
             }
         });
 
-        re_runtime = String(response.data.Runtime);
+        // muuttaa minuutit tunneiksi ja minuuteiksi
+        re_runtime = String(convertMinToHours(parseInt(response.data.Runtime)));
         re_director = String(response.data.Director);
         re_plot = String(response.data.Plot);
         re_rating = String(response.data.imdbRating);
@@ -84,7 +89,7 @@ async function findInfo(movie) {
         console.error('Error:', error);
     }
 
-    // etsi elokuvan imdb-url
+    // etsi googlesta elokuvan imdb-linkki
     let browser;
     try {
         let browser = await puppeteer.launch({
@@ -96,7 +101,6 @@ async function findInfo(movie) {
         let encodedQuery = encodeURIComponent(query);
         let url2 = `${baseUrl}?q=${encodedQuery}&btnI`;
         await page.goto(url2);
-        // Get the URL of the resulting page
         imdbUrl = page.url();
     } catch (err) {
         console.error(err);
@@ -109,6 +113,7 @@ async function findInfo(movie) {
     let match6 = imdbUrl.match(regex);
     let okImdbUrl = (match6[1]);
     
+    // kun imdb-url on loytynyt haetaan elokuvan imdb-sivulta score
     console.log(okImdbUrl)
     let browser2 = await puppeteer.launch();
     let page2 = await browser2.newPage();
@@ -116,7 +121,7 @@ async function findInfo(movie) {
     await page2.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537');
     await page2.goto(okImdbUrl, {waitUntil: 'networkidle0'});
 
-    content2 = await page2.content();  // Get the whole HTML content of the page
+    content2 = await page2.content();
     await browser2.close();
 
     // etsi imdb-score
@@ -130,6 +135,8 @@ async function findInfo(movie) {
     console.log(allMatches2)
     re_score = allMatches2[1];
     
+    console.log(numbers)
+    numbers = numbers-1
     let results = [re_runtime, re_director, re_plot, re_rating, re_poster, re_score];
     return results;
 }
@@ -143,8 +150,14 @@ let movie5info = await findInfo(allMatches[4])
 let movie6info = await findInfo(allMatches[5]) 
 let movie7info = await findInfo(allMatches[6]) 
 let movie8info = await findInfo(allMatches[7]) 
-let movie9info = await findInfo(allMatches[8]) 
-let movie10info = await findInfo(allMatches[9])  
+let movie9info = await findInfo(allMatches[8])
+let movie10info = await findInfo(allMatches[9]) 
+let movie11info = await findInfo(allMatches[10])
+let movie12info = await findInfo(allMatches[11])
+let movie13info = await findInfo(allMatches[12])
+let movie14info = await findInfo(allMatches[13])
+let movie15info = await findInfo(allMatches[14])
+  
 
 
 class movies {
@@ -171,8 +184,15 @@ let movie7 = new movies(allMatches[6], movie7info[0], movie7info[1], movie7info[
 let movie8 = new movies(allMatches[7], movie8info[0], movie8info[1], movie8info[2], movie8info[3], movie8info[4], movie8info[5])
 let movie9 = new movies(allMatches[8], movie9info[0], movie9info[1], movie9info[2], movie9info[3], movie9info[4], movie9info[5])
 let movie10 = new movies(allMatches[9], movie10info[0], movie10info[1], movie10info[2], movie10info[3], movie10info[4], movie10info[5])
+let movie11 = new movies(allMatches[10], movie11info[0], movie11info[1], movie11info[2], movie11info[3], movie11info[4], movie11info[5])
+let movie12 = new movies(allMatches[11], movie12info[0], movie12info[1], movie12info[2], movie12info[3], movie12info[4], movie12info[5])
+let movie13 = new movies(allMatches[12], movie13info[0], movie13info[1], movie13info[2], movie13info[3], movie13info[4], movie13info[5])
+let movie14 = new movies(allMatches[13], movie14info[0], movie14info[1], movie14info[2], movie14info[3], movie14info[4], movie14info[5])
+let movie15 = new movies(allMatches[14], movie15info[0], movie15info[1], movie15info[2], movie15info[3], movie15info[4], movie15info[5])
 
-allmovies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10]
+console.log(movie11, movie12, movie13, movie14, movie15)
+
+allmovies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15]
 
 // lähetetään data frontendiin
     app.get('/getData', (req, res) => {

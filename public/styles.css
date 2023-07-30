@@ -2,13 +2,14 @@ body {
     background-color: #202d38; /* Change this color to what you want */
 }
 
-
 .image-box {
     position: relative;
     overflow: hidden;
     transform: scale(1);
     transition: transform 0.25s ease;
     border-radius: 35px;
+    width: 100%;
+    height: auto;
 }
 
 .image-box:hover {
@@ -18,14 +19,26 @@ body {
     outline-offset: -5px;
 }
 
-.image-box img {
-    width: 100%;
-    height: 100%;
-    transition: filter 0.25s ease-in-out;
+.poster-image {
+    transition: filter 0.2s ease-in-out;
 }
 
-.image-box:hover img {
-    filter: brightness(60%) blur(2px);
+.image-box:hover .poster-image {
+    filter: brightness(40%) blur(2px);
+}
+
+.imdb-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 10%;  /* Adjust this to 60% smaller */
+    z-index: 3; /* ensure the logo stays above the overlay */
+    opacity: 0; /* The logo is initially invisible */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-box:hover .imdb-image {
+    opacity: 1; /* The logo becomes visible when hovering over the image box */
 }
 
 .overlay {
@@ -37,12 +50,42 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-left: 10px; /* adjust as needed */
     opacity: 0;
     color: white;
     transition: all 0.3s ease-in-out;
+    z-index: 2; /* Ensure the overlay is under the logo */
 }
 
 .image-box:hover .overlay {
     opacity: 1;
+}
+
+.data-set {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px; /* Added some margin to separate score from other info */
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-label,
+.info-content {
+    margin: 0; /* remove standard paragraph margins */
+}
+
+.score-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image-box:hover .score-item {
+    opacity: 1; /* The score becomes visible when hovering over the image box */
 }
