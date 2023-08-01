@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My First HTML Page</title>
+    </head>
+    <body>
+        <p>Hello World!</p>
+    </body>
+</html>
+
+<script>
+ fetch('http://localhost:3000/getData')
+          .then(response => response.json())
+          .then(json => {
+            movie1 = json[0]
+            movie2 = json[1]
+            movie3 = json[2]
+            movie4 = json[3]
+            movie5 = json[4]
+            movie6 = json[5]
+            movie7 = json[6]
+            movie8 = json[7]
+            movie9 = json[8]
+            movie10 = json[9]
+            movie11 = json[10]
+            movie12 = json[11]
+            movie13 = json[12]
+            movie14 = json[13]
+            movie15 = json[14]
+
+        let thisMovie
+        let url = window.location.href;
+
+        let movieName = url.match(/3000\/([^\/]+)/) + ' ';
+
+       for (let i = 0; i <= 14; i++){
+        if (movieName == json[i].name.replace(/ /g, "_").toLowerCase()){
+            thisMovie = json[i]
+        }
+       }
+        console.log(thisMovie)
+    })
+</script>

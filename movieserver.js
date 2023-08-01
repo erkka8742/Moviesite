@@ -9,6 +9,7 @@ const axios = require('axios');
 
 process.setMaxListeners(20);
 
+
 // favicon
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.resolve(__dirname, './favicon.ico'));
@@ -194,15 +195,27 @@ console.log(movie11, movie12, movie13, movie14, movie15)
 
 allmovies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15]
 
-// lähetetään data frontendiin
-    app.get('/getData', (req, res) => {
-        
-        res.json(allmovies);
+// lähetetään data clientille
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+  });
+  
+  for(let i = 0; i <= 14; i++) {
+    app.get('/' + allMatches[i].slice(0, -1).replace(/ /g, "_").toLowerCase(), (req, res) => {
+      res.sendFile(__dirname + '/public/index2.html');
     });
+  }
+
+
+app.get('/getData', (req, res) => {
+        
+    res.json(allmovies);
+});
     
-    app.listen(port, () => {
-        console.log(`Server listening at http://localhost:${port}`);
-      });
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
 
 }
 // laittamalla koko koodi funktioon voidaan käyttää await

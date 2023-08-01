@@ -10,7 +10,7 @@
     <h2>Top 10 movies in theaters</h1>
         <div class="container">
             <div class="row gy-3">
-                <div class="col-lg-3">
+                <div id="movie1div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
                             <img src="" id="image1" class="img-fluid poster-image"/>
@@ -33,12 +33,9 @@
                             </div>
                             <p class="movie-text" id="movie1_text"></p>
                         </div>
-                        
-                        
-                        
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie2div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image2" class="img-fluid"/>
                         <div class="overlay">
@@ -50,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie3div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image3" class="img-fluid"/>
                         <div class="overlay">
@@ -61,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie4div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image4" class="img-fluid"/>
                         <div class="overlay">
@@ -72,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie5div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image5" class="img-fluid"/>
                         <div class="overlay">
@@ -83,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie6div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image6" class="img-fluid"/>
                         <div class="overlay">
@@ -94,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie7div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image7" class="img-fluid"/>
                         <div class="overlay">
@@ -105,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie8div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image8" class="img-fluid"/>
                         <div class="overlay">
@@ -116,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie9div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image9" class="img-fluid"/>
                         <div class="overlay">
@@ -127,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie10div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image10" class="img-fluid"/>
                         <div class="overlay">
@@ -138,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie11div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image11" class="img-fluid"/>
                         <div class="overlay">
@@ -149,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie12div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image12" class="img-fluid"/>
                         <div class="overlay">
@@ -160,7 +157,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie13div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image13" class="img-fluid"/>
                         <div class="overlay">
@@ -171,7 +168,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie14div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image14" class="img-fluid"/>
                         <div class="overlay">
@@ -182,7 +179,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div id="movie15div" class="col-lg-3">
                     <div class="image-box">
                         <img src="" id="image15" class="img-fluid"/>
                         <div class="overlay">
@@ -195,6 +192,7 @@
                 </div>
             </div>
         </div>
+        
     
 
 
@@ -234,7 +232,7 @@
             document.getElementById('image14').src = movie14.poster;
             document.getElementById('image15').src = movie15.poster;
 
-            document.getElementById('movie1-runtime').textContent = movie1.runtime;
+            document.getElementById('movie1-runtime').textContent = movie8.name;
             document.getElementById('movie2-runtime').textContent = movie2.runtime;
             document.getElementById('movie3-runtime').textContent = movie3.runtime;
             document.getElementById('movie4-runtime').textContent = movie4.runtime;
@@ -297,10 +295,29 @@
             document.getElementById('movie13_score').textContent = movie13.score;
             document.getElementById('movie14_score').textContent = movie14.score;
             document.getElementById('movie15_score').textContent = movie15.score;
+
+            var movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15];
+
+            for (let i = 0; i < movies.length; i++) {
+    document.getElementById('movie' + (i + 1)+'div').addEventListener('click', function() {
+        if (movies[i].name && typeof movies[i].name === 'string') {
+            window.location.href = 'http://localhost:3000/' + movies[i].name.slice(0, -1).replace(/ /g, "_").toLowerCase();
+        } else {
+            console.error('Name property is not a string or not found in movie object at index: ' + i);
+        }
+    });
+}
           })
           .catch((error) => {
             console.error('Error:', error);
           });
+
+      //  event.preventDefault(); // Prevent the link from being followed
+       // document.cookie = "name=John Doe; expires=Fri, 31 Dec 2023 23:59:59 GMT";
+        //alert("Cookie has been set");
+        
+
+
         </script>
 
 

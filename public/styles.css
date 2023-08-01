@@ -89,3 +89,8 @@ body {
 .image-box:hover .score-item {
     opacity: 1; /* The score becomes visible when hovering over the image box */
 }
+
+
+.col-lg-3 {
+    cursor: pointer;
+  }
