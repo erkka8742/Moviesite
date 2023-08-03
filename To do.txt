@@ -1,0 +1,19 @@
+To do:
+
+Taustaksi tumma blurrattu gradient. ylempänä väriä ja alempana tummaa.
+valkoinen tausta keskelle.
+
+Imdb-score aina näkyviin.
+
+Linkki finkinoon.
+
+leffan omalle sivulle parus tiedot: ohjaaja, käsikirjoittaja, näyttelijät
+yt traileri
+
+päävalikkoon nappi mistä dev's top pics: 5 hyvää leffaa
+chatgpt suositus miksi elokuva on hyvä
+
+muistipeli postereilla
+
+kun refreshaa sivun niin kuvat ovat hetken blurrattuina.
+
