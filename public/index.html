@@ -4,11 +4,13 @@
     <title>Moviesite</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="background">
         <div class="container">
             <div class="row gy-3">
+                <h1>Movies in theatres</h1>
                 <div id="movie1div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -315,7 +317,15 @@
        // document.cookie = "name=John Doe; expires=Fri, 31 Dec 2023 23:59:59 GMT";
         //alert("Cookie has been set");
         
-
+    $(document).mousemove(function(event) {
+  windowWidth = $(window).width();
+  windowHeight = $(window).height();
+  
+  mouseXpercentage = Math.round(event.pageX / windowWidth * 100);
+  mouseYpercentage = Math.round(event.pageY / windowHeight * 100);
+  
+  $('.radial-gradient').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #3498db, #9b59b6)');
+});
 
         </script>
 
