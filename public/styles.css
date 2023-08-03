@@ -5,27 +5,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(265deg,#1bd73b,#167590,#d201fe,#daf013);
-    background-size: 240% 240%;
-    animation: gradient-animation 32s ease infinite;
+
+     background: linear-gradient(179deg,#5c9cbb,#bce08e,#db74eb,#62f9c3);
+  background-size: 240% 240%;
+  animation: gradient-animation 32s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-    
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .background {
     /* The actual color of the page content background */
-    background-color: #ffffff7e; /* White */
+    background-color: #ffffffb6; /* White */
     /* Adjust this padding value to change the size of the background relative to the content */
     margin-top: 15%;
     margin-bottom: 10%;
