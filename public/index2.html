@@ -4,7 +4,7 @@
         <title>My First HTML Page</title>
     </head>
     <body>
-        <p>Hello World!</p>
+        <p id = "movie-name"></p>
     </body>
 </html>
 
@@ -30,14 +30,15 @@
 
         let thisMovie
         let url = window.location.href;
-
-        let movieName = url.match(/3000\/([^\/]+)/) + ' ';
+        let regex = /0\/(.*)/;
+        // otetaan tämän sivun url ja verrataan sitä elokuviin 
+        let movieName = url.match(regex)[1];
 
        for (let i = 0; i <= 14; i++){
-        if (movieName == json[i].name.replace(/ /g, "_").toLowerCase()){
+        if (movieName == json[i].name.replace(/ /g, "_").toLowerCase().slice(0, -1)){
             thisMovie = json[i]
         }
        }
-        console.log(thisMovie)
+       document.getElementById('movie-name').textContent = thisMovie.name;
     })
 </script>

@@ -1,6 +1,7 @@
 body {
-    background-color: #202d38; /* Change this color to what you want */
+    background-image: linear-gradient(rgb(210, 202, 214), rgb(85, 50, 105));
 }
+
 
 .image-box {
     position: relative;

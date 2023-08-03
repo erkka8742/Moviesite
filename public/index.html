@@ -6,8 +6,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Moviesite</h1>
-    <h2>Top 10 movies in theaters</h1>
+    <div class="background">
         <div class="container">
             <div class="row gy-3">
                 <div id="movie1div" class="col-lg-3">
@@ -192,7 +191,7 @@
                 </div>
             </div>
         </div>
-        
+    </div>
     
 
 
@@ -232,7 +231,7 @@
             document.getElementById('image14').src = movie14.poster;
             document.getElementById('image15').src = movie15.poster;
 
-            document.getElementById('movie1-runtime').textContent = movie8.name;
+            document.getElementById('movie1-runtime').textContent = movie1.runtime;
             document.getElementById('movie2-runtime').textContent = movie2.runtime;
             document.getElementById('movie3-runtime').textContent = movie3.runtime;
             document.getElementById('movie4-runtime').textContent = movie4.runtime;
