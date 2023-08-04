@@ -196,7 +196,7 @@ console.log(movie11, movie12, movie13, movie14, movie15)
 allmovies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15]
 
 // lähetetään data clientille
-
+const app = express();
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
   });
@@ -218,13 +218,15 @@ app.listen(port, () => {
 });
 
 // vastaanotetaan dataa clientistä
-const app = express();
+
 
 // Parse JSON bodies (as sent by API clients)
 app.use(bodyParser.json());
 
+receivedData = ""
+
 app.post('/data', (req, res) => {
-    let receivedData = req.body.text; // this is your data
+    receivedData = req.body.text; // this is your data
     console.log(receivedData); 
     res.send('Data received');
 });
@@ -234,7 +236,7 @@ app.listen(3001, () => console.log('Server running on port 3001'));
 // kirjoitetaan dataa movies.json tiedostoon
 const fs = require('fs');
 let data = ['Element1', 'Element2', 'Element3'];
-let jsonData = JSON.stringify(receivedDatadata);
+let jsonData = JSON.stringify(receivedData);
 fs.writeFileSync('movies.json', jsonData);
 
 // luetaan dataa
