@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 app.use(express.static('public'));
 const fs = require('fs');
 const axios = require('axios');
-
+const bodyParser = require('body-parser');
 process.setMaxListeners(20);
 
 
@@ -216,6 +216,39 @@ app.get('/getData', (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
+
+// vastaanotetaan dataa clientistä
+const app = express();
+
+// Parse JSON bodies (as sent by API clients)
+app.use(bodyParser.json());
+
+app.post('/data', (req, res) => {
+    let receivedData = req.body.text; // this is your data
+    console.log(receivedData); 
+    res.send('Data received');
+});
+
+app.listen(3001, () => console.log('Server running on port 3001'));
+
+// kirjoitetaan dataa movies.json tiedostoon
+const fs = require('fs');
+let data = ['Element1', 'Element2', 'Element3'];
+let jsonData = JSON.stringify(receivedDatadata);
+fs.writeFileSync('movies.json', jsonData);
+
+// luetaan dataa
+// npm install express body-parser
+let jsonData2 = fs.readFileSync('movies.json');
+let movieList = JSON.parse(jsonData);
+
+function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+for (let i=0; i<=3; i++){
+    console.log(getRandomElement(movieList));
+}
 
 }
 // laittamalla koko koodi funktioon voidaan käyttää await
