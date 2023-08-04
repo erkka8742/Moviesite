@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Text</title>
+</head>
+<body>
+    <form id="myForm">
+        <input type="text" id="myText" placeholder="Type your text here">
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    // Prevent the form from being submitted normally
+    event.preventDefault();
+
+    // Get the text from the input field
+    let data = document.getElementById('myText').value;
+
+    // Do something with the text
+    console.log(text);
+});
+        
+        fetch('http://localhost:3001/data', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({text: data}), 
+        })
+        .then(response => response.text()) 
+        .then(message => {
+            console.log('Success:', message);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+        
+        
+        
+        </script>
+</body>
+</html>
+
+
