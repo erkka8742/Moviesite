@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
     <title>Send Text</title>
 </head>
 <body>
@@ -10,20 +11,24 @@
     </form>
 
     <script>
- data = ""
+ movie = ""
 document.getElementById('myForm').addEventListener('submit', function(event) {
     // Prevent the form from being submitted normally
     event.preventDefault();
 
     // Get the text from the input field
    
-    data = document.getElementById('myText').value;
+    movie = document.getElementById('myText').value;
 
-    // Do something with the text
-    console.log(data);
+  let data2 = ""
+    $.getJSON("https://api.themoviedb.org/3/search/movie?api_key=a11375df0e085d0b5ac37b8daa5aea27&query=" + movie + "&callback=?", function(data2) {
+    
+    if (data2.results.length == 0 ){                 
+    console.log("movie not found")}
+    else {
+      data = movie
 
-
-  fetch('http://localhost:3000/add_movies', {
+      fetch('http://localhost:3000/add_movies', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -33,6 +38,12 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
 .then(response => response.json())
 .then(data => console.log(data))
 .catch(error => console.error('Error:', error));
+    }
+});
+
+    
+
+ 
 });
         
 
