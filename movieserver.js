@@ -10,6 +10,9 @@ const bodyParser = require('body-parser');
 process.setMaxListeners(20);
 
 
+// tämä testausta varen, ettei tarvitse odotella
+findmovies = false
+
 // favicon
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.resolve(__dirname, './favicon.ico'));
@@ -23,6 +26,7 @@ url = 'https://www.fandango.com/movies-in-theaters'
 
 async function everything() {
 
+if (findmovies == true) {
 // etsii fandangosta leffalistan
 while (allMatches.length < 1) {
     console.log("searching...")
@@ -194,8 +198,17 @@ let movie15 = new movies(allMatches[14], movie15info[0], movie15info[1], movie15
 console.log(movie11, movie12, movie13, movie14, movie15)
 
 allmovies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15]
+}
 
-// lähetetään data clientille
+// tämä testausta varen, ettei tarvitse odotella
+if (findmovies == false) {
+    allMatches = []
+    for (let i=0; i<=16; i++) {
+        allMatches.push("Aa a")
+    }
+}
+
+// lähetetään html sivut clientille
 const app = express();
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
@@ -205,34 +218,34 @@ app.get('/', (req, res) => {
     app.get('/' + allMatches[i].slice(0, -1).replace(/ /g, "_").toLowerCase(), (req, res) => {
       res.sendFile(__dirname + '/public/index2.html');
     });
-  }
+  };
 
+app.get('/addmovie', (req, res) => {
+    res.sendFile(__dirname + '/public/index3.html');
+  });
 
+// leffadatan lähetys
 app.get('/getData', (req, res) => {
         
     res.json(allmovies);
 });
     
+
+
+// vastaanotetaan dataa clientistä
+app.use(express.json());
+receivedData = "" 
+app.post('/add_movies', (req, res) => {
+    receivedData = req.body.data;
+    console.log(receivedData);
+  
+    res.json({ message: 'Data received' });
+  });
+
+
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
-
-// vastaanotetaan dataa clientistä
-
-
-// Parse JSON bodies (as sent by API clients)
-app.use(bodyParser.json());
-
-receivedData = ""
-
-app.post('/data', (req, res) => {
-    receivedData = req.body.text; // this is your data
-    console.log(receivedData); 
-    res.send('Data received');
-});
-
-app.listen(3001, () => console.log('Server running on port 3001'));
-
 // kirjoitetaan dataa movies.json tiedostoon
 const fs = require('fs');
 let data = ['Element1', 'Element2', 'Element3'];

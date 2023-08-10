@@ -10,32 +10,33 @@
     </form>
 
     <script>
-
+ data = ""
 document.getElementById('myForm').addEventListener('submit', function(event) {
     // Prevent the form from being submitted normally
     event.preventDefault();
 
     // Get the text from the input field
-    let data = document.getElementById('myText').value;
+   
+    data = document.getElementById('myText').value;
 
     // Do something with the text
-    console.log(text);
+    console.log(data);
+
+
+  fetch('http://localhost:3000/add_movies', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({data})
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
 });
         
-        fetch('http://localhost:3001/data', {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({text: data}), 
-        })
-        .then(response => response.text()) 
-        .then(message => {
-            console.log('Success:', message);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+
+
         
         
         
