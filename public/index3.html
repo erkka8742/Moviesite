@@ -23,11 +23,14 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
   let data2 = ""
     $.getJSON("https://api.themoviedb.org/3/search/movie?api_key=a11375df0e085d0b5ac37b8daa5aea27&query=" + movie + "&callback=?", function(data2) {
     
-    if (data2.results.length == 0 ){                 
+    if (data2.results[0].length == 0 ){                 
     console.log("movie not found")}
-    else {
-      data = movie
 
+    else if (movie != data2.results[0].title) {}
+    else {
+      data = data2.results[0].title
+      console.log("Added movie: " + String(data))
+      console.log(data2)
       fetch('http://localhost:3000/add_movies', {
   method: 'POST',
   headers: {
