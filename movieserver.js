@@ -238,8 +238,27 @@ receivedData = ""
 app.post('/add_movies', (req, res) => {
     receivedData = req.body.data;
     console.log(receivedData);
-  
-    res.json({ message: 'Data received' });
+    
+    const fs = require('fs');
+    const path = 'movies.json';
+    
+    // Load existing data
+    const jsonData = JSON.parse(fs.readFileSync(path, 'utf8'));
+    
+    if (jsonData.movies.includes(receivedData)) {
+        res.status(409).send({ message: "Movie title already exists!" });
+        return;
+    }
+    else {
+        // Add new data
+    jsonData.movies.push(receivedData);
+
+    // Write updated data back to the file
+    fs.writeFileSync(path, JSON.stringify(jsonData, null, 2));
+    }
+
+    
+    
   });
 
 
@@ -247,23 +266,20 @@ app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
 // kirjoitetaan dataa movies.json tiedostoon
-const fs = require('fs');
-let data = ['Element1', 'Element2', 'Element3'];
-let jsonData = JSON.stringify(receivedData);
-fs.writeFileSync('movies.json', jsonData);
+
 
 // luetaan dataa
 // npm install express body-parser
-let jsonData2 = fs.readFileSync('movies.json');
-let movieList = JSON.parse(jsonData);
+//let jsonData2 = fs.readFileSync('movies.json');
+//let movieList = JSON.parse(jsonData);
 
-function getRandomElement(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
+//function getRandomElement(array) {
+ //   return array[Math.floor(Math.random() * array.length)];
+//}
 
-for (let i=0; i<=3; i++){
-    console.log(getRandomElement(movieList));
-}
+//for (let i=0; i<=3; i++){
+ //   console.log(getRandomElement(movieList));
+//}
 
 }
 // laittamalla koko koodi funktioon voidaan käyttää await
