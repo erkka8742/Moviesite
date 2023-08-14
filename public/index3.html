@@ -20,27 +20,53 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
    
     movie = document.getElementById('myText').value;
 
+    
   let data2 = ""
     $.getJSON("https://api.themoviedb.org/3/search/movie?api_key=a11375df0e085d0b5ac37b8daa5aea27&query=" + movie + "&callback=?", function(data2) {
     
-    if (data2.results[0].length == 0 ){                 
-    console.log("movie not found")}
-
-    else if (movie != data2.results[0].title) {}
-    else {
+      function sendmovie() {
       data = data2.results[0].title
-      console.log("Added movie: " + String(data))
+      console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")")
       console.log(data2)
       fetch('http://localhost:3000/add_movies', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({data})
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({data})
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+
+    }
+
+    if (data2.results.length != 0 ){
+      moviefirstlast = ""
+      moviefirstlast2 = ""      
+
+    moviefirstlast = movie[0] + movie[movie.length-1]
+    moviefirstlast2 = data2.results[0].title.toLowerCase()[0] + data2.results[0].title.toLowerCase()[data2.results[0].title.toLowerCase().length-1]
+
+    }
+
+     
+
+    if (data2.results.length == 0 ){                 
+    console.log("Movie not found")}
+      
+    else if (movie == data2.results[0].title.toLowerCase()) {
+     sendmovie()
+     console.log("if 1")
+    }
+
+    else if (moviefirstlast == moviefirstlast2) {
+      sendmovie()
+      console.log("if 2")
+    }
+    else {
+      console.log("Did you mean: " + data2.results[0].title + "?")
+      console.log(data2)
     }
 });
 

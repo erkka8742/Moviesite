@@ -11,7 +11,7 @@ process.setMaxListeners(20);
 
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -203,8 +203,10 @@ allmovies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, mov
 // tämä testausta varen, ettei tarvitse odotella
 if (findmovies == false) {
     allMatches = []
+    allmovies = []
     for (let i=0; i<=16; i++) {
         allMatches.push("Aa a")
+        allmovies.push("Aa a")
     }
 }
 
