@@ -11,7 +11,7 @@ process.setMaxListeners(20);
 
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = true
+findmovies = false
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
