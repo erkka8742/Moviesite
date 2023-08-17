@@ -7,10 +7,22 @@ app.use(express.static('public'));
 const fs = require('fs');
 const axios = require('axios');
 const bodyParser = require('body-parser');
-process.setMaxListeners(20);
-
+process.setMaxListeners(40);
+const readline = require('readline');
 
 // tämä testausta varen, ettei tarvitse odotella
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question("find movies? y/n ", function(userInput) {
+    console.log("ok");
+    rl.close();
+
+    
+});
+
 findmovies = false
 
 // favicon
@@ -211,19 +223,22 @@ if (findmovies == false) {
 }
 
 // lähetetään html sivut clientille
-const app = express();
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
   });
   
   for(let i = 0; i <= 14; i++) {
-    app.get('/' + allMatches[i].slice(0, -1).replace(/ /g, "_").toLowerCase(), (req, res) => {
+    app.get('/' + allMatches[i].slice(0, -1).replace(/ /g, "-").toLowerCase(), (req, res) => {
       res.sendFile(__dirname + '/public/index2.html');
     });
   };
 
 app.get('/addmovie', (req, res) => {
     res.sendFile(__dirname + '/public/index3.html');
+  });
+
+  app.get('/memory-game', (req, res) => {
+    res.sendFile(__dirname + '/public/index4.html');
   });
 
 // leffadatan lähetys

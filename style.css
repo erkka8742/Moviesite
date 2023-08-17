@@ -1,0 +1,145 @@
+body {
+    /* Ensure the body takes full viewport height and width */
+    
+    /* https://animated-gradient-background-generator.netlify.app */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+     background: linear-gradient(179deg,#5c9cbb,#bce08e,#db74eb,#62f9c3);
+  background-size: 240% 240%;
+  animation: gradient-animation 32s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.background {
+    /* The actual color of the page content background */
+    background-color: #ffffffb6; /* White */
+    /* Adjust this padding value to change the size of the background relative to the content */
+    margin-top: 15%;
+    margin-bottom: 10%;
+    padding-top: 5%;
+    padding-bottom: 3%;
+    border-radius: 35px;
+   
+    /* Set a maximum width if desired, or remove if not */
+    max-width: 90em;
+    /* Ensure div takes the necessary space */
+    width: 100%;
+    /* For centering the text */
+    text-align: center;
+}
+
+.container {
+    /* Allow the container to take full width and height of the parent div */
+    width: 100%;
+    height: 100%;
+    /* Additional space around the content if needed */
+    padding: 1em;
+}
+
+.image-box {
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.25s ease;
+    border-radius: 35px;
+    width: 100%;
+    height: auto;
+}
+
+.image-box:hover {
+    transform: scale(1.2);
+    z-index: 2;
+    outline: 10px solid rgb(255, 255, 255);
+    outline-offset: -5px;
+}
+
+.poster-image {
+    transition: filter 0.2s ease-in-out;
+}
+
+.image-box:hover .poster-image {
+    filter: brightness(40%) blur(2px);
+}
+
+.imdb-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 10%;  /* Adjust this to 60% smaller */
+    z-index: 3; /* ensure the logo stays above the overlay */
+    opacity: 0; /* The logo is initially invisible */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-box:hover .imdb-image {
+    opacity: 1; /* The logo becomes visible when hovering over the image box */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10px; /* adjust as needed */
+    opacity: 0;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    z-index: 2; /* Ensure the overlay is under the logo */
+}
+
+.image-box:hover .overlay {
+    opacity: 1;
+}
+
+.data-set {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px; /* Added some margin to separate score from other info */
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-label,
+.info-content {
+    margin: 0; /* remove standard paragraph margins */
+}
+
+.score-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image-box:hover .score-item {
+    opacity: 1; /* The score becomes visible when hovering over the image box */
+}
+
+
+.col-lg-3 {
+    cursor: pointer;
+  }
+
+ 

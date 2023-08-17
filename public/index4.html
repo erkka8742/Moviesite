@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memory Game</title>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie1div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image1" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie2div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image2" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie3div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image3" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie4div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image4" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie5div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image5" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie6div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image6" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie7div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image7" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie8div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image8" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie9div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image9" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie10div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image10" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie11div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image11" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie12div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image12" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <h1>Memory Game</h1>
+                <div id="movie13div" class="col-lg-3">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <img src="" id="image13" class="img-fluid poster-image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-3">
+            <h1>Memory Game</h1>
+            <div id="movie14div" class="col-lg-3">
+                <div class="image-box">
+                    <div class="image-border">
+                        <img src="" id="image14" class="img-fluid poster-image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-3">
+            <h1>Memory Game</h1>
+            <div id="movie15div" class="col-lg-3">
+                <div class="image-box">
+                    <div class="image-border">
+                        <img src="" id="image15" class="img-fluid poster-image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+fetch('http://localhost:3000/getData')
+          .then(response => response.json())
+          .then(json => {
+            movie1 = json[0]
+            movie2 = json[1]
+            movie3 = json[2]
+            movie4 = json[3]
+            movie5 = json[4]
+            movie6 = json[5]
+            movie7 = json[6]
+            movie8 = json[7]
+            movie9 = json[8]
+            movie10 = json[9]
+            movie11 = json[10]
+            movie12 = json[11]
+            movie13 = json[12]
+            movie14 = json[13]
+            movie15 = json[14]
+
+
+
+
+          })
+
+
+</script>
+
+</body>
+</html>
