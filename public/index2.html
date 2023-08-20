@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My First HTML Page</title>
+        <title id = "movie-name1">My First HTML Page</title>
+        <link type="text/css"  rel="stylesheet" href="style2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">   
     </head>
     <body>
-        <p id = "movie-name"></p>
+        <div class="background">
+            <h1 id = "movie-name2"></h1>
+            
+
+        </div>
+
+        <img src="" id="movie-poster" class="poster-image"/>
     </body>
 </html>
 
 <script>
- fetch('http://localhost:3000/getData')
+ fetch('http://localhost:80/getData')
           .then(response => response.json())
           .then(json => {
             movie1 = json[0]
@@ -30,15 +50,19 @@
 
         let thisMovie
         let url = window.location.href;
-        let regex = /0\/(.*)/;
+        let regex = /\/([^/]+)$/
+;
         // otetaan tämän sivun url ja verrataan sitä elokuviin 
         let movieName = url.match(regex)[1];
 
        for (let i = 0; i <= 14; i++){
-        if (movieName == json[i].name.replace(/ /g, "_").toLowerCase().slice(0, -1)){
+        if (movieName == json[i].name.replace(/ /g, "-").toLowerCase().slice(0, -1)){
             thisMovie = json[i]
         }
        }
-       document.getElementById('movie-name').textContent = thisMovie.name;
+       document.getElementById('movie-name1').textContent = thisMovie.name;
+       document.getElementById('movie-name2').textContent = thisMovie.name;
+
+       document.getElementById('movie-poster').textContent = thisMovie.poster;
     })
 </script>

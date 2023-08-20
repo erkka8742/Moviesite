@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link type="text/css"  rel="stylesheet" href="style2.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
     <title>Games</title>
 </head>
@@ -34,7 +35,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
       data = data2.results[0].title
       console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")")
       console.log(data2)
-      fetch('http://localhost:3000/add_movies', {
+      fetch('http://localhost:80/add_movies', {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json'

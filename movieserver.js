@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = 80;
 const puppeteer = require('puppeteer');
 app.use(express.static('public'));
 const fs = require('fs');
@@ -11,19 +11,7 @@ process.setMaxListeners(40);
 const readline = require('readline');
 
 // tämä testausta varen, ettei tarvitse odotella
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-rl.question("find movies? y/n ", function(userInput) {
-    console.log("ok");
-    rl.close();
-
-    
-});
-
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {

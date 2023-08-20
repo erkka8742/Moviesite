@@ -4,202 +4,291 @@
     <title>Moviesite</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css"  rel="stylesheet" href="body.css">
+    <link type="text/css"  rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">    
+    
 </head>
 <body>
+    <div class="another container">
+    <h1>Movies in theatres</h1>
     <div class="background">
         <div class="container">
             <div class="row gy-3">
-                <h1>Movies in theatres</h1>
                 <div id="movie1div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
                             <img src="" id="image1" class="img-fluid poster-image"/>
                         </div>
-                        <img src="star.png" id="imdb" class="img-fluid imdb-image"/>
                         <div class="overlay">
                             <div class="score-item">
-                                <p class="movie-score" id="movie1_score"></p>
-                                <img src="star.png" id="imdb" class="img-fluid imdb-image"/>
-                            </div>
-                            <div class="data-set">
-                                <div class="info-item">
-                                    <p class="Bold info-label">Runtime:</p>
-                                    <p class="movie-runtime info-content" id="movie1-runtime"></p>
-                                </div>
-                                <div class="info-item">
-                                    <p class="Bold info-label">Director:</p>
-                                    <p class="movie-director info-content" id="movie1-director"></p>
+                                <p class="movie-name" id="movie1-name"></p>
+                                <p class="movie-runtime" id="movie1-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie1_score"></p>
                                 </div>
                             </div>
-                            <p class="movie-text" id="movie1_text"></p>
                         </div>
                     </div>
                 </div>
                 <div id="movie2div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image2" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image2" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie2-runtime"></p>
-                            <p class="movie-director" id="movie2-director"></p>
-                            <p class="movie-score" id="movie2_score"></p>
-                            <p class="movie-text" id="movie2_text"></p>
-                            
+                            <div class="score-item">
+                                <p class="movie-name" id="movie2-name"></p>
+                                <p class="movie-runtime" id="movie2-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie2_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie3div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image3" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image3" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie3-runtime"></p>
-                            <p class="movie-director" id="movie3-director"></p>
-                            <p class="movie-text" id="movie3_text"></p>
-                            <p class="movie-score" id="movie3_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie3-name"></p>
+                                <p class="movie-runtime" id="movie3-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie3_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie4div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image4" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image4" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie4-runtime"></p>
-                            <p class="movie-director" id="movie4-director"></p>
-                            <p class="movie-text" id="movie4_text"></p>
-                            <p class="movie-score" id="movie4_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie4-name"></p>
+                                <p class="movie-runtime" id="movie4-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie4_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie5div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image5" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image5" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie5-runtime"></p>
-                            <p class="movie-director" id="movie5-director"></p>
-                            <p class="movie-text" id="movie5_text"></p>
-                            <p class="movie-score" id="movie5_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie5-name"></p>
+                                <p class="movie-runtime" id="movie5-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie5_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie6div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image6" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image6" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie6-runtime"></p>
-                            <p class="movie-director" id="movie6-director"></p>
-                            <p class="movie-text" id="movie6_text"></p>
-                            <p class="movie-score" id="movie6_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie6-name"></p>
+                                <p class="movie-runtime" id="movie6-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie6_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie7div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image7" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image7" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie7-runtime"></p>
-                            <p class="movie-director" id="movie7-director"></p>
-                            <p class="movie-text" id="movie7_text"></p>
-                            <p class="movie-score" id="movie7_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie7-name"></p>
+                                <p class="movie-runtime" id="movie7-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie7_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie8div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image8" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image8" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie8-runtime"></p>
-                            <p class="movie-director" id="movie8-director"></p>
-                            <p class="movie-text" id="movie8_text"></p>
-                            <p class="movie-score" id="movie8_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie8-name"></p>
+                                <p class="movie-runtime" id="movie8-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie8_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie9div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image9" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image9" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie9-runtime"></p>
-                            <p class="movie-director" id="movie9-director"></p>
-                            <p class="movie-text" id="movie9_text"></p>
-                            <p class="movie-score" id="movie9_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie9-name"></p>
+                                <p class="movie-runtime" id="movie9-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie9_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie10div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image10" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image10" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie10-runtime"></p>
-                            <p class="movie-director" id="movie10-director"></p>
-                            <p class="movie-text" id="movie10_text"></p>
-                            <p class="movie-score" id="movie10_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie10-name"></p>
+                                <p class="movie-runtime" id="movie10-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie10_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie11div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image11" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image11" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie11-runtime"></p>
-                            <p class="movie-director" id="movie11-director"></p>
-                            <p class="movie-text" id="movie11_text"></p>
-                            <p class="movie-score" id="movie11_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie11-name"></p>
+                                <p class="movie-runtime" id="movie11-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie11_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie12div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image12" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image12" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie12-runtime"></p>
-                            <p class="movie-director" id="movie12-director"></p>
-                            <p class="movie-text" id="movie12_text"></p>
-                            <p class="movie-score" id="movie12_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie12-name"></p>
+                                <p class="movie-runtime" id="movie12-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie12_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie13div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image13" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image13" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie13-runtime"></p>
-                            <p class="movie-director" id="movie13-director"></p>
-                            <p class="movie-text" id="movie13_text"></p>
-                            <p class="movie-score" id="movie13_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie13-name"></p>
+                                <p class="movie-runtime" id="movie13-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie13_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie14div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image14" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image14" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie14-runtime"></p>
-                            <p class="movie-director" id="movie14-director"></p>
-                            <p class="movie-text" id="movie14_text"></p>
-                            <p class="movie-score" id="movie14_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie14-name"></p>
+                                <p class="movie-runtime" id="movie14-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie14_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="movie15div" class="col-lg-3">
                     <div class="image-box">
-                        <img src="" id="image15" class="img-fluid"/>
+                        <div class="image-border">
+                            <img src="" id="image15" class="img-fluid poster-image"/>
+                        </div>
                         <div class="overlay">
-                            <p class="movie-runtime" id="movie15-runtime"></p>
-                            <p class="movie-director" id="movie15-director"></p>
-                            <p class="movie-text" id="movie15_text"></p>
-                            <p class="movie-score" id="movie15_score"></p>
+                            <div class="score-item">
+                                <p class="movie-name" id="movie15-name"></p>
+                                <p class="movie-runtime" id="movie15-runtime"></p>
+                                <div class="rating">
+                                    <p class="star">&#9733;</p>
+                                    <p class="movie-score" id="movie15_score"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+</div>
 
 
     <script>
-        fetch('http://localhost:3000/getData')
+        fetch('http://localhost:80/getData')
           .then(response => response.json())
           .then(json => {
             movie1 = json[0]
@@ -250,6 +339,22 @@
             document.getElementById('movie14-runtime').textContent = movie14.runtime;
             document.getElementById('movie15-runtime').textContent = movie15.runtime;
 
+            document.getElementById('movie1-name').textContent = movie1.name;
+            document.getElementById('movie2-name').textContent = movie2.name;
+            document.getElementById('movie3-name').textContent = movie3.name;
+            document.getElementById('movie4-name').textContent = movie4.name;
+            document.getElementById('movie5-name').textContent = movie5.name;
+            document.getElementById('movie6-name').textContent = movie6.name;
+            document.getElementById('movie7-name').textContent = movie7.name;
+            document.getElementById('movie8-name').textContent = movie8.name;
+            document.getElementById('movie9-name').textContent = movie9.name;
+            document.getElementById('movie10-name').textContent = movie10.name;
+            document.getElementById('movie11-name').textContent = movie11.name;
+            document.getElementById('movie12-name').textContent = movie12.name;
+            document.getElementById('movie13-name').textContent = movie13.name;
+            document.getElementById('movie14-name').textContent = movie14.name;
+            document.getElementById('movie15-name').textContent = movie15.name;
+/*
             document.getElementById('movie1-director').textContent = movie1.director;
             document.getElementById('movie2-director').textContent = movie2.director;
             document.getElementById('movie3-director').textContent = movie3.director;
@@ -281,7 +386,7 @@
             document.getElementById('movie13_text').textContent = movie13.plot;
             document.getElementById('movie14_text').textContent = movie14.plot;
             document.getElementById('movie15_text').textContent = movie15.plot;
-            
+    */  
             document.getElementById('movie1_score').textContent = movie1.score;
             document.getElementById('movie2_score').textContent = movie2.score;
             document.getElementById('movie3_score').textContent = movie3.score;
@@ -303,7 +408,7 @@
             for (let i = 0; i < movies.length; i++) {
     document.getElementById('movie' + (i + 1)+'div').addEventListener('click', function() {
         if (movies[i].name && typeof movies[i].name === 'string') {
-            window.location.href = 'http://localhost:3000/' + movies[i].name.slice(0, -1).replace(/ /g, "-").toLowerCase();
+            window.location.href = 'http://localhost:80/' + movies[i].name.slice(0, -1).replace(/ /g, "-").toLowerCase();
         } else {
             console.error('Name property is not a string or not found in movie object at index: ' + i);
         }

@@ -18,3 +18,5 @@ muistipeli postereilla
 kun refreshaa sivun niin kuvat ovat hetken blurrattuina.
 
 tee muistipeli multiplayer
+
+USE CURSOR
