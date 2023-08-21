@@ -4,10 +4,10 @@
     <title>Memory Game</title>
 </head>
 <body>
+    <h1>Memory Game</h1>
     <div class="background">
         <div class="container">
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie1div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -17,7 +17,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie2div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -27,7 +26,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie3div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -37,7 +35,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie4div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -47,7 +44,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie5div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -57,7 +53,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie6div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -67,7 +62,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie7div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -77,7 +71,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie8div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -87,7 +80,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie9div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -97,7 +89,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie10div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -107,7 +98,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie11div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -117,7 +107,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie12div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -127,7 +116,6 @@
                 </div>
             </div>
             <div class="row gy-3">
-                <h1>Memory Game</h1>
                 <div id="movie13div" class="col-lg-3">
                     <div class="image-box">
                         <div class="image-border">
@@ -138,7 +126,6 @@
             </div>
         </div>
         <div class="row gy-3">
-            <h1>Memory Game</h1>
             <div id="movie14div" class="col-lg-3">
                 <div class="image-box">
                     <div class="image-border">
@@ -148,7 +135,6 @@
             </div>
         </div>
         <div class="row gy-3">
-            <h1>Memory Game</h1>
             <div id="movie15div" class="col-lg-3">
                 <div class="image-box">
                     <div class="image-border">
@@ -161,7 +147,7 @@
 
 <script>
 
-fetch('http://localhost:80/getData')
+fetch('http://localhost:3000/getData')
           .then(response => response.json())
           .then(json => {
             movie1 = json[0]
@@ -180,7 +166,19 @@ fetch('http://localhost:80/getData')
             movie14 = json[13]
             movie15 = json[14]
 
+    movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15] 
+    numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
+    function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+    for (i=0; i<=15; i++){
+        
+        let lenght = movies.lenght
+        let random = getRandom(1,lenght)
+        document.getElementById('image' + String(i)).src = movies[random].poster;
+    }
 
 
           })

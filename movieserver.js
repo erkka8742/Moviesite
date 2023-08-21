@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = 80;
+const port = 3000;
 const puppeteer = require('puppeteer');
 app.use(express.static('public'));
 const fs = require('fs');
@@ -11,7 +11,7 @@ process.setMaxListeners(40);
 const readline = require('readline');
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = true
+findmovies = false
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -212,21 +212,21 @@ if (findmovies == false) {
 
 // lähetetään html sivut clientille
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/theaters.html');
   });
   
   for(let i = 0; i <= 14; i++) {
     app.get('/' + allMatches[i].slice(0, -1).replace(/ /g, "-").toLowerCase(), (req, res) => {
-      res.sendFile(__dirname + '/public/index2.html');
+      res.sendFile(__dirname + '/public/movieInfo.html');
     });
   };
 
-app.get('/addmovie', (req, res) => {
-    res.sendFile(__dirname + '/public/index3.html');
+app.get('/games', (req, res) => {
+    res.sendFile(__dirname + '/public/games.html');
   });
 
   app.get('/memory-game', (req, res) => {
-    res.sendFile(__dirname + '/public/index4.html');
+    res.sendFile(__dirname + '/public/memoryGame.html');
   });
 
 // leffadatan lähetys

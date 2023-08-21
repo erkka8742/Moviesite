@@ -35,7 +35,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
       data = data2.results[0].title
       console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")")
       console.log(data2)
-      fetch('http://localhost:80/add_movies', {
+      fetch('http://localhost:3000/add_movies', {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json'

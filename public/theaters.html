@@ -288,7 +288,7 @@
 
 
     <script>
-        fetch('http://localhost:80/getData')
+        fetch('http://localhost:3000/getData')
           .then(response => response.json())
           .then(json => {
             movie1 = json[0]
@@ -408,7 +408,7 @@
             for (let i = 0; i < movies.length; i++) {
     document.getElementById('movie' + (i + 1)+'div').addEventListener('click', function() {
         if (movies[i].name && typeof movies[i].name === 'string') {
-            window.location.href = 'http://localhost:80/' + movies[i].name.slice(0, -1).replace(/ /g, "-").toLowerCase();
+            window.location.href = 'http://localhost:3000/' + movies[i].name.slice(0, -1).replace(/ /g, "-").toLowerCase();
         } else {
             console.error('Name property is not a string or not found in movie object at index: ' + i);
         }
