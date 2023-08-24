@@ -143,6 +143,15 @@
                 </div>
             </div>
         </div>
+        <div class="row gy-3">
+            <div id="movie16div" class="col-lg-3">
+                <div class="image-box">
+                    <div class="image-border">
+                        <img src="" id="image16" class="img-fluid poster-image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 <script>
@@ -158,26 +167,20 @@ fetch('http://localhost:3000/getData')
             movie6 = json[5]
             movie7 = json[6]
             movie8 = json[7]
-            movie9 = json[8]
-            movie10 = json[9]
-            movie11 = json[10]
-            movie12 = json[11]
-            movie13 = json[12]
-            movie14 = json[13]
-            movie15 = json[14]
 
-    movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15] 
-    numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8] 
+    numbers = [1,2,3,4,5,6,7,8,9]
 
     function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-    for (i=0; i<=15; i++){
+    for (i=0; i<=8; i++){
         
         let lenght = movies.lenght
-        let random = getRandom(1,lenght)
-        document.getElementById('image' + String(i)).src = movies[random].poster;
+        let random = getRandom(0,lenght);
+        movies.splice()
+        document.getElementById('image' + String(i)).src = movies[1].poster;
     }
 
 
