@@ -11,7 +11,7 @@ process.setMaxListeners(40);
 const readline = require('readline');
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
