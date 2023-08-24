@@ -23,3 +23,13 @@ arvostelut
 tee muistipeli multiplayer
 invite sähköpostilla
 tai linkillä
+
+
+
+
+muodosta kuudestatoista kohdasta parit
+eli jaa 16 array itemiä kahdeksaan arrayhyn (2 pera array)
+
+elokuvalistasta jokaiselle elokuvalle annetaan oma array mihin menee
+
+koodi joka laittaa elopuvaposterin niihin kahteen paikkaan, jossa kaksi sen array muuta on 
