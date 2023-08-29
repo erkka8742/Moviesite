@@ -2,6 +2,23 @@
 <html>
 <head>
     <title>Memory Game</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css"  rel="stylesheet" href="style3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">    
+    
 </head>
 <body>
     <h1>Memory Game</h1>
@@ -168,7 +185,71 @@ fetch('http://localhost:3000/getData')
             movie7 = json[6]
             movie8 = json[7]
 
-    movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8] 
+    movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8 ]
+    
+  // movies array sekoitetaan  
+  const shuffleArray = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+shuffleArray(movies);
+console.log(movies)
+
+// alokuvat laitetaan sivulle 
+for (let i = 0; i < 15; i++) {
+    document.getElementById('image'+ String(i+1)).src = movies[i].poster;
+}
+
+
+// kun käyttäjä painaa kuvasta katsotaan mikä se on ja annetaan toinen mahdollisuus painaa
+// jos sama niin poistetaan kortit
+
+clicks = 0
+selected1 = ""
+selected2 = ""
+
+function areTheySame(a,b) {
+    if (a == b){
+        return true
+    }
+    else {
+        return false
+    }
+
+}
+
+for (let i = 0; i < 15; i++) {
+document.getElementById('image'+ String(i+1)).addEventListener("click", function() {
+    clicks++
+    this.style.filter = "brightness(100%)";
+    if (clicks == 1) {
+        selected1 = this
+    }
+
+    if (clicks == 2) {
+        clicks = 0
+        selected2 = this
+        setTimeout(function() {
+        selected2.style.filter = "brightness(100%)";   
+        selected2 = this
+        let same = areTheySame(selected1,selected2)
+        if (same == true) {
+        }
+        else {
+            selected1.style.filter = "brightness(0%)"
+            selected2.style.filter = "brightness(0%)"
+        }
+        }, 5000);
+   
+    } 
+});
+}
+
+    
     numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
     cards1 = []
@@ -181,22 +262,6 @@ fetch('http://localhost:3000/getData')
     cards8 = []
 
     allCards = [cards1, cards2, cards3, cards4, cards5, cards6, cards7, cards8]
-
-    function getRandom(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-console.log(getRandom(0,6))
-// muodosta kuudestatoista kohdasta parit
-// eli jaa 16 array itemiä kahdeksaan arrayhyn (2 pera array)
-i = 0
-    while (allCards.length > 0) {
-        let random = getRandom(0,allCards.length);
-        allCards[random].push(numbers[i])
-        allCards[random].push(numbers[i+1])
-        allCards.splice(i,1);
-        i = i+1
-        console.log(allCards[random])
-    }
 
           })
 

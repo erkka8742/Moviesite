@@ -1,0 +1,196 @@
+body {
+    /* Ensure the body takes full viewport height and width */
+    
+    /* https://animated-gradient-background-generator.netlify.app */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-image: radial-gradient(circle, #0f153f, #101640, #101641, #111742, #111843, #1c1843, #241743, #2c1643, #3b1340, #47103b, #510d35, #590d2e);
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.background {
+    /* The actual color of the page content background */
+    background-color: #ffffff2f; /* White */
+    /* Adjust this padding value to change the size of the background relative to the content */
+    margin-top: 13%;
+    margin-bottom: 10%;
+    padding: 3%;
+    border-radius: 35px;
+   
+    /* Set a maximum width if desired, or remove if not */
+    max-width: 90em;
+    /* Ensure div takes the necessary space */
+    width: 100%;
+    /* For centering the text */
+    text-align: center;
+    
+}
+
+.score-item {
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Nunito', sans-serif;
+    font-size: 120%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0; 
+    text-align: center; 
+    width: 100%; 
+    padding-top: 25%; 
+    font-weight: 500;
+    color: #a2a2a2;
+    margin-bottom: -15%;   /* This ensures vertical centering */
+}
+
+.movie-name {
+    font-size: 140%;
+    font-weight: 500;
+    font-family: 'Rubik', sans-serif;
+    color: #ffffff; 
+}
+
+.movie-runtime {
+    margin-top: 10%;
+    margin-bottom: 1%;  /* Adjust as needed */
+}
+
+.rating {
+    display: flex;
+    align-items: center; /* This will ensure that star and score are vertically aligned in the middle */
+   
+}
+
+.star, .movie-score {
+    margin: 0; /* remove any default margin */
+    right: 400%;
+}
+
+.star {
+    color: #cbaa17;
+    margin-left: -39%;
+    margin-bottom: 5%;
+}
+
+h1 {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-top: 3%;  
+    font-family: 'Comfortaa', cursive;
+}
+
+.container {
+    /* Allow the container to take full width and height of the parent div */
+    width: 100%;
+    height: 100%;
+    /* Additional space around the content if needed */
+    padding: 1em;
+}
+
+.image-box {
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.25s ease;
+    border-radius: 35px;
+    width: 100%;
+    height: auto;
+}
+
+.img-fluid.poster-image {
+    filter: brightness(0%);
+}
+
+
+
+.image-box:hover {
+    transform: scale(1.15);
+    z-index: 2;
+    outline: 8px solid rgb(255, 255, 255);
+    outline-offset: -5px;
+}
+
+.poster-image {
+    transition: filter 0.2s ease-in-out;
+}
+
+
+.imdb-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 10%;  /* Adjust this to 60% smaller */
+    z-index: 3; /* ensure the logo stays above the overlay */
+    opacity: 0; /* The logo is initially invisible */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-box:hover .imdb-image {
+    opacity: 1; /* The logo becomes visible when hovering over the image box */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10px; /* adjust as needed */
+    opacity: 0;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    z-index: 2; /* Ensure the overlay is under the logo */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.image-box:hover .overlay {
+    opacity: 1;
+}
+
+.data-set {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px; /* Added some margin to separate score from other info */
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-label,
+.info-content {
+    margin: 0; /* remove standard paragraph margins */
+}
+
+.score-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image-box:hover .score-item {
+    opacity: 1; /* The score becomes visible when hovering over the image box */
+}
+
+
+.col-lg-3 {
+    cursor: pointer;
+  }
+
+ 
