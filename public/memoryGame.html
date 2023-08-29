@@ -199,7 +199,7 @@ fetch('http://localhost:3000/getData')
 shuffleArray(movies);
 console.log(movies)
 
-// alokuvat laitetaan sivulle 
+// elokuvat laitetaan sivulle 
 for (let i = 0; i < 15; i++) {
     document.getElementById('image'+ String(i+1)).src = movies[i].poster;
 }
@@ -211,15 +211,16 @@ for (let i = 0; i < 15; i++) {
 clicks = 0
 selected1 = ""
 selected2 = ""
+selected1title = ""
+selected2title = ""
 
 function areTheySame(a,b) {
-    if (a == b){
+    if (a.src == b.src){
         return true
     }
     else {
         return false
     }
-
 }
 
 for (let i = 0; i < 15; i++) {
@@ -233,35 +234,31 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
     if (clicks == 2) {
         clicks = 0
         selected2 = this
+        var elements = document.getElementsByClassName('image-box');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.pointerEvents = 'none';
+        }
         setTimeout(function() {
-        selected2.style.filter = "brightness(100%)";   
-        selected2 = this
         let same = areTheySame(selected1,selected2)
         if (same == true) {
+            console.log("same")
         }
         else {
-            selected1.style.filter = "brightness(0%)"
+            console.log("not same")
             selected2.style.filter = "brightness(0%)"
+            selected1.style.filter = "brightness(0%)"
+            
         }
-        }, 5000);
-   
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.pointerEvents = 'auto';
+        }
+        }, 3000);
+        
     } 
 });
 }
 
     
-    numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-
-    cards1 = []
-    cards2 = []
-    cards3 = []
-    cards4 = []
-    cards5 = []
-    cards6 = []
-    cards7 = []
-    cards8 = []
-
-    allCards = [cards1, cards2, cards3, cards4, cards5, cards6, cards7, cards8]
 
           })
 
