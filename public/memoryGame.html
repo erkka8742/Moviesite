@@ -200,7 +200,7 @@ shuffleArray(movies);
 console.log(movies)
 
 // elokuvat laitetaan sivulle 
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 16; i++) {
     document.getElementById('image'+ String(i+1)).src = movies[i].poster;
 }
 
@@ -242,6 +242,9 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
         let same = areTheySame(selected1,selected2)
         if (same == true) {
             console.log("same")
+            selected1.parentNode.removeChild(selected1);
+            selected2.parentNode.removeChild(selected2);
+
         }
         else {
             console.log("not same")
@@ -252,7 +255,7 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
         for (var i = 0; i < elements.length; i++) {
             elements[i].style.pointerEvents = 'auto';
         }
-        }, 3000);
+        }, 2500);
         
     } 
 });
