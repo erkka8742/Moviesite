@@ -21,31 +21,34 @@ app.get('/favicon.ico', (req, res) => {
 allMatches = [];
 let year = 2023
 content = ""
-url = 'https://www.fandango.com/movies-in-theaters'
+url = 'https://editorial.rottentomatoes.com/guide/popular-movies/'
 
-
+tries = 0
 async function everything() {
 
 if (findmovies == true) {
-// etsii fandangosta leffalistan
-while (allMatches.length < 1) {
+// etsii rotten tomatoesista leffalistan
+while (allMatches.length < 1 && tries < 3) {
+    tries++
     console.log("searching...")
     let browser = await puppeteer.launch({
-        headless: "new" 
+        headless: false 
     });
     let page = await browser.newPage();
 
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537');
     await page.goto(url, {waitUntil: 'networkidle0'});
 
-    content = await page.content();  
-    const regex = /title" aria-hidden="true">(.*?)\(/g;
+    content = await page.content();
+    console.log(content)  
+    const regex = />(.*?)<\/a> <span class='subtle start-year'>/;
     let match;
     while ((match = regex.exec(content)) !== null && allMatches.length < 15) {
         allMatches.push(match[1]);
     }
     await browser.close();
 }
+
 
 re_runtime = ""
 re_director = ""
