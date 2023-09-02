@@ -28,7 +28,7 @@ async function everything() {
 
 if (findmovies == true) {
 // etsii rotten tomatoesista leffalistan
-while (allMatches.length < 1 && tries < 3) {
+while (allMatches.length < 1 && tries < 1) {
     tries++
     console.log("searching...")
     let browser = await puppeteer.launch({
@@ -39,9 +39,8 @@ while (allMatches.length < 1 && tries < 3) {
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537');
     await page.goto(url, {waitUntil: 'networkidle0'});
 
-    content = await page.content();
-    console.log(content)  
-    const regex = />(.*?)<\/a> <span class='subtle start-year'>/;
+    content = await page.content(); 
+    const regex = />([^<]*?)<\/a>\s*<span class="subtle start-year"/g;
     let match;
     while ((match = regex.exec(content)) !== null && allMatches.length < 15) {
         allMatches.push(match[1]);
@@ -140,7 +139,6 @@ async function findInfo(movie) {
         allMatches2.push(match3[1]);
     }
     
-    console.log(allMatches2)
     re_score = allMatches2[1];
     
     console.log(numbers)

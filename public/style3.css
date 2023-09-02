@@ -34,49 +34,8 @@ body {
     
 }
 
-.score-item {
-    font-family: 'Comfortaa', cursive;
-    font-family: 'Nunito', sans-serif;
-    font-size: 120%;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0; 
-    text-align: center; 
-    width: 100%; 
-    padding-top: 25%; 
-    font-weight: 500;
-    color: #a2a2a2;
-    margin-bottom: -15%;   /* This ensures vertical centering */
-}
-
-.movie-name {
-    font-size: 140%;
-    font-weight: 500;
-    font-family: 'Rubik', sans-serif;
-    color: #ffffff; 
-}
-
-.movie-runtime {
-    margin-top: 10%;
-    margin-bottom: 1%;  /* Adjust as needed */
-}
-
-.rating {
-    display: flex;
-    align-items: center; /* This will ensure that star and score are vertically aligned in the middle */
-   
-}
-
-.star, .movie-score {
-    margin: 0; /* remove any default margin */
-    right: 400%;
-}
-
-.star {
-    color: #cbaa17;
-    margin-left: -39%;
-    margin-bottom: 5%;
+.row {
+    margin-bottom: 2%;
 }
 
 h1 {
@@ -122,16 +81,6 @@ h1 {
     transition: filter 0.2s ease-in-out;
 }
 
-
-.imdb-image {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 10%;  /* Adjust this to 60% smaller */
-    z-index: 3; /* ensure the logo stays above the overlay */
-    opacity: 0; /* The logo is initially invisible */
-    transition: opacity 0.3s ease-in-out;
-}
 
 .image-box:hover .imdb-image {
     opacity: 1; /* The logo becomes visible when hovering over the image box */
