@@ -11,7 +11,7 @@ process.setMaxListeners(40);
 const readline = require('readline');
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = true
+findmovies = false
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -32,7 +32,7 @@ while (allMatches.length < 1 && tries < 1) {
     tries++
     console.log("searching...")
     let browser = await puppeteer.launch({
-        headless: false 
+        headless: "true"
     });
     let page = await browser.newPage();
 
@@ -252,7 +252,7 @@ app.post('/add_movies', (req, res) => {
     const jsonData = JSON.parse(fs.readFileSync(path, 'utf8'));
     
     if (jsonData.movies.includes(receivedData)) {
-        res.status(409).send({ message: "Movie title already exists!" });
+        //respond to to user
         return;
     }
     else {

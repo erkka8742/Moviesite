@@ -10,6 +10,7 @@
         <input type="text" id="myText" placeholder="Type your text here">
         <button type="submit">Send</button>
     </form>
+    <p id="response"></p>
 
     <h1>Memory game</h1>
     <h1>Quess Runtime</h1>
@@ -48,6 +49,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
 
     }
 
+    response = ""
     if (data2.results.length != 0 ){
       moviefirstlast = ""
       moviefirstlast2 = ""      
@@ -60,20 +62,30 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
      
 
     if (data2.results.length == 0 ){                 
-    console.log("Movie not found")}
+    console.log("Movie not found")
+    response = "Movie not found"}
+    
       
     else if (movie == data2.results[0].title.toLowerCase()) {
      sendmovie()
      console.log("if 1")
+     response = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
     }
 
     else if (moviefirstlast == moviefirstlast2) {
       sendmovie()
       console.log("if 2")
+      response = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
     }
+
+    else if (a) {
+      b
+    }
+
     else {
       console.log("Did you mean: " + data2.results[0].title + "?")
       console.log(data2)
+      response = "Did you mean: " + data2.results[0].title + "?"
     }
 });
 
