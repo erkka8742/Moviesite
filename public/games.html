@@ -28,11 +28,11 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
    
     movie = document.getElementById('myText').value;
 
-  
-  let data2 = ""
+    response2 = ""
+    alreadyAdded = false
+    let data2 = ""
     $.getJSON("https://api.themoviedb.org/3/search/movie?api_key=a11375df0e085d0b5ac37b8daa5aea27&query=" + movie + "&callback=?", function(data2) {
-      response2 = ""
-      response3 = ""
+      
       function sendmovie() {
       data = data2.results[0].title
       console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")")
@@ -46,11 +46,24 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
       })
       .then(response => response.text())  // Convert response to text
       .then(text => {
-        // Log the response text
-      response3 = text
-      console.log(response3)
+      if (text == "Already here!") {
+        alreadyAdded = true
+      }
+      
+      
+      if (alreadyAdded = true) {
+        document.getElementById('response').textContent = "Already added!";
+      }
+      else {
+        document.getElementById('response').textContent = response2;
+        console.log("yyefgye")
+      }
+      
+      
       })
       .catch(error => console.error('Error:', error));
+
+     
     }
 
   
@@ -88,23 +101,20 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
       response2 = "Did you mean: " + data2.results[0].title + "?"
     }
 
-    if (response3.length > 1) {
-        document.getElementById('response').textContent = response3;
-      }
-      else {
-        document.getElementById('response').textContent = response2;
-      }
-
+    
+    
 
 });
 
     
 
+  
+ 
  
 });
         
 
-
+      
         
         
         
