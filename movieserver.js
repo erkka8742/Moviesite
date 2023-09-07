@@ -253,7 +253,7 @@ app.post('/add_movies', (req, res) => {
     
     if (jsonData.movies.includes(receivedData)) {
         //respond to to user
-        return;
+        return res.send('Already here!');
     }
     else {
         // Add new data

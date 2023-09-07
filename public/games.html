@@ -28,10 +28,11 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
    
     movie = document.getElementById('myText').value;
 
-    
+  
   let data2 = ""
     $.getJSON("https://api.themoviedb.org/3/search/movie?api_key=a11375df0e085d0b5ac37b8daa5aea27&query=" + movie + "&callback=?", function(data2) {
-    
+      response2 = ""
+      response3 = ""
       function sendmovie() {
       data = data2.results[0].title
       console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")")
@@ -39,17 +40,20 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
       fetch('http://localhost:3000/add_movies', {
       method: 'POST',
       headers: {
-      'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({data})
       })
-      .then(response => response.json())
-      .then(data => console.log(data))
+      .then(response => response.text())  // Convert response to text
+      .then(text => {
+        // Log the response text
+      response3 = text
+      console.log(response3)
+      })
       .catch(error => console.error('Error:', error));
-
     }
 
-    response = ""
+  
     if (data2.results.length != 0 ){
       moviefirstlast = ""
       moviefirstlast2 = ""      
@@ -63,30 +67,35 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
 
     if (data2.results.length == 0 ){                 
     console.log("Movie not found")
-    response = "Movie not found"}
+    response2 = "Movie not found"}
     
       
     else if (movie == data2.results[0].title.toLowerCase()) {
      sendmovie()
      console.log("if 1")
-     response = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
+     response2 = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
     }
 
     else if (moviefirstlast == moviefirstlast2) {
       sendmovie()
       console.log("if 2")
-      response = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
-    }
-
-    else if (a) {
-      b
+      response2 = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
     }
 
     else {
       console.log("Did you mean: " + data2.results[0].title + "?")
       console.log(data2)
-      response = "Did you mean: " + data2.results[0].title + "?"
+      response2 = "Did you mean: " + data2.results[0].title + "?"
     }
+
+    if (response3.length > 1) {
+        document.getElementById('response').textContent = response3;
+      }
+      else {
+        document.getElementById('response').textContent = response2;
+      }
+
+
 });
 
     
