@@ -7,11 +7,11 @@ app.use(express.static('public'));
 const fs = require('fs');
 const axios = require('axios');
 const bodyParser = require('body-parser');
-process.setMaxListeners(40);
+process.setMaxListeners(100);
 const readline = require('readline');
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -55,6 +55,12 @@ re_plot = ""
 re_rating = ""
 re_poster = ""
 re_score = ""
+re_imdb = ""
+re_finnkino = ""
+re_trailer = ""
+re_writers = ""
+re_stars = ""
+
 numbers = 15
 function convertMinToHours(min) {
     var hours = Math.floor(min / 60);
@@ -74,12 +80,9 @@ async function findInfo(movie) {
             }
         });
 
-        // muuttaa minuutit tunneiksi ja minuuteiksi
-        re_runtime = String(convertMinToHours(parseInt(response.data.Runtime)));
-        re_director = String(response.data.Director);
-        re_plot = String(response.data.Plot);
-        re_rating = String(response.data.imdbRating);
-        
+        re_writers = String(response.data.Writers);
+        re_stars = String(response.data.Actors);
+
     } catch (error) {
         console.error('Error:', error);
     }
@@ -109,6 +112,39 @@ async function findInfo(movie) {
         let url2 = `${baseUrl}?q=${encodedQuery}&btnI`;
         await page.goto(url2);
         imdbUrl = page.url();
+
+        let regex = /=(.*)/;
+        let match6 = imdbUrl.match(regex);
+        okImdbUrl = (match6[1]);
+        re_imdb = okImdbUrl
+
+        // yt trailer linkin haku
+        let page2 = await browser.newPage();
+        let baseUrl2 = 'https://www.google.com/search';
+        let query2 = `${movie} trailer youtube`;
+        let encodedQuery2 = encodeURIComponent(query2);
+        let url22 = `${baseUrl2}?q=${encodedQuery2}&btnI`;
+        await page2.goto(url22);
+        YTUrl = page2.url();
+        re_trailer = YTUrl
+        console.log(YTUrl)
+
+        //finnkino linkki
+        let page3 = await browser.newPage();
+        let baseUrl3 = 'https://www.google.com/search';
+        let query3 = `${movie} finnkino`;
+        let encodedQuery3 = encodeURIComponent(query3);
+        let url23 = `${baseUrl3}?q=${encodedQuery3}&btnI`;
+        await page3.goto(url23);
+        FINurl = page3.url();
+
+        let regexFIN = /=(.*)/;
+        let matchFIN = FINurl.match(regexFIN);
+        let okFINurl = (matchFIN[1]);
+        re_finnkino = okFINurl
+        console.log(okFINurl)
+
+        
     } catch (err) {
         console.error(err);
     } finally {
@@ -116,9 +152,8 @@ async function findInfo(movie) {
             browser.close();
         }
     }
-    let regex = /=(.*)/;
-    let match6 = imdbUrl.match(regex);
-    let okImdbUrl = (match6[1]);
+    
+
     
     // kun imdb-url on loytynyt haetaan elokuvan imdb-sivulta score
     console.log(okImdbUrl)
@@ -138,12 +173,38 @@ async function findInfo(movie) {
     while ((match3 = regex3.exec(content2)) !== null) {
         allMatches2.push(match3[1]);
     }
-    
     re_score = allMatches2[1];
+
+    // etsi runtime
+    const regexRuntime = /og:description" content="(.*?)\|/;
+    let match3run = content2.match(regexRuntime);;
     
+    console.log(match3run[1])
+    if (match3run[1].length > 7) {
+        match3run[1] = "?"
+    }
+    re_runtime = match3run[1]
+
+    // etsi ohjaaja
+    const regexDir = /Directed by (.*?)\./;
+    let match3Dir = content2.match(regexDir);;
+    
+    console.log(match3Dir[1])
+    re_director = match3Dir[1]
+
+    // etsi plot
+    const regexPlot = /(?<={"plotText":{"plainText":")[^"]*(?=")/;
+    let match3Plot = content2.match(regexPlot);;
+    
+    console.log(match3Plot[0])
+    re_plot = match3Plot[0]
+
+    // etsi kirjoittajat
+    
+
     console.log(numbers)
     numbers = numbers-1
-    let results = [re_runtime, re_director, re_plot, re_rating, re_poster, re_score];
+    let results = [re_runtime, re_director, re_plot, re_rating, re_poster, re_imdb, re_score, re_finnkino, re_trailer, re_writers, re_stars];
     return results;
 }
 
@@ -168,33 +229,38 @@ let movie15info = await findInfo(allMatches[14])
 
 class movies {
 
-    constructor(name, runtime, director, plot, rating, poster, score){
+    constructor(name, runtime, director, plot, rating, poster, imdb, score, finnkino, trailer, writers, stars){
         this.name = name
         this.runtime = runtime
         this.director = director
         this.plot = plot
         this.rating = rating
         this.poster = poster
+        this.imdb = imdb
         this.score = score
+        this.finnkino = finnkino
+        this.writers = writers
+        this.stars = stars
+        this.trailer = trailer
     }
 }
 
 // luodaan objectit elokuvista class movies mukaan
-let movie1 = new movies(allMatches[0], movie1info[0], movie1info[1], movie1info[2], movie1info[3], movie1info[4], movie1info[5])
-let movie2 = new movies(allMatches[1], movie2info[0], movie2info[1], movie2info[2], movie2info[3], movie2info[4], movie2info[5])
-let movie3 = new movies(allMatches[2], movie3info[0], movie3info[1], movie3info[2], movie3info[3], movie3info[4], movie3info[5])
-let movie4 = new movies(allMatches[3], movie4info[0], movie4info[1], movie4info[2], movie4info[3], movie4info[4], movie4info[5])
-let movie5 = new movies(allMatches[4], movie5info[0], movie5info[1], movie5info[2], movie5info[3], movie5info[4], movie5info[5])
-let movie6 = new movies(allMatches[5], movie6info[0], movie6info[1], movie6info[2], movie6info[3], movie6info[4], movie6info[5])
-let movie7 = new movies(allMatches[6], movie7info[0], movie7info[1], movie7info[2], movie7info[3], movie7info[4], movie7info[5])
-let movie8 = new movies(allMatches[7], movie8info[0], movie8info[1], movie8info[2], movie8info[3], movie8info[4], movie8info[5])
-let movie9 = new movies(allMatches[8], movie9info[0], movie9info[1], movie9info[2], movie9info[3], movie9info[4], movie9info[5])
-let movie10 = new movies(allMatches[9], movie10info[0], movie10info[1], movie10info[2], movie10info[3], movie10info[4], movie10info[5])
-let movie11 = new movies(allMatches[10], movie11info[0], movie11info[1], movie11info[2], movie11info[3], movie11info[4], movie11info[5])
-let movie12 = new movies(allMatches[11], movie12info[0], movie12info[1], movie12info[2], movie12info[3], movie12info[4], movie12info[5])
-let movie13 = new movies(allMatches[12], movie13info[0], movie13info[1], movie13info[2], movie13info[3], movie13info[4], movie13info[5])
-let movie14 = new movies(allMatches[13], movie14info[0], movie14info[1], movie14info[2], movie14info[3], movie14info[4], movie14info[5])
-let movie15 = new movies(allMatches[14], movie15info[0], movie15info[1], movie15info[2], movie15info[3], movie15info[4], movie15info[5])
+let movie1 = new movies(allMatches[0], movie1info[0], movie1info[1], movie1info[2], movie1info[3], movie1info[4], movie1info[5], movie1info[6], movie1info[7], movie1info[8], movie1info[9], movie1info[10])
+let movie2 = new movies(allMatches[1], movie2info[0], movie2info[1], movie2info[2], movie2info[3], movie2info[4], movie2info[5], movie2info[6], movie2info[7], movie2info[8], movie2info[9], movie2info[10])
+let movie3 = new movies(allMatches[2], movie3info[0], movie3info[1], movie3info[2], movie3info[3], movie3info[4], movie3info[5], movie3info[6], movie3info[7], movie3info[8], movie3info[9], movie3info[10])
+let movie4 = new movies(allMatches[3], movie4info[0], movie4info[1], movie4info[2], movie4info[3], movie4info[4], movie4info[5], movie4info[6], movie4info[7], movie4info[8], movie4info[9], movie4info[10])
+let movie5 = new movies(allMatches[4], movie5info[0], movie5info[1], movie5info[2], movie5info[3], movie5info[4], movie5info[5], movie5info[6], movie5info[7], movie5info[8], movie5info[9], movie5info[10])
+let movie6 = new movies(allMatches[5], movie6info[0], movie6info[1], movie6info[2], movie6info[3], movie6info[4], movie6info[5], movie6info[6], movie6info[7], movie6info[8], movie6info[9], movie6info[10])
+let movie7 = new movies(allMatches[6], movie7info[0], movie7info[1], movie7info[2], movie7info[3], movie7info[4], movie7info[5], movie7info[6], movie7info[7], movie7info[8], movie7info[9], movie7info[10])
+let movie8 = new movies(allMatches[7], movie8info[0], movie8info[1], movie8info[2], movie8info[3], movie8info[4], movie8info[5], movie8info[6], movie8info[7], movie8info[8], movie8info[9], movie8info[10])
+let movie9 = new movies(allMatches[8], movie9info[0], movie9info[1], movie9info[2], movie9info[3], movie9info[4], movie9info[5], movie9info[6], movie8info[7], movie9info[8], movie9info[9], movie9info[10])
+let movie10 = new movies(allMatches[9], movie10info[0], movie10info[1], movie10info[2], movie10info[3], movie10info[4], movie10info[5], movie10info[6], movie10info[7], movie10info[8], movie10info[9], movie10info[10])
+let movie11 = new movies(allMatches[10], movie11info[0], movie11info[1], movie11info[2], movie11info[3], movie11info[4], movie11info[5], movie11info[6], movie11info[7], movie11info[8], movie11info[9], movie11info[10])
+let movie12 = new movies(allMatches[11], movie12info[0], movie12info[1], movie12info[2], movie12info[3], movie12info[4], movie12info[5], movie12info[6], movie12info[7], movie12info[8], movie12info[9], movie12info[10])
+let movie13 = new movies(allMatches[12], movie13info[0], movie13info[1], movie13info[2], movie13info[3], movie13info[4], movie13info[5], movie13info[6], movie13info[7], movie13info[8], movie13info[9], movie13info[10])
+let movie14 = new movies(allMatches[13], movie14info[0], movie14info[1], movie14info[2], movie14info[3], movie14info[4], movie14info[5], movie14info[6], movie14info[7], movie14info[8], movie14info[9], movie14info[10])
+let movie15 = new movies(allMatches[14], movie15info[0], movie15info[1], movie15info[2], movie15info[3], movie15info[4], movie15info[5], movie15info[6], movie15info[7], movie15info[8], movie15info[9], movie15info[10])
 
 console.log(movie11, movie12, movie13, movie14, movie15)
 
@@ -217,7 +283,7 @@ app.get('/', (req, res) => {
   });
   
   for(let i = 0; i <= 14; i++) {
-    app.get('/' + allMatches[i].slice(0, -1).replace(/ /g, "-").toLowerCase(), (req, res) => {
+    app.get('/' + allMatches[i].replace(/ /g, "-").toLowerCase(), (req, res) => {
       res.sendFile(__dirname + '/public/movieInfo.html');
     });
   };

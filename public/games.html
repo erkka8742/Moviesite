@@ -28,49 +28,50 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
    
     movie = document.getElementById('myText').value;
 
-    response2 = ""
     alreadyAdded = false
     let data2 = ""
+    sendIt = true
     $.getJSON("https://api.themoviedb.org/3/search/movie?api_key=a11375df0e085d0b5ac37b8daa5aea27&query=" + movie + "&callback=?", function(data2) {
       
-      function sendmovie() {
-      data = data2.results[0].title
-      console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")")
-      console.log(data2)
-      fetch('http://localhost:3000/add_movies', {
+
+  async function sendmovie() {
+  console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")");
+  let responseText = "not here"
+  try {
+    const response = await fetch('http://localhost:3000/add_movies', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({data})
-      })
-      .then(response => response.text())  // Convert response to text
-      .then(text => {
-      if (text == "Already here!") {
+    });
+    
+    responseText = await response.text();
+    console.log(responseText);
+
+    
+
+
+    if (responseText == "Already here!") {
+        document.getElementById('response').textContent = "Already added!";
+        console.log("already added!")
         alreadyAdded = true
       }
-      
-      
-      if (alreadyAdded = true) {
-        document.getElementById('response').textContent = "Already added!";
-      }
-      else {
-        document.getElementById('response').textContent = response2;
-        console.log("yyefgye")
-      }
-      
-      
-      })
-      .catch(error => console.error('Error:', error));
 
-     
-    }
+  } catch (error) {
+    console.error('Error:', error);
+    // You might want to throw the error or return a default/error value depending on your use case
+    throw error;
+  }
+
+}
+
 
   
     if (data2.results.length != 0 ){
       moviefirstlast = ""
       moviefirstlast2 = ""      
-
+      data = data2.results[0].title
     moviefirstlast = movie[0] + movie[movie.length-1]
     moviefirstlast2 = data2.results[0].title.toLowerCase()[0] + data2.results[0].title.toLowerCase()[data2.results[0].title.toLowerCase().length-1]
 
@@ -80,29 +81,49 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
 
     if (data2.results.length == 0 ){                 
     console.log("Movie not found")
-    response2 = "Movie not found"}
+    document.getElementById('response').textContent = "Movie not found :(";
+    sendIt = false
+  }
     
       
     else if (movie == data2.results[0].title.toLowerCase()) {
-     sendmovie()
+     sendIt = true
      console.log("if 1")
      response2 = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
+     sendmovie()
     }
 
     else if (moviefirstlast == moviefirstlast2) {
-      sendmovie()
+      sendIt = true
       console.log("if 2")
       response2 = "Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")"
+      sendmovie()
     }
 
     else {
       console.log("Did you mean: " + data2.results[0].title + "?")
-      console.log(data2)
-      response2 = "Did you mean: " + data2.results[0].title + "?"
+      document.getElementById('response').textContent = "Did you mean: " + data2.results[0].title + "?";
+      sendIt = false
     }
 
-    
-    
+    function wait(seconds) {
+    return new Promise(resolve => setTimeout(resolve, seconds * 1000));
+}
+
+
+
+async function waitActivate(){
+
+  await wait(0.2);
+  if (sendIt == true && alreadyAdded == false) {
+      document.getElementById('response').textContent = response2;
+      console.log("Added movie: " + String(data) +" (" + data2.results[0].release_date.substring(0, 4) + ")");
+    }
+  await wait(5);
+  // lisää animaatio liukuminen sisään ja ulos
+  document.getElementById('response').textContent = "";
+}
+    waitActivate()
 
 });
 

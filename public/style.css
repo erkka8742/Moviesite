@@ -51,21 +51,24 @@ body {
 }
 
 .movie-name {
-    font-size: 140%;
+    font-size: 130%;
     font-weight: 500;
     font-family: 'Rubik', sans-serif;
-    color: #ffffff; 
+    color: #ffffff;
+    margin-top: -30%; 
 }
 
 .movie-runtime {
     margin-top: 10%;
     margin-bottom: 1%;  /* Adjust as needed */
+    margin-left: 23%;
 }
 
 .rating {
     display: flex;
     align-items: center; /* This will ensure that star and score are vertically aligned in the middle */
-   
+    margin-left: 15%;
+    margin-top: 9%;
 }
 
 .star, .movie-score {
@@ -76,8 +79,21 @@ body {
 .star {
     color: #cbaa17;
     margin-left: -39%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
+
+.info-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* For vertical alignment */
+    width: 100%;
+    margin-top: -7%;
+}
+
+.rating, .movie-runtime {
+    flex: 1;  /* This ensures they take up equal space */
+}
+
 
 h1 {
     display: block;
@@ -99,7 +115,7 @@ h1 {
     position: relative;
     overflow: hidden;
     transform: scale(1);
-    transition: transform 0.25s ease;
+    transition: transform 0.3s ease;
     border-radius: 35px;
     width: 100%;
     height: auto;
@@ -117,7 +133,7 @@ h1 {
 }
 
 .image-box:hover .poster-image {
-    filter: brightness(40%) blur(2px);
+    filter: brightness(30%) blur(2px);
 }
 
 .imdb-image {
