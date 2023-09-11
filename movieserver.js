@@ -11,7 +11,7 @@ process.setMaxListeners(100);
 const readline = require('readline');
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = true
+findmovies = false
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -308,7 +308,7 @@ app.get('/getData', (req, res) => {
 app.use(express.json());
 receivedData = "" 
 app.post('/add_movies', (req, res) => {
-    receivedData = req.body.data;
+    let receivedData = req.body.data;
     console.log(receivedData);
     
     const fs = require('fs');
@@ -337,6 +337,32 @@ app.post('/add_movies', (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
+
+
+
+// muistipeli
+app.post('/start_memory_game', (req, res) => {
+    let receivedData = req.body.data;
+    console.log(receivedData);
+    let number = 9346
+    // kun frontista tulee viesti niin palvelin käynnistää kaksi sivua
+    if (receivedData == "start") {
+        let numberUsed = number + 3
+        app.get('/' + String(numberUsed) + '/player1', (req, res) => {
+            res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
+          });
+        app.get('/' + String(numberUsed) + '/player2', (req, res) => {
+            res.sendFile(__dirname + '/public/memoryGamePlayer2.html');
+        });
+        return res.send('started page');
+    }
+
+    
+    
+  });
+
+
+
 // kirjoitetaan dataa movies.json tiedostoon
 
 
