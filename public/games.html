@@ -12,6 +12,8 @@
     </form>
     <p id="response"></p>
 
+    <a href="juu" id="Memory game Multiplayer">Memory game Multiplayer</a>
+
     <h1>Memory game</h1>
     <h1>Quess Runtime</h1>
     <h1>Quess IMDB-score</h1>
@@ -133,7 +135,28 @@ async function waitActivate(){
  
  
 });
+
+
+
+document.getElementById('Memory game Multiplayer').addEventListener('click', async function(event) { 
+    event.preventDefault(); // Prevents the default action of the link
+    try {
+        const response = await fetch('http://localhost:3000/start_memory_game', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: "start"
+        });
         
+        const responseText = await response.text();
+        console.log(responseText);
+    } catch (error) {
+        console.error('Error:', error);
+        // You might want to throw the error or return a default/error value depending on your use case
+        throw error;
+    }
+});
 
       
         
