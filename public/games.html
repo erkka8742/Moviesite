@@ -146,7 +146,7 @@ document.getElementById('Memory game Multiplayer').addEventListener('click', asy
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: "start"
+            body: JSON.stringify({ data: "start" })
         });
         
         const responseText = await response.text();
