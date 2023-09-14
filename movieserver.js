@@ -9,9 +9,13 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 process.setMaxListeners(100);
 const readline = require('readline');
+const http = require('http');
+const { Server } = require("socket.io");
+const server = http.createServer(app);
+const io = new Server(server);
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -364,23 +368,24 @@ app.post('/start_memory_game', (req, res) => {
     
     // kun frontista tulee viesti niin palvelin käynnistää kaksi sivua
     if (receivedData == "start") {
-        let random = randomNumber() 
+        let random = randomNumber()
+        res.send(String(Servernumber) + '/player1');
+        let random69 = randomNumber2()  
         Servernumber = Servernumber + random
+
         app.get('/' + String(Servernumber) + '/player1', (req, res) => {
             res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
+            if (random69 == true) {
+                res.send("player1 starts")
+            }
           });
         app.get('/' + String(Servernumber) + '/player2', (req, res) => {
             res.sendFile(__dirname + '/public/memoryGamePlayer2.html');
         });
-        res.send(String(Servernumber) + '/player1');
-        let random69 = randomNumber2() 
         
-        if (random69 == true) {
-            res.send("player1 starts")
-        }
-        else {
-            res.send("player2 starts")
-        }
+        
+        
+        
 
     }
 

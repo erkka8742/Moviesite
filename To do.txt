@@ -13,6 +13,8 @@ kun refreshaa sivun niin kuvat ovat hetken blurrattuina.
 
 laita viivat, ehkä
 
+tulevien elokuvien trailerit ja julkaisipäivä
+
 USE CURSOR
 
 Oman accountin lisääminen:
