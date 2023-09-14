@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link type="text/css"  rel="stylesheet" href="style2.css">
+  <link type="text/css"  rel="stylesheet" href="games.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
     <title>Games</title>
 </head>
@@ -151,6 +151,7 @@ document.getElementById('Memory game Multiplayer').addEventListener('click', asy
         
         const responseText = await response.text();
         console.log(responseText);
+        window.location.href = responseText;
     } catch (error) {
         console.error('Error:', error);
         // You might want to throw the error or return a default/error value depending on your use case

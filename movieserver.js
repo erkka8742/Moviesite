@@ -341,23 +341,47 @@ app.listen(port, () => {
 
 
 // muistipeli
-Servernumber = 9346
-numberUsed = 0
+Servernumber = 0
+
+function randomNumber(){
+    var randomNumber = Math.floor(Math.random() * 1000);
+    return randomNumber;
+}
+function randomNumber2(){
+    const randomBool = Math.random() >= 0.5;
+    if (randomBool <= 0.5) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
+}
+
 app.post('/start_memory_game', (req, res) => {
     let receivedData = req.body.data;
     console.log(receivedData);
     
     // kun frontista tulee viesti niin palvelin käynnistää kaksi sivua
     if (receivedData == "start") {
-        Servernumber + 3
-        numberUsed = Servernumber
-        app.get('/' + String(numberUsed) + '/player1', (req, res) => {
+        let random = randomNumber() 
+        Servernumber = Servernumber + random
+        app.get('/' + String(Servernumber) + '/player1', (req, res) => {
             res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
           });
-        app.get('/' + String(numberUsed) + '/player2', (req, res) => {
+        app.get('/' + String(Servernumber) + '/player2', (req, res) => {
             res.sendFile(__dirname + '/public/memoryGamePlayer2.html');
         });
-        return res.send('Server ' + numberUsed + ' started');
+        res.send(String(Servernumber) + '/player1');
+        let random69 = randomNumber2() 
+        
+        if (random69 == true) {
+            res.send("player1 starts")
+        }
+        else {
+            res.send("player2 starts")
+        }
+
     }
 
     

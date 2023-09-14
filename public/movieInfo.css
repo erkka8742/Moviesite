@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(circle, #0f153f, #101640, #101641, #111742, #111843, #1c1843, #241743, #2c1643, #3b1340, #47103b, #510d35, #590d2e);
+}
+
+.background {
+    /* The actual color of the page content background */
+    background-color: #090909b4; /* White */
+    /* Adjust this padding value to change the size of the background relative to the content */
+    margin-top: 5%;
+    margin-bottom: 10%;
+    padding: 3%;
+    border-radius: 35px;
+   
+    /* Set a maximum width if desired, or remove if not */
+    max-width: 90em;
+    /* Ensure div takes the necessary space */
+    width: 100%;
+    /* For centering the text */
+    
+}
+
+h1 {
+    margin-top: 1%;
+    color: white;
+    font-weight: 500;
+    font-size: 200%;
+    font-family: 'Rubik', sans-serif;
+    padding-left: 2%; /* adjust this to set the consistent start position */
+    box-sizing: border-box; /* ensures padding is included in width calculation */
+}
+
+#response 
+    {color: white;
+    font-size: 130%;
+    font-family: 'Rubik', sans-serif;
+    margin-left: 3%;}
