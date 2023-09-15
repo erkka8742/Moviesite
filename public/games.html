@@ -20,6 +20,7 @@
     <h1>Quess director</h1>
     <h1>Quess description</h1>
     <h1>wich is older?</h1>
+
     <script>
  movie = ""
 document.getElementById('myForm').addEventListener('submit', function(event) {
@@ -138,13 +139,34 @@ async function waitActivate(){
 
 
 // lähettää pelinkäynnistysviestin palvelimelle
-document.getElementById('MemoryGameMultiplayer').addEventListener('click', function(event) {
-  event.preventDefault() 
-    window.location.href = 'http://localhost:3000/startGame';
-    //window.open('http://localhost:3000/startGame', '_blank');
+document.getElementById('MemoryGameMultiplayer').addEventListener('click', async function(event) {
+    event.preventDefault();
+    
+    // lähettää pelinkäynnistysviestin palvelimelle
+    try {
+        const response = await fetch('http://localhost:3000/start_memory_game', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: "start" })
+        });
+        
+        let responseText = await response.text();
+        console.log(responseText);
+        // avaa vastaanotetun pelisivun linkin 
+        window.open(responseText, '_blank');
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+    window.location.href = 'http://localhost:3000/' + responseText
+
 });
 
-        
+
+        //;
+    //window.open('http://localhost:3000/startGame', '_blank');
         
         
         </script>

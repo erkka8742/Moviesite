@@ -19,7 +19,12 @@ app.options('*', cors());
 app2.options('*', cors());
 app.use(express.static('public'));
 const server = http.createServer(app);  // Create an HTTP server using Express
-const io = new Server(server);  // Bind socket.io to that server
+const io = new Server(server, {
+    cors: {
+        origin: "*",  // this would allow all origins, but you can specify a list instead for security
+        methods: ["GET", "POST"]
+    }
+});
 
 // tämä testausta varen, ettei tarvitse odotella
 findmovies = false
@@ -307,9 +312,6 @@ app.get('/games', (req, res) => {
     res.sendFile(__dirname + '/public/memoryGame.html');
   });
 
-  app.get('/startGame', (req, res) => {
-    res.sendFile(__dirname + '/public/startMemoryMulti.html');
-  });
 
 // leffadatan lähetys
 app.get('/getData', (req, res) => {
@@ -372,52 +374,63 @@ function randomNumber2(){
     }
     
 }
-
-
-
+servers = []
 
 // kuunnellaan käskyä aloittaa peli    
-app2.post('/start_memory_game', (req, res) => {
+app.post('/start_memory_game', (req, res) => {
     let receivedData = req.body.data;
     console.log(receivedData);
-// luodaan muistipelin multiplayer palvelin
-io.on('connection', (socket) => {
-console.log('a user connected');
-    
+
     // kun frontista tulee viesti niin palvelin käynnistää kaksi sivua
     if (receivedData == "start") {
         let random = randomNumber()
         let random69 = randomNumber2()  
         Servernumber = Servernumber + random
+        console.log(Servernumber)
+
+        app.get('/' + String(Servernumber) + '/player1', (req, res) => {
+            res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
+        });
+        app.get('/' + String(Servernumber) + '/player2', (req, res) => {
+            res.sendFile(__dirname + '/public/memoryGamePlayer2.html');
+        });
+        res.send(String(Servernumber) + '/player1');
+
+        io.on('connection', (socket) => {
+            console.log('a user connected');
         
-        // luodaan room tälle multiplayer-pelille
-        socket.on('join-room', (Servernumber) => {
-            console.log('User ' + socket.id + ' joined room: ' + Servernumber);
-            socket.join(Servernumber);
-
-            app2.get('/' + String(Servernumber) + '/player1', (req, res) => {
-                res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
+            // luodaan room tälle multiplayer-pelille
+            socket.on('join-room', (Servernumber) => {
+                console.log('User ' + socket.id + ' joined room: ' + Servernumber);
+                socket.join(Servernumber);
+        
+                //if (random69 == true) {
+                  //  io.to(Servernumber).emit('message', 'Player1 starts');
+                  //  }
+               // else {
+                //    io.to(Servernumber).emit('message', 'Player2 starts');
+               // }
             });
-            app2.get('/' + String(Servernumber) + '/player2', (req, res) => {
-                res.sendFile(__dirname + '/public/memoryGamePlayer2.html');
+        
+            socket.on('disconnect', () => {
+                console.log('user disconnected');
             });
-            res.send(String(Servernumber) + '/player1');
-
-            if (random69 == true) {
-                    io.to(Servernumber).emit('message', 'Player1 starts');
-                }
-            else {
-                io.to(Servernumber).emit('message', 'Player2 starts');
-            }
+        });
+        
+        server.listen(7926, () => {
+            console.log('listening on port:7926');
         });
     }
 });
-server.listen(5482, () => {
-    console.log('listening on *:5482');
-});  // <-- Added the missing closing bracket and parenthesis here.
+
+let dipadupa = 'joo123'
+// luodaan socket johon voidaan yhdistää
 
 
-});
+  // <-- Added the missing closing bracket and parenthesis here.
+
+
+
 
 
 

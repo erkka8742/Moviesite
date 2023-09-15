@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Memory Game</title>
+    <title>MemGame - Player 1</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css"  rel="stylesheet" href="/memoryGameMulti.css">
@@ -180,6 +180,7 @@
 </div>
 </div>  
 
+<script src="http://localhost:7926/socket.io/socket.io.js"></script>
 <script>
 
 fetch('http://localhost:3000/getData')
@@ -276,17 +277,22 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
 });
 }
 
-    
-
           })
 
 // setupataan liittyminen
-const socket = io();
+const socket = io('http://localhost:7926');
+
+// Get the current site URL
+let url = window.location.href;
+
+// Use regex to extract the number after the port
+let regex = /:(\d+)\//;
+let match = url.match(regex);
+let serverNumber = match[1];
+
 
 // Liitytään oikeaan huoneeseen
-socket.emit('join-room', 'room1234');  // 'room1234' is an example room name
-
-
+socket.emit('join-room', serverNumber);
 
 
 </script>
