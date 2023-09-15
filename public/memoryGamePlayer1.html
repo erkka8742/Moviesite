@@ -280,6 +280,14 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
 
           })
 
+// setupataan liittyminen
+const socket = io();
+
+// Liitytään oikeaan huoneeseen
+socket.emit('join-room', 'room1234');  // 'room1234' is an example room name
+
+
+
 
 </script>
 

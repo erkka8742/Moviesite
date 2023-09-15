@@ -12,7 +12,7 @@
     </form>
     <p id="response"></p>
 
-    <a href="juu" id="Memory game Multiplayer">Memory game Multiplayer</a>
+    <a href="" id="MemoryGameMultiplayer">Memory game Multiplayer</a>
 
     <h1>Memory game</h1>
     <h1>Quess Runtime</h1>
@@ -137,29 +137,13 @@ async function waitActivate(){
 });
 
 
-
-document.getElementById('Memory game Multiplayer').addEventListener('click', async function(event) { 
-    event.preventDefault(); // Prevents the default action of the link
-    try {
-        const response = await fetch('http://localhost:3000/start_memory_game', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ data: "start" })
-        });
-        
-        const responseText = await response.text();
-        console.log(responseText);
-        window.location.href = responseText;
-    } catch (error) {
-        console.error('Error:', error);
-        // You might want to throw the error or return a default/error value depending on your use case
-        throw error;
-    }
+// lähettää pelinkäynnistysviestin palvelimelle
+document.getElementById('MemoryGameMultiplayer').addEventListener('click', function(event) {
+  event.preventDefault() 
+    window.location.href = 'http://localhost:3000/startGame';
+    //window.open('http://localhost:3000/startGame', '_blank');
 });
 
-      
         
         
         

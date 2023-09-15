@@ -1,21 +1,28 @@
 const express = require('express');
 const path = require('path');
-const app = express();
+const cors = require('cors');
 const port = 3000;
 const puppeteer = require('puppeteer');
-app.use(express.static('public'));
 const fs = require('fs');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 process.setMaxListeners(100);
 const readline = require('readline');
 const http = require('http');
-const { Server } = require("socket.io");
-const server = http.createServer(app);
-const io = new Server(server);
+const { Server } = require('socket.io');
+
+const app = express();
+const app2 = express();
+app.use(cors());
+app2.use(cors());
+app.options('*', cors());
+app2.options('*', cors());
+app.use(express.static('public'));
+const server = http.createServer(app);  // Create an HTTP server using Express
+const io = new Server(server);  // Bind socket.io to that server
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = true
+findmovies = false
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -300,6 +307,10 @@ app.get('/games', (req, res) => {
     res.sendFile(__dirname + '/public/memoryGame.html');
   });
 
+  app.get('/startGame', (req, res) => {
+    res.sendFile(__dirname + '/public/startMemoryMulti.html');
+  });
+
 // leffadatan lähetys
 app.get('/getData', (req, res) => {
         
@@ -362,36 +373,52 @@ function randomNumber2(){
     
 }
 
-app.post('/start_memory_game', (req, res) => {
+
+
+
+// kuunnellaan käskyä aloittaa peli    
+app2.post('/start_memory_game', (req, res) => {
     let receivedData = req.body.data;
     console.log(receivedData);
+// luodaan muistipelin multiplayer palvelin
+io.on('connection', (socket) => {
+console.log('a user connected');
     
     // kun frontista tulee viesti niin palvelin käynnistää kaksi sivua
     if (receivedData == "start") {
         let random = randomNumber()
-        res.send(String(Servernumber) + '/player1');
         let random69 = randomNumber2()  
         Servernumber = Servernumber + random
+        
+        // luodaan room tälle multiplayer-pelille
+        socket.on('join-room', (Servernumber) => {
+            console.log('User ' + socket.id + ' joined room: ' + Servernumber);
+            socket.join(Servernumber);
 
-        app.get('/' + String(Servernumber) + '/player1', (req, res) => {
-            res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
+            app2.get('/' + String(Servernumber) + '/player1', (req, res) => {
+                res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
+            });
+            app2.get('/' + String(Servernumber) + '/player2', (req, res) => {
+                res.sendFile(__dirname + '/public/memoryGamePlayer2.html');
+            });
+            res.send(String(Servernumber) + '/player1');
+
             if (random69 == true) {
-                res.send("player1 starts")
+                    io.to(Servernumber).emit('message', 'Player1 starts');
+                }
+            else {
+                io.to(Servernumber).emit('message', 'Player2 starts');
             }
-          });
-        app.get('/' + String(Servernumber) + '/player2', (req, res) => {
-            res.sendFile(__dirname + '/public/memoryGamePlayer2.html');
         });
-        
-        
-        
-        
-
     }
+});
+server.listen(5482, () => {
+    console.log('listening on *:5482');
+});  // <-- Added the missing closing bracket and parenthesis here.
 
-    
-    
-  });
+
+});
+
 
 
 
