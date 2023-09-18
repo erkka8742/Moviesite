@@ -10,6 +10,7 @@ process.setMaxListeners(100);
 const readline = require('readline');
 const http = require('http');
 const { Server } = require('socket.io');
+const { Console } = require('console');
 
 const app = express();
 const app2 = express();
@@ -358,7 +359,7 @@ app.listen(port, () => {
 
 
 // muistipeli
-Servernumber = 0
+
 
 function randomNumber(){
     var randomNumber = Math.floor(Math.random() * 1000);
@@ -375,7 +376,8 @@ function randomNumber2(){
     
 }
 servers = []
-
+Servernumber = 0
+roomNumber = 1
 // kuunnellaan käskyä aloittaa peli    
 app.post('/start_memory_game', (req, res) => {
     let receivedData = req.body.data;
@@ -383,10 +385,8 @@ app.post('/start_memory_game', (req, res) => {
 
     // kun frontista tulee viesti niin palvelin käynnistää kaksi sivua
     if (receivedData == "start") {
-        let random = randomNumber()
-        let random69 = randomNumber2()  
+        let random = randomNumber()  
         Servernumber = Servernumber + random
-        console.log(Servernumber)
 
         app.get('/' + String(Servernumber) + '/player1', (req, res) => {
             res.sendFile(__dirname + '/public/memoryGamePlayer1.html');
@@ -396,31 +396,67 @@ app.post('/start_memory_game', (req, res) => {
         });
         res.send(String(Servernumber) + '/player1');
 
-        io.on('connection', (socket) => {
-            console.log('a user connected');
-        
-            // luodaan room tälle multiplayer-pelille
-            socket.on('join-room', (Servernumber) => {
-                console.log('User ' + socket.id + ' joined room: ' + Servernumber);
-                socket.join(Servernumber);
-        
-                //if (random69 == true) {
-                  //  io.to(Servernumber).emit('message', 'Player1 starts');
-                  //  }
-               // else {
-                //    io.to(Servernumber).emit('message', 'Player2 starts');
-               // }
-            });
-        
-            socket.on('disconnect', () => {
-                console.log('user disconnected');
-            });
-        });
-        
-        server.listen(7926, () => {
-            console.log('listening on port:7926');
-        });
     }
+});
+
+
+io.on('connection', (socket) => {
+
+    // luodaan room tälle multiplayer-pelille
+    socket.on('join-room', (Servernumber) => {
+        
+
+        // katsotaan onko
+        let room = io.sockets.adapter.rooms.get(Servernumber);
+        let roomSize = room ? room.size : 0; 
+        
+        if (roomSize == 2) {
+            console.log(Servernumber + ' is full')
+        }
+
+        if (roomSize < 2 ) {
+            socket.join(Servernumber);
+            console.log('User ' + socket.id + ' joined room: ' + Servernumber);
+            socket.emit('message', 'joined room');
+
+            let room = io.sockets.adapter.rooms.get(Servernumber);
+            let roomSize = room ? room.size : 0;
+            if (roomSize == 2) {
+                let random69 = randomNumber2()
+                if (random69 == true) {
+                    io.to(Servernumber).emit('message', 'Player1 starts');
+                }
+                else {
+                io.to(Servernumber).emit('message', 'Player2 starts');
+                }
+            }
+        }
+
+        
+
+            
+               // console.log('User ' + socket.id + ' joined room: ' + Servernumber);
+                //socket.join(Servernumber);
+                //let random69 = randomNumber2()
+
+                //if (random69 == true) {
+                 //   io.to(Servernumber).emit('message', 'Player1 starts');
+                //}
+                //else {
+                //io.to(Servernumber).emit('message', 'Player2 starts');
+               // }
+            
+        
+       
+    });
+
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
+});
+
+server.listen(7926, () => {
+    console.log('listening on port:7926');
 });
 
 let dipadupa = 'joo123'

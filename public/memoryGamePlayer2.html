@@ -282,7 +282,20 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
 const socket = io('http://localhost:7926');
 
 // Liitytään oikeaan huoneeseen
+let url = window.location.href;
 
+// Use regex to extract the number after the port
+let regex = /.*\/([^\/]+)\/player/;
+let match = url.match(regex);
+let serverNumber = match[1];
+
+
+// Liitytään oikeaan huoneeseen
+socket.emit('join-room', serverNumber);
+
+socket.on('message', (data) => {
+    console.log(data);  
+});
 
 </script>
 

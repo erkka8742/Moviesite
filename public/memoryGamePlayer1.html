@@ -286,7 +286,7 @@ const socket = io('http://localhost:7926');
 let url = window.location.href;
 
 // Use regex to extract the number after the port
-let regex = /:(\d+)\//;
+let regex = /.*\/([^\/]+)\/player/;
 let match = url.match(regex);
 let serverNumber = match[1];
 
@@ -294,6 +294,16 @@ let serverNumber = match[1];
 // Liitytään oikeaan huoneeseen
 socket.emit('join-room', serverNumber);
 
+socket.on('message', (data) => {
+    console.log(data);
+    
+    if (data == 'Player 1 starts') {
+
+    }
+    if (data == 'Player 2 starts') {
+        
+    }
+});
 
 </script>
 
