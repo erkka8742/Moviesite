@@ -285,7 +285,7 @@ allmovies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, mov
 }
 
 // tämä testausta varen, ettei tarvitse odotella
-if (findmovies == false) {
+if (!findmovies) {
     allMatches = []
     allmovies = []
     for (let i=0; i<=16; i++) {
