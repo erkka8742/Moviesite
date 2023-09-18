@@ -412,6 +412,7 @@ io.on('connection', (socket) => {
         
         if (roomSize == 2) {
             console.log(Servernumber + ' is full')
+            socket.emit('message', 'room is full');
         }
 
         if (roomSize < 2 ) {
