@@ -1,5 +1,5 @@
 To do:
-
+https://as1.ftcdn.net/v2/jpg/02/41/95/56/1000_F_241955611_c0VhDtu5WvSPrrrAZjYUtCAUwdvdWOxy.jpg
 Linkki finkinoon.
 
 leffan omalle sivulle parus tiedot: ohjaaja, käsikirjoittaja, näyttelijät
@@ -37,5 +37,8 @@ ja "(random_numerot/player2)". Lisäksi arpoo kumpi alottaa.
 
 6. Lopuksi se kummalla on enemmän pisteitä voittaa.
 
+palvelin muodostaa elokuvalistan, jossa on 12 uutta leffaa ja 12 omaa leffaa
+leffalista sekoitetaan ja lähetetään käyttäjille 
 
-https://as1.ftcdn.net/v2/jpg/02/41/95/56/1000_F_241955611_c0VhDtu5WvSPrrrAZjYUtCAUwdvdWOxy.jpg
+
+

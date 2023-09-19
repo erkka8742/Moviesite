@@ -357,10 +357,47 @@ app.listen(port, () => {
 });
 
 
+// luodaan leffalista muistipeliä varten
+moviesC = []
+// uudet leffat
+for (let i = 0; i <= 5; i++) {
+    moviesC.push(allmovies[i])
+    moviesC.push(allmovies[i])
+}
+// omat leffat (chat-gpt)
+// Read the JSON file
+fs.readFile('movies.json', 'utf8', (err, jsonString) => {
+    if (err) {
+        console.error('Error reading the file:', err);
+        return;
+    }
+
+    const data = JSON.parse(jsonString);
+
+    // Fisher-Yates (aka Durstenfeld) array shuffling algorithm
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+        }
+        return array;
+    }
+
+    const shuffledMovies = shuffle(data.movies);
+    const randomMovies = shuffledMovies.slice(0, 6);
+
+    for (let i = 0; i <= 5; i++) {
+        moviesC.push(randomMovies[i])
+        moviesC.push(randomMovies[i])
+    }
+    
+    
+    console.log(moviesC)
+});
+
+
 
 // muistipeli
-
-
 function randomNumber(){
     var randomNumber = Math.floor(Math.random() * 1000);
     return randomNumber;
@@ -431,6 +468,8 @@ io.on('connection', (socket) => {
                 io.to(Servernumber).emit('message', 'Player2 starts');
                 }
             }
+            
+
         }
 
         
