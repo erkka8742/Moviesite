@@ -176,6 +176,36 @@
                 </div>
             </div>
         </div>
+        <div class="row gy-3">
+            <div id="movie21div" class="col-custom-5">
+                <div class="image-box">
+                    <div class="image-border">
+                        <img src="" id="image21" class="img-fluid poster-image"/>
+                    </div>
+                </div>
+            </div>
+            <div id="movie22div" class="col-custom-5">
+                <div class="image-box">
+                    <div class="image-border">
+                        <img src="" id="image22" class="img-fluid poster-image"/>
+                    </div>
+                </div>
+            </div>
+            <div id="movie23div" class="col-custom-5">
+                <div class="image-box">
+                    <div class="image-border">
+                        <img src="" id="image23" class="img-fluid poster-image"/>
+                    </div>
+                </div>
+            </div>
+            <div id="movie24div" class="col-custom-5">
+                <div class="image-box">
+                    <div class="image-border">
+                        <img src="" id="image24" class="img-fluid poster-image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </div>  
@@ -183,38 +213,41 @@
 <script src="http://localhost:7926/socket.io/socket.io.js"></script>
 <script>
 
-fetch('http://localhost:3000/getData')
-          .then(response => response.json())
-          .then(json => {
-            movie1 = json[0]
-            movie2 = json[1]
-            movie3 = json[2]
-            movie4 = json[3]
-            movie5 = json[4]
-            movie6 = json[5]
-            movie7 = json[6]
-            movie8 = json[7]
-            movie9 = json[8]
-            movie10 = json[9]
+// setupataan liittyminen
+const socket = io('http://localhost:7926');
 
-    movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10]
+// Get the current site URL
+let url = window.location.href;
+
+// Use regex to extract the number after the port
+let regex = /.*\/([^\/]+)\/player/;
+let match = url.match(regex);
+let serverNumber = match[1];
+
+
+// Liitytään oikeaan huoneeseen
+socket.emit('join-room', serverNumber);
+
+socket.on('message', (data) => {
+    console.log(data);
     
-  // movies array sekoitetaan  
-  const shuffleArray = array => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-}
-shuffleArray(movies);
-console.log(movies)
+    if (data === 'Player 1 starts') {
+    }
 
-// elokuvat laitetaan sivulle 
-for (let i = 0; i < 20; i++) {
-    document.getElementById('image'+ String(i+1)).src = movies[i].poster;
-}
+    if (data === 'Player 2 starts') {
+        
+    }
+
+    if (Array.isArray(data)) {
+        // elokuvat laitetaan sivulle 
+        for (let i = 0; i < 24; i++) {
+            document.getElementById('image'+ String(i+1)).src = data[i].poster;
+        }
+    }
+});
+
+
+
 
 
 // kun käyttäjä painaa kuvasta katsotaan mikä se on ja annetaan toinen mahdollisuus painaa
@@ -235,7 +268,7 @@ function areTheySame(a,b) {
     }
 }
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 24; i++) {
 document.getElementById('image'+ String(i+1)).addEventListener("click", function() {
     clicks++
     this.style.filter = "brightness(100%)";
@@ -276,26 +309,7 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
     }
 });
 }
-          })
 
-// setupataan liittyminen
-const socket = io('http://localhost:7926');
-
-// Liitytään oikeaan huoneeseen
-let url = window.location.href;
-
-// Use regex to extract the number after the port
-let regex = /.*\/([^\/]+)\/player/;
-let match = url.match(regex);
-let serverNumber = match[1];
-
-
-// Liitytään oikeaan huoneeseen
-socket.emit('join-room', serverNumber);
-
-socket.on('message', (data) => {
-    console.log(data);  
-});
 
 </script>
 

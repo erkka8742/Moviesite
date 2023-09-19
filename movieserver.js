@@ -28,7 +28,7 @@ const io = new Server(server, {
 });
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -360,7 +360,7 @@ app.listen(port, () => {
 // luodaan leffalista muistipeliä varten
 moviesC = []
 // uudet leffat
-for (let i = 0; i <= 5; i++) {
+for (let i = 0; i <= 12; i++) {
     moviesC.push(allmovies[i])
     moviesC.push(allmovies[i])
 }
@@ -387,14 +387,23 @@ fs.readFile('movies.json', 'utf8', (err, jsonString) => {
     const randomMovies = shuffledMovies.slice(0, 6);
 
     for (let i = 0; i <= 5; i++) {
-        moviesC.push(randomMovies[i])
-        moviesC.push(randomMovies[i])
+        //moviesC.push(randomMovies[i])
+        //moviesC.push(randomMovies[i])
     }
     
     
-    console.log(moviesC)
+    //console.log(moviesC)
 });
 
+const shuffleArray = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  }
+  shuffleArray(moviesC);
 
 
 // muistipeli
@@ -467,6 +476,7 @@ io.on('connection', (socket) => {
                 else {
                 io.to(Servernumber).emit('message', 'Player2 starts');
                 }
+                io.to(Servernumber).emit('message', moviesC);
             }
             
 
