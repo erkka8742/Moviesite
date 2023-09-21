@@ -28,7 +28,7 @@ const io = new Server(server, {
 });
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {

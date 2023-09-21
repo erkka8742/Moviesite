@@ -83,6 +83,13 @@ h1 {
     outline-offset: -5px;
 }
 
+.image-box.hoverEffect {
+    transform: scale(1.15);
+    z-index: 2;
+    outline: 8px solid rgb(173, 10, 102);
+    outline-offset: -5px;
+}
+
 .poster-image {
     transition: filter 0.2s ease-in-out;
 }

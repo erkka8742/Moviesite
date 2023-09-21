@@ -239,11 +239,15 @@ function mouseOn() {
         }
 }
 
+regexHover = /^Player2hover (\d+)$/;
+regexOut = /^Player2out (\d+)$/;
+var elementsHover = document.getElementsByClassName('image-box');
+
 // Liitytään oikeaan huoneeseen
 socket.emit('join-room', serverNumber);
 
 socket.on('message', (data) => {
-    console.log(data);
+    //console.log(data);
     
     if (data === 'Player 1 starts') {
 
@@ -257,6 +261,21 @@ socket.on('message', (data) => {
         // elokuvat laitetaan sivulle 
         for (let i = 0; i < 24; i++) {
             document.getElementById('image'+ String(i+1)).src = data[i].poster;
+        }
+    }
+
+    if (!Array.isArray(data)) {
+        let matchHover = data.match(regexHover);
+        let matchOut = data.match(regexOut);
+        if (matchHover) {
+            let i = parseInt(matchHover[1], 10); // Extract the number from the matched group
+            console.log('in ' + i);
+            elementsHover[i].classList.add('hoverEffect');
+        }
+        if (matchOut) {
+            let i = parseInt(matchOut[1], 10); // Extract the number from the matched group
+            console.log('out ' + i);
+            elementsHover[i].classList.remove('hoverEffect');
         }
     }
 });
@@ -284,6 +303,12 @@ for (var i = 0; i < elementsHover.length; i++) {
         elementsHover[index].addEventListener('mouseover', function() {
             console.log(index);
             socket.emit('send-message', serverNumber, 'Player1hover ' + String(index));
+        });
+    })(i);
+    (function(index) {
+        elementsHover[index].addEventListener('mouseout', function() {
+            console.log(index);
+            socket.emit('send-message', serverNumber, 'Player1out ' + String(index));
         });
     })(i);
 }
