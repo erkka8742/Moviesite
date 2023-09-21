@@ -28,7 +28,7 @@ const io = new Server(server, {
 });
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = true
+findmovies = false
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -478,6 +478,11 @@ io.on('connection', (socket) => {
                 }
                 io.to(Servernumber).emit('message', moviesC);
             }
+            // vastaanottaa viestejä ja lähettää ne eteenpäin
+            socket.on('send-message', (room, message) => {
+                io.to(Servernumber).emit('message', message);
+                console.log(message)
+            });
             
 
         }

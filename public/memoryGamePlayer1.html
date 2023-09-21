@@ -22,6 +22,8 @@
 </head>
 <body>
     <h1>Memory Game</h1>
+    <a href="" id="copyButton">Copy Player 2 link</a>
+
 <div class="main-container">  
 <div class="background">
     <div class="container">
@@ -224,6 +226,18 @@ let regex = /.*\/([^\/]+)\/player/;
 let match = url.match(regex);
 let serverNumber = match[1];
 
+function mouseOff() {
+    var elements = document.getElementsByClassName('image-box');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.pointerEvents = 'none';
+        }
+}
+function mouseOn() {
+    var elements = document.getElementsByClassName('image-box');
+    for (var i = 0; i < elements.length; i++) {
+            elements[i].style.pointerEvents = 'auto';
+        }
+}
 
 // Liitytään oikeaan huoneeseen
 socket.emit('join-room', serverNumber);
@@ -232,10 +246,11 @@ socket.on('message', (data) => {
     console.log(data);
     
     if (data === 'Player 1 starts') {
+
     }
 
     if (data === 'Player 2 starts') {
-        
+        mouseOff()
     }
 
     if (Array.isArray(data)) {
@@ -246,12 +261,33 @@ socket.on('message', (data) => {
     }
 });
 
+// luodaan player2 linkki
+let player2Url = url.slice(0, -1) + '2';
+
+document.getElementById('copyButton').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    let textToCopy = player2Url
+    
+    navigator.clipboard.writeText(textToCopy).then(function() {
+    }).catch(function(err) {
+        console.error('Unable to copy text: ', err);
+    });
+});
 
 
+// lähetetään cursor hover toiselle pelaajalle
+var elementsHover = document.getElementsByClassName('image-box');
+for (var i = 0; i < elementsHover.length; i++) {
+    // Using an IIFE (Immediately Invoked Function Expression) to capture the value of i for each iteration
+    (function(index) {
+        elementsHover[index].addEventListener('mouseover', function() {
+            console.log(index);
+            socket.emit('send-message', serverNumber, 'Player1hover ' + String(index));
+        });
+    })(i);
+}
 
-
-// kun käyttäjä painaa kuvasta katsotaan mikä se on ja annetaan toinen mahdollisuus painaa
-// jos sama niin poistetaan kortit https://www.memozor.com/
 
 clicks = 0
 mistakes = 0
