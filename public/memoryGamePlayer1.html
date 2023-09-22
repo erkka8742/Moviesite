@@ -241,8 +241,14 @@ function mouseOn() {
 
 regexHover = /^Player2hover (\d+)$/;
 regexOut = /^Player2out (\d+)$/;
+regexClick = /^Player2click (\d+)$/;
 var elementsHover = document.getElementsByClassName('image-box');
 
+var clickEvent = new MouseEvent('click', {
+    'bubbles': true,
+    'cancelable': true,
+    'view': window
+});
 // Liitytään oikeaan huoneeseen
 socket.emit('join-room', serverNumber);
 
@@ -254,7 +260,7 @@ socket.on('message', (data) => {
     }
 
     if (data === 'Player 2 starts') {
-        mouseOff()
+        //mouseOff()
     }
 
     if (Array.isArray(data)) {
@@ -267,6 +273,7 @@ socket.on('message', (data) => {
     if (!Array.isArray(data)) {
         let matchHover = data.match(regexHover);
         let matchOut = data.match(regexOut);
+        let matchClick = data.match(regexClick);
         if (matchHover) {
             let i = parseInt(matchHover[1], 10); // Extract the number from the matched group
             console.log('in ' + i);
@@ -276,6 +283,13 @@ socket.on('message', (data) => {
             let i = parseInt(matchOut[1], 10); // Extract the number from the matched group
             console.log('out ' + i);
             elementsHover[i].classList.remove('hoverEffect');
+        }
+        if (matchClick) {
+            let i = parseInt(matchClick[1], 10); // Extract the number from the matched group
+            i--
+            console.log('click ' + i);
+            let click = document.getElementById('image'+ String(i+1))
+            click.dispatchEvent(clickEvent)
         }
     }
 });
@@ -331,6 +345,7 @@ function areTheySame(a,b) {
 
 for (let i = 0; i < 24; i++) {
 document.getElementById('image'+ String(i+1)).addEventListener("click", function() {
+    socket.emit('send-message', serverNumber, 'Player1click ' + this.id.match(/\d+/g));
     clicks++
     this.style.filter = "brightness(100%)";
     if (clicks == 1) {
@@ -350,7 +365,7 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
             console.log("same")
             selected1.parentNode.removeChild(selected1);
             selected2.parentNode.removeChild(selected2);
-
+            //mouseOff()
         }
         else {
             mistakes++
@@ -358,7 +373,7 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
             console.log("not same")
             selected2.style.filter = "brightness(0%)"
             selected1.style.filter = "brightness(0%)"
-            
+            //mouseOff()
         }
         for (var i = 0; i < elements.length; i++) {
             elements[i].style.pointerEvents = 'auto';

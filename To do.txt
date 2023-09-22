@@ -25,20 +25,10 @@ arvostelut
 tee muistipeli multiplayer
 invite linkillä
 
-Multiplayer suunnitelma:
-1. Kun pelaaja painaa multiplayer avautuu muistipelisivu, siinä on copy url for player 2 nappi.
-
-2. Samaan aikaan backendissä pelvelin luo uuden alasivut "(random_numerot/player1)" 
-ja "(random_numerot/player2)". Lisäksi arpoo kumpi alottaa.
-
-3. Frontendissä aloittava pelaaja kääntää kortit ja toinen jatkaa jne.
-
-4. Oikeat kortit käännettyään saa pisteen.
-
-6. Lopuksi se kummalla on enemmän pisteitä voittaa.
-
-palvelin muodostaa elokuvalistan, jossa on 12 uutta leffaa ja 12 omaa leffaa
-leffalista sekoitetaan ja lähetetään käyttäjille 
-
-
+1. pelaaja 1 painaa kortista
+2. pelaaja 1 lähettää tiedon pelaajalle 2
+3. pelaaja 2 saa tiedon, että painetaan
+4. pelaaja 2 lähettää tiedon pelaajalle 1 (tässä kohtaa pitäisi tehdä muutos. 
+Jos painamiskäsky tulee toiselta pelaajalta, siitä ei lähde ilmoitusta)
+jne... 
 
