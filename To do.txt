@@ -32,3 +32,12 @@ invite linkillä
 Jos painamiskäsky tulee toiselta pelaajalta, siitä ei lähde ilmoitusta)
 jne... 
 
+
+
+
+// lähetetään click
+    for (let i = 0; i < 24; i++) {
+        document.getElementById('image'+ String(i+1)).addEventListener("click", function() {
+        socket.emit('send-message', serverNumber, 'Player2click ' + this.id.match(/\d+/g));
+        })
+    }

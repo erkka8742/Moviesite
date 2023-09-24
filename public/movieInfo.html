@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title id = "movie-name1">Moviesite</title>
+        <title id = "movie-name1"></title>
         <link type="text/css"  rel="stylesheet" href="movieInfo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,19 +15,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Rubik&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Red+Hat+Display:ital,wght@0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap" rel="stylesheet">   
     </head>
     <body>
         <div class="background">
-            <h1 id = "movie-name2"></h1>
+            <div class="header-line">
+                <h1 id = "movie-name2"></h1>
+                <div class="rating">
+                    <p class="star">&#9733;</p>
+                    <p class="movie-score" id="movie_score"></p>
+                </div>
+            </div>  
+                
+            <div class="credits">
+                <div class="info-line">
+                    <p class="permanent">Director:</p>
+                    <p class = "changing" id="director"></p>
+                </div>    
+                <div class="info-line">
+                    <p class="permanent">Writers:</p>
+                    <p class = "changing" id="writers"></p>
+                </div>
+                <div class="info-line">
+                    <p class="permanent">Actors:</p>
+                    <p class = "changing" id="actors"></p>
+                </div>
+                <div class="info-line">
+                    <p class="permanent">Runtime:</p>
+                    <p class = "changing" id="runtime"></p>
+                </div>
+            </div>
 
-            <p id="director"></p>
-            <p id="writers"></p>
-            <p id="stars"></p>
 
         </div>
 
-        <img src="" id="movie-poster" class="poster-image"/>
+        
     </body>
 </html>
 
@@ -63,9 +94,22 @@
             thisMovie = json[i]
         }
        }
-       document.getElementById('movie-name1').textContent = thisMovie.name;
+       document.getElementById('movie-name1').textContent = thisMovie.name + ' - Moviesite';
        document.getElementById('movie-name2').textContent = thisMovie.name;
+       document.getElementById('movie_score').textContent = thisMovie.score;
+       document.getElementById('director').textContent = thisMovie.director;
+       document.getElementById('writers').textContent = thisMovie.writers;
+       document.getElementById('actors').textContent = thisMovie.stars;
+       document.getElementById('runtime').textContent = thisMovie.runtime;
+       //document.getElementById('movie-poster').src = thisMovie.poster;
 
-       document.getElementById('movie-poster').textContent = thisMovie.poster;
+       
+
+
+
     })
+
+    
+
+
 </script>

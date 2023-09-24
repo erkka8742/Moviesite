@@ -446,6 +446,7 @@ app.post('/start_memory_game', (req, res) => {
 });
 
 
+
 io.on('connection', (socket) => {
 
     // luodaan room tälle multiplayer-pelille
@@ -455,7 +456,7 @@ io.on('connection', (socket) => {
         // katsotaan onko
         let room = io.sockets.adapter.rooms.get(Servernumber);
         let roomSize = room ? room.size : 0; 
-        
+        let player1Starts = false
         if (roomSize == 2) {
             console.log(Servernumber + ' is full')
             socket.emit('message', 'room is full');
@@ -471,17 +472,50 @@ io.on('connection', (socket) => {
             if (roomSize == 2) {
                 let random69 = randomNumber2()
                 if (random69 == true) {
-                    io.to(Servernumber).emit('message', 'Player1 starts');
+                    player1Starts = true
                 }
-                else {
-                io.to(Servernumber).emit('message', 'Player2 starts');
-                }
+                
                 io.to(Servernumber).emit('message', moviesC);
+                
             }
             // vastaanottaa viestejä ja lähettää ne eteenpäin
             socket.on('send-message', (room, message) => {
+                // mitä tapahtuu kun on pelaajan vuoro
+            function Player1Turn() {
+            if (message.match(regexClick1)) {
+                clickCount++
+                }
+            if (clickCount == 2) {
+            io.to(Servernumber).emit('message', 'Player2 turn');
+            clickCount = 0
+                Player2Turn()
+            }
+            }
+function Player2Turn() {
+    if (message.match(regexClick2)) {
+        clickCount++
+    }
+    if (clickCount == 2) {
+        io.to(Servernumber).emit('message', 'Player1 turn');
+        clickCount = 0
+        Player1Turn()
+    }
+}
                 io.to(Servernumber).emit('message', message);
                 console.log(message)
+                regexClick1 = /^Player1click (\d+)$/;
+                regexClick2 = /^Player2click (\d+)$/;
+                let clickCount = 0
+
+                    // määrätään kumman vuoro aloittaa
+                    if (player1Starts) {
+                        io.to(Servernumber).emit('message', 'Player1 turn');
+                        Player1Turn()
+                    }
+                    if (!player1Starts) {
+                        io.to(Servernumber).emit('message', 'Player2 turn');
+                        Player2Turn()
+                    }
             });
             
 

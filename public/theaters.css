@@ -67,7 +67,7 @@ body {
 .rating {
     display: flex;
     align-items: center; /* This will ensure that star and score are vertically aligned in the middle */
-    margin-left: 15%;
+    margin-left: 5%;
     margin-top: 9%;
 }
 
@@ -78,8 +78,8 @@ body {
 
 .star {
     color: #cbaa17;
-    margin-left: -39%;
-    margin-bottom: 2%;
+    transform: translateY(+1%);
+    transform: translateX(-9%);
 }
 
 .info-line {
@@ -88,6 +88,7 @@ body {
     align-items: center; /* For vertical alignment */
     width: 100%;
     margin-top: -7%;
+    margin-left: -10%;
 }
 
 .rating, .movie-runtime {

@@ -17,8 +17,9 @@ body {
     /* Set a maximum width if desired, or remove if not */
     max-width: 90em;
     /* Ensure div takes the necessary space */
-    width: 100%;
+    width: 400%;
     /* For centering the text */
+    color: white;
     
 }
 
@@ -26,10 +27,40 @@ h1 {
     margin-top: 1%;
     color: white;
     font-weight: 500;
-    font-size: 200%;
+    font-size: 300%;
     font-family: 'Rubik', sans-serif;
-    padding-left: 2%; /* adjust this to set the consistent start position */
+    padding-left: 0%; /* adjust this to set the consistent start position */
     box-sizing: border-box; /* ensures padding is included in width calculation */
+    margin-bottom: 10%;
+}
+
+#movie-name2 {
+    margin: 0;  /* Removes default top and bottom margins */
+}
+
+.header-line {
+    display: flex;
+    align-items: center;  /* Vertically aligns the contents in the center */
+    justify-content: space-between;  /* Optional: Spreads the h1 and rating div apart */
+    font-family: 'Rubik', sans-serif;
+    color: #a2a2a2;
+    margin-top: 1%;
+}
+
+.rating {
+    display: flex;
+    align-items: center;  /* To align star and score on the same line and vertically centered */
+    gap: 5px;  /* Optional: Adds a little space between the star and the score */
+    font-size: 220%;
+    
+}
+.rating .star, .rating .movie-score {
+    margin: 0;  /* Removes default top and bottom margins */
+}
+
+.star {
+    color: #cbaa17;
+    transform: translateY(-5%);
 }
 
 #response 
@@ -37,3 +68,31 @@ h1 {
     font-size: 130%;
     font-family: 'Rubik', sans-serif;
     margin-left: 3%;}
+
+.credits {
+    margin-top: 8%;
+}
+
+.info-line {
+    display: flex;
+    align-items: center; /* This will vertically center the content if there are any differences in height */
+    font-size: 150%;
+}
+
+.permanent, .changing {
+    margin: 0; /* This will remove any default margins */
+}
+
+.changing {
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 300;
+}
+
+/* Optional: Add some space between the permanent and changing content */
+.permanent {
+    margin-right: 10px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 550;
+
+}
