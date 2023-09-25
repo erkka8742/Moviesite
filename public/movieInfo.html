@@ -35,7 +35,7 @@
                     <p class="movie-score" id="movie_score"></p>
                 </div>
             </div>  
-                
+            <div class="content-wrapper">     
             <div class="credits">
                 <div class="info-line">
                     <p class="permanent">Director:</p>
@@ -53,8 +53,11 @@
                     <p class="permanent">Runtime:</p>
                     <p class = "changing" id="runtime"></p>
                 </div>
+                <p id="plot"></p>
             </div>
 
+        <iframe id="youtubePlayer" frameborder="0" allowfullscreen></iframe>
+    </div>
 
         </div>
 
@@ -101,7 +104,35 @@
        document.getElementById('writers').textContent = thisMovie.writers;
        document.getElementById('actors').textContent = thisMovie.stars;
        document.getElementById('runtime').textContent = thisMovie.runtime;
-       //document.getElementById('movie-poster').src = thisMovie.poster;
+       document.getElementById('plot').textContent = thisMovie.plot;
+
+       function extractVideoID(url) {
+    let videoId = null;
+    
+    // Regular expression to extract video ID
+    let regex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)|youtu\.be\/([^?]+)/;
+    let match = url.match(regex);
+    
+    if (match && match[1]) {
+        videoId = match[1]; // Format: https://www.youtube.com/watch?v=VIDEO_ID
+    } else if (match && match[2]) {
+        videoId = match[2]; // Format: https://youtu.be/VIDEO_ID
+    }
+    
+    return videoId;
+}
+
+var youtubeUrl = thisMovie.trailer; // Replace with your actual URL
+var videoId = extractVideoID(youtubeUrl);
+
+if (videoId) {
+    document.getElementById("youtubePlayer").src = "https://www.youtube.com/embed/" + videoId + "?rel=1&modestbranding=1&iv_load_policy=3";
+} else {
+    console.error("Invalid YouTube URL provided.");
+}
+
+
+      
 
        
 

@@ -70,7 +70,8 @@ h1 {
     margin-left: 3%;}
 
 .credits {
-    margin-top: 8%;
+    margin-top: 9%;
+    flex: 1;  
 }
 
 .info-line {
@@ -95,4 +96,26 @@ h1 {
     font-family: 'Rubik', sans-serif;
     font-weight: 550;
 
+}
+
+.content-wrapper {
+    display: flex;               /* Enable flexbox */
+    justify-content: space-between;  /* Space between the credits and video player */
+    align-items: flex-start;    /* Align items to the top of the container */
+}
+
+#youtubePlayer {
+    flex-basis: 756px;          /* Updated width of the video player */
+    height: 426px;
+    margin-left: -8%;
+    margin-top: 9%; 
+    /* Other styles if needed */
+}
+
+#plot {
+    font-family: 'Rubik', sans-serif;
+    font-size: 150%;
+    max-width: 80%;
+    margin-top: 5%;
+    font-weight: 100;
 }
