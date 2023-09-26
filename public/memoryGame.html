@@ -198,6 +198,12 @@ fetch('http://localhost:3000/getData')
 
     movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10]
     
+    // laitetaan julisteet, jos ei muuten ole
+    if (movie1.poster == undefined) {
+                for (let i = 0; i <= movies.length; i++) {
+                    document.getElementById('image'+String(i+1)).src = 'https://image.tmdb.org/t/p/w500/ehGIDAMaYy6Eg0o8ga0oqflDjqW.jpg';
+                }
+            }
   // movies array sekoitetaan  
   const shuffleArray = array => {
   for (let i = array.length - 1; i > 0; i--) {

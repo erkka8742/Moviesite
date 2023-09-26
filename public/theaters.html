@@ -384,39 +384,7 @@
             document.getElementById('movie13-name').textContent = movie13.name;
             document.getElementById('movie14-name').textContent = movie14.name;
             document.getElementById('movie15-name').textContent = movie15.name;
-/*
-            document.getElementById('movie1-director').textContent = movie1.director;
-            document.getElementById('movie2-director').textContent = movie2.director;
-            document.getElementById('movie3-director').textContent = movie3.director;
-            document.getElementById('movie4-director').textContent = movie4.director;
-            document.getElementById('movie5-director').textContent = movie5.director;
-            document.getElementById('movie6-director').textContent = movie6.director;
-            document.getElementById('movie7-director').textContent = movie7.director;
-            document.getElementById('movie8-director').textContent = movie8.director;
-            document.getElementById('movie9-director').textContent = movie9.director;
-            document.getElementById('movie10-director').textContent = movie10.director;
-            document.getElementById('movie11-director').textContent = movie11.director;
-            document.getElementById('movie12-director').textContent = movie12.director;
-            document.getElementById('movie13-director').textContent = movie13.director;
-            document.getElementById('movie14-director').textContent = movie14.director;
-            document.getElementById('movie15-director').textContent = movie15.director;
-            
-            document.getElementById('movie1_text').textContent = movie1.plot;
-            document.getElementById('movie2_text').textContent = movie2.plot;
-            document.getElementById('movie3_text').textContent = movie3.plot;
-            document.getElementById('movie4_text').textContent = movie4.plot;
-            document.getElementById('movie5_text').textContent = movie5.plot;
-            document.getElementById('movie6_text').textContent = movie6.plot;
-            document.getElementById('movie7_text').textContent = movie7.plot;
-            document.getElementById('movie8_text').textContent = movie8.plot;
-            document.getElementById('movie9_text').textContent = movie9.plot;
-            document.getElementById('movie10_text').textContent = movie10.plot;
-            document.getElementById('movie11_text').textContent = movie11.plot;
-            document.getElementById('movie12_text').textContent = movie12.plot;
-            document.getElementById('movie13_text').textContent = movie13.plot;
-            document.getElementById('movie14_text').textContent = movie14.plot;
-            document.getElementById('movie15_text').textContent = movie15.plot;
-    */  
+  
             document.getElementById('movie1_score').textContent = movie1.score;
             document.getElementById('movie2_score').textContent = movie2.score;
             document.getElementById('movie3_score').textContent = movie3.score;
@@ -433,7 +401,15 @@
             document.getElementById('movie14_score').textContent = movie14.score;
             document.getElementById('movie15_score').textContent = movie15.score;
 
+
             var movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15];
+
+            // laitetaan julisteet, jos ei muuten ole
+            if (movie1.poster == undefined) {
+                for (let i = 0; i <= movies.length; i++) {
+                    document.getElementById('image'+String(i+1)).src = 'https://image.tmdb.org/t/p/w500/ehGIDAMaYy6Eg0o8ga0oqflDjqW.jpg';
+                }
+            }
 
             for (let i = 0; i < movies.length; i++) {
     document.getElementById('movie' + (i + 1)+'div').addEventListener('click', function() {

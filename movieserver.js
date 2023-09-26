@@ -115,7 +115,7 @@ async function findInfo(movie) {
     } catch (error) {
         console.error('Error:', error);
     }
-
+    console.log(re_poster)
     // etsi googlesta elokuvan imdb-linkki
     let browser;
     try {

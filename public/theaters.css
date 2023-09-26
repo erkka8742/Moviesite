@@ -1,5 +1,5 @@
 body {
-    /* Ensure the body takes full viewport height and width */
+    /* https://mycolor.space/gradient3?ori=circle&hex=%23000000&hex2=%2313091A&hex3=%23761C7F&submit=submit */
     
     /* https://animated-gradient-background-generator.netlify.app */
     display: flex;
@@ -7,6 +7,13 @@ body {
     align-items: center;
     color: white;
     background-image: radial-gradient(circle, #0f153f, #101640, #101641, #111742, #111843, #1c1843, #241743, #2c1643, #3b1340, #47103b, #510d35, #590d2e);
+    background-image: radial-gradient(circle, #000000, #0e0308, #150612, #180b1b, #161024, #1c213c, #1b3454, #0c486c, #007196, #009ebb, #27ccda, #5ffbf1);
+    background-image: radial-gradient(circle, #000000, #100308, #190711, #1e0a19, #220e22, #260f2a, #2a1133, #2c133c, #321346, #371350, #3d125a, #431164);
+    background-image: radial-gradient(circle, #000000, #070104, #0d0209, #11040f, #130614, #1a0c1e, #201128, #251433, #361947, #491c5a, #5f1d6d, #761c7f);
+    background-image: radial-gradient(circle, #000000, #000000, #000000, #000000, #000000, #14050a, #1f0b13, #280e1a, #3f102c, #541143, #67145f, #761c7f);
+    background-image: radial-gradient(circle, #000000, #060103, #0c0207, #10030b, #120410, #1b0a1a, #210f24, #28122f, #391642, #4c1a56, #601c6b, #761c7f);
+    background-image: radial-gradient(circle, #1f0223, #200224, #210226, #220227, #230228, #28052d, #2e0733, #340938, #400e43, #4d144d, #5a1958, #671f63);
+    background-image: radial-gradient(circle, #1f0223, #1e0221, #1c0220, #1b021e, #19021c, #1d0821, #210c26, #260f2c, #35143a, #441848, #551c55, #671f63);
 }
 .main-container {
     display: flex;
