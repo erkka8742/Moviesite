@@ -6,14 +6,8 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    background-image: radial-gradient(circle, #0f153f, #101640, #101641, #111742, #111843, #1c1843, #241743, #2c1643, #3b1340, #47103b, #510d35, #590d2e);
-    background-image: radial-gradient(circle, #000000, #0e0308, #150612, #180b1b, #161024, #1c213c, #1b3454, #0c486c, #007196, #009ebb, #27ccda, #5ffbf1);
-    background-image: radial-gradient(circle, #000000, #100308, #190711, #1e0a19, #220e22, #260f2a, #2a1133, #2c133c, #321346, #371350, #3d125a, #431164);
-    background-image: radial-gradient(circle, #000000, #070104, #0d0209, #11040f, #130614, #1a0c1e, #201128, #251433, #361947, #491c5a, #5f1d6d, #761c7f);
-    background-image: radial-gradient(circle, #000000, #000000, #000000, #000000, #000000, #14050a, #1f0b13, #280e1a, #3f102c, #541143, #67145f, #761c7f);
-    background-image: radial-gradient(circle, #000000, #060103, #0c0207, #10030b, #120410, #1b0a1a, #210f24, #28122f, #391642, #4c1a56, #601c6b, #761c7f);
-    background-image: radial-gradient(circle, #1f0223, #200224, #210226, #220227, #230228, #28052d, #2e0733, #340938, #400e43, #4d144d, #5a1958, #671f63);
-    background-image: radial-gradient(circle, #1f0223, #1e0221, #1c0220, #1b021e, #19021c, #1d0821, #210c26, #260f2c, #35143a, #441848, #551c55, #671f63);
+    
+    background-color: rgb(0, 0, 0);
 }
 .main-container {
     display: flex;
@@ -25,12 +19,32 @@ body {
 }
 .background {
     /* The actual color of the page content background */
-    background-color: #090909e5; /* White */
+    background-color: #0909095f; /* White */
+    outline: 6px solid rgb(255, 255, 255);
+    background-image: linear-gradient(
+        150deg,
+        hsl(24deg 100% 55%) 0%,
+        hsl(9deg 85% 57%) 3%,
+        hsl(353deg 65% 52%) 6%,
+        hsl(339deg 74% 41%) 10%,
+        hsl(327deg 83% 31%) 15%,
+        hsl(315deg 80% 22%) 20%,
+        hsl(307deg 75% 18%) 26%,
+        hsl(303deg 74% 16%) 33%,
+        hsl(299deg 74% 14%) 41%,
+        hsl(294deg 75% 13%) 49%,
+        hsl(289deg 76% 12%) 57%,
+        hsl(300deg 73% 13%) 65%,
+        hsl(326deg 69% 25%) 73%,
+        hsl(344deg 59% 40%) 80%,
+        hsl(4deg 57% 53%) 87%,
+        hsl(23deg 82% 56%) 94%,
+        hsl(39deg 94% 55%) 100%
+      );
     /* Adjust this padding value to change the size of the background relative to the content */
-    margin-top: 13%;
-    margin-bottom: 10%;
-    padding: 3%;
-    border-radius: 35px;
+    margin-top: 3.5%;
+    padding: 2%;
+    border-radius: 48px;
    
     /* Set a maximum width if desired, or remove if not */
     max-width: 90em;
@@ -58,7 +72,7 @@ body {
 }
 
 .movie-name {
-    font-size: 130%;
+    font-size: 140%;
     font-weight: 500;
     font-family: 'Rubik', sans-serif;
     color: #ffffff;
@@ -94,8 +108,9 @@ body {
     justify-content: space-between;
     align-items: center; /* For vertical alignment */
     width: 100%;
-    margin-top: -7%;
+    margin-top: -8%;
     margin-left: -10%;
+    font-size: 100%;
 }
 
 .rating, .movie-runtime {
@@ -103,13 +118,34 @@ body {
 }
 
 
-h1 {
+#theaters {
     display: block;
     width: 100%;
     text-align: left;
-    margin-top: 3%;  
+    margin-top: 16%;
+    margin-left: 3.3%;  
     font-family: 'Comfortaa', cursive;
+    font-size: 260%;
 }
+
+#title {
+    margin-top: 0%;
+    font-family: 'Comfortaa', cursive;
+    text-align: left;
+    margin-left: -40%;
+    margin-top: 2%;
+    font-size: 190%;
+    font-weight: 100;
+}
+
+#title::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;  /* Adjust to control the distance from the text */
+    height: 2px;
+}
+
 
 .container {
     /* Allow the container to take full width and height of the parent div */
@@ -132,8 +168,8 @@ h1 {
 .image-box:hover {
     transform: scale(1.15);
     z-index: 2;
-    outline: 8px solid rgb(255, 255, 255);
-    outline-offset: -5px;
+    outline: 6px solid rgb(255, 255, 255);
+    outline-offset: -3px;
 }
 
 .poster-image {
