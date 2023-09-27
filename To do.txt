@@ -32,7 +32,7 @@ invite linkillä
 Jos painamiskäsky tulee toiselta pelaajalta, siitä ei lähde ilmoitusta)
 jne... 
 
-
+Selvitä miten pyöristetään yt videon kulmat ja poistetaan tekstit
 
 
 // lähetetään click
@@ -41,3 +41,26 @@ jne...
         socket.emit('send-message', serverNumber, 'Player2click ' + this.id.match(/\d+/g));
         })
     }
+
+
+
+background-image: linear-gradient(
+        150deg,
+        hsl(24deg 100% 55%) 0%,
+        hsl(9deg 85% 57%) 3%,
+        hsl(353deg 65% 52%) 6%,
+        hsl(339deg 74% 41%) 10%,
+        hsl(327deg 83% 31%) 15%,
+        hsl(315deg 80% 22%) 20%,
+        hsl(307deg 75% 18%) 26%,
+        hsl(303deg 74% 16%) 33%,
+        hsl(299deg 74% 14%) 41%,
+        hsl(294deg 75% 13%) 49%,
+        hsl(289deg 76% 12%) 57%,
+        hsl(300deg 73% 13%) 65%,
+        hsl(326deg 69% 25%) 73%,
+        hsl(344deg 59% 40%) 80%,
+        hsl(4deg 57% 53%) 87%,
+        hsl(23deg 82% 56%) 94%,
+        hsl(39deg 94% 55%) 100%
+      );

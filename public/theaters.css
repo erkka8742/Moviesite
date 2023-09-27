@@ -17,11 +17,8 @@ body {
     width: 100vw;
     height: 100vh;
 }
-.background {
-    /* The actual color of the page content background */
-    background-color: #0909095f; /* White */
-    outline: 6px solid rgb(255, 255, 255);
-    background-image: linear-gradient(
+.outer {
+    background: linear-gradient(
         150deg,
         hsl(24deg 100% 55%) 0%,
         hsl(9deg 85% 57%) 3%,
@@ -40,22 +37,26 @@ body {
         hsl(4deg 57% 53%) 87%,
         hsl(23deg 82% 56%) 94%,
         hsl(39deg 94% 55%) 100%
-      );
-
-    
-    /* Adjust this padding value to change the size of the background relative to the content */
+    );
+    padding: 6px;
+    border-radius: 54px;  /* Adjusted to include the gradient outline */
+    position: relative;
     margin-top: 3.5%;
-    padding: 2%;
-    border-radius: 48px;
-   
-    /* Set a maximum width if desired, or remove if not */
     max-width: 90em;
-    /* Ensure div takes the necessary space */
     width: 100%;
-    /* For centering the text */
     text-align: center;
-    
 }
+
+.background {
+    background-color: #0909095f;
+    border-radius: 48px;
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+}
+
+
+
 
 .score-item {
     font-family: 'Comfortaa', cursive;
