@@ -57,8 +57,8 @@ h1 {
     align-items: center;  /* Vertically aligns the contents in the center */
     justify-content: space-between;  /* Optional: Spreads the h1 and rating div apart */
     font-family: 'Rubik', sans-serif;
-    color: #a2a2a2;
-    margin-top: 1%;
+    color: #ffffff;
+    margin-top: -1.5%;
 }
 
 .rating {
@@ -73,7 +73,7 @@ h1 {
 }
 
 .star {
-    color: #cbaa17;
+    color: #ffd000;
     transform: translateY(-5%);
 }
 
