@@ -41,6 +41,8 @@ body {
         hsl(23deg 82% 56%) 94%,
         hsl(39deg 94% 55%) 100%
       );
+
+    
     /* Adjust this padding value to change the size of the background relative to the content */
     margin-top: 3.5%;
     padding: 2%;

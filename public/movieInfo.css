@@ -2,17 +2,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: radial-gradient(circle, #0f153f, #101640, #101641, #111742, #111843, #1c1843, #241743, #2c1643, #3b1340, #47103b, #510d35, #590d2e);
-    background-image: radial-gradient(circle, #000000, #060103, #0c0207, #10030b, #120410, #1b0a1a, #210f24, #28122f, #391642, #4c1a56, #601c6b, #761c7f);
-    background-image: radial-gradient(circle, #000000, #070002, #0d0006, #11000c, #130011, #180217, #1b041d, #1d0623, #24082b, #2b0834, #34053c, #3d0144);
-    background-image: radial-gradient(circle, #671f63, #5a1958, #4d144d, #400e43, #340938, #2e0733, #28052d, #230228, #220227, #210226, #200224, #1f0223);
-    background-image: radial-gradient(circle, #671f63, #5d1b5c, #531655, #49124e, #400e47, #3a0c41, #340a3c, #2e0836, #2a0831, #26072c, #220528, #1f0223);
+    
+    background-color: black;
     
 }
 
 .background {
     /* The actual color of the page content background */
-    background-color: #090909e5; /* White */
+    background-image: linear-gradient(
+  145deg,
+  hsl(245deg 92% 25%) 0%,
+  hsl(273deg 91% 31%) 18%,
+  hsl(288deg 90% 37%) 33%,
+  hsl(300deg 89% 42%) 46%,
+  hsl(328deg 100% 50%) 56%,
+  hsl(354deg 100% 60%) 66%,
+  hsl(29deg 100% 48%) 75%,
+  hsl(25deg 100% 70%) 84%,
+  hsl(25deg 100% 85%) 92%,
+  hsl(0deg 0% 100%) 100%
+);
     /* Adjust this padding value to change the size of the background relative to the content */
     margin-top: 5%;
     margin-bottom: 10%;
