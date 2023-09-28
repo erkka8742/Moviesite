@@ -18,7 +18,12 @@ body {
     height: 100vh;
 }
 .outer {
-    background: linear-gradient(
+    max-width: 90em;
+    width: 100%;
+    padding: 6px;
+    position: relative;
+    z-index: 1;
+    background-image: linear-gradient(
         150deg,
         hsl(24deg 100% 55%) 0%,
         hsl(9deg 85% 57%) 3%,
@@ -37,23 +42,55 @@ body {
         hsl(4deg 57% 53%) 87%,
         hsl(23deg 82% 56%) 94%,
         hsl(39deg 94% 55%) 100%
-    );
-    padding: 6px;
-    border-radius: 54px;  /* Adjusted to include the gradient outline */
-    position: relative;
+    ); 
+    filter: brightness(120%);
+    border-radius: 54px;
     margin-top: 3.5%;
-    max-width: 90em;
-    width: 100%;
     text-align: center;
-}
-
-.background {
-    background-color: #0909095f;
+  }
+  
+  .outer:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    z-index: -1;
+    background-image: linear-gradient(
+        150deg,
+        hsl(24deg 100% 55%) 0%,
+        hsl(9deg 85% 57%) 3%,
+        hsl(353deg 65% 52%) 6%,
+        hsl(339deg 74% 41%) 10%,
+        hsl(327deg 83% 31%) 15%,
+        hsl(315deg 80% 22%) 20%,
+        hsl(307deg 75% 18%) 26%,
+        hsl(303deg 74% 16%) 33%,
+        hsl(299deg 74% 14%) 41%,
+        hsl(294deg 75% 13%) 49%,
+        hsl(289deg 76% 12%) 57%,
+        hsl(300deg 73% 13%) 65%,
+        hsl(326deg 69% 25%) 73%,
+        hsl(344deg 59% 40%) 80%,
+        hsl(4deg 57% 53%) 87%,
+        hsl(23deg 82% 56%) 94%,
+        hsl(39deg 94% 55%) 100%
+    ); 
+    filter: blur(20px);
+    border-radius: 64px; /* The sum of the outer's border-radius and the offset of the pseudo-element */
+  }
+  
+  .background {
+    background-color: rgb(20, 20, 20); /* Updated background-color */
     border-radius: 48px;
+    padding: 2%;
     width: 100%;
     height: 100%;
-    padding: 2%;
-}
+    color: white; 
+    font-family: arial;
+  }
+  
 
 
 
@@ -171,7 +208,7 @@ body {
 .image-box:hover {
     transform: scale(1.15);
     z-index: 2;
-    outline: 6px solid rgb(255, 255, 255);
+    outline: 7px solid rgb(255, 255, 255);
     outline-offset: -3px;
 }
 
