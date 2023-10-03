@@ -257,12 +257,12 @@ socket.emit('join-room', serverNumber);
 socket.on('message', (data) => {
     //console.log(data);
     
-    if (data === 'Player 1 starts') {
+    if (data === 'Player 1 turn') {
         MyTurn = true
         console.log('my turn')
     }
 
-    if (data === 'Player 2 starts') {
+    if (data === 'Player 2 turn') {
         MyTurn = false
         console.log('others turn')
     }
@@ -352,7 +352,9 @@ function areTheySame(a,b) {
 if (MyTurn = true) {
 for (let i = 0; i < 24; i++) {
 document.getElementById('image'+ String(i+1)).addEventListener("click", function() {
-    socket.emit('send-message', serverNumber, 'Player1click ' + this.id.match(/\d+/g));
+    if (MyTurn) {
+        socket.emit('send-message', serverNumber, 'Player1click ' + this.id.match(/\d+/g));
+    }
     clicks++
     this.style.filter = "brightness(100%)";
     if (clicks == 1) {

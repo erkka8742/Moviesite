@@ -28,7 +28,7 @@ const io = new Server(server, {
 });
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = true
+findmovies = false
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -39,6 +39,17 @@ allMatches = [];
 let year = 2023
 content = ""
 url = 'https://editorial.rottentomatoes.com/guide/popular-movies/'
+
+// html hakemis funktio
+async function fetchHTML(urls) {
+    const htmlContents = await Promise.all(
+        urls.map(url => 
+            axios.get(url).then(response => response.data)
+        )
+    );
+
+    return htmlContents;
+}
 
 tries = 0
 async function everything() {
