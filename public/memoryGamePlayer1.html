@@ -249,6 +249,8 @@ var clickEvent = new MouseEvent('click', {
     'cancelable': true,
     'view': window
 });
+
+MyTurn = false
 // Liitytään oikeaan huoneeseen
 socket.emit('join-room', serverNumber);
 
@@ -256,11 +258,13 @@ socket.on('message', (data) => {
     //console.log(data);
     
     if (data === 'Player 1 starts') {
-
+        MyTurn = true
+        console.log('my turn')
     }
 
     if (data === 'Player 2 starts') {
-        //mouseOff()
+        MyTurn = false
+        console.log('others turn')
     }
 
     if (Array.isArray(data)) {
@@ -269,30 +273,6 @@ socket.on('message', (data) => {
             document.getElementById('image'+ String(i+1)).src = data[i].poster;
         }
     }
-
-    if (!Array.isArray(data)) {
-        let matchHover = data.match(regexHover);
-        let matchOut = data.match(regexOut);
-        let matchClick = data.match(regexClick);
-        if (matchHover) {
-            let i = parseInt(matchHover[1], 10); // Extract the number from the matched group
-            console.log('in ' + i);
-            elementsHover[i].classList.add('hoverEffect');
-        }
-        if (matchOut) {
-            let i = parseInt(matchOut[1], 10); // Extract the number from the matched group
-            console.log('out ' + i);
-            elementsHover[i].classList.remove('hoverEffect');
-        }
-        if (matchClick) {
-            let i = parseInt(matchClick[1], 10); // Extract the number from the matched group
-            i--
-            console.log('click ' + i);
-            let click = document.getElementById('image'+ String(i+1))
-            click.dispatchEvent(clickEvent)
-        }
-    }
-});
 
 // luodaan player2 linkki
 let player2Url = url.slice(0, -1) + '2';
@@ -309,24 +289,49 @@ document.getElementById('copyButton').addEventListener('click', function(event) 
 });
 
 
-// lähetetään cursor hover toiselle pelaajalle
+// lähetetään hover toiselle pelaajalle
 var elementsHover = document.getElementsByClassName('image-box');
 for (var i = 0; i < elementsHover.length; i++) {
     // Using an IIFE (Immediately Invoked Function Expression) to capture the value of i for each iteration
     (function(index) {
         elementsHover[index].addEventListener('mouseover', function() {
-            console.log(index);
+            //console.log(index);
             socket.emit('send-message', serverNumber, 'Player1hover ' + String(index));
         });
     })(i);
     (function(index) {
         elementsHover[index].addEventListener('mouseout', function() {
-            console.log(index);
+            //console.log(index);
             socket.emit('send-message', serverNumber, 'Player1out ' + String(index));
         });
     })(i);
 }
 
+
+    // vastaanotetaan hover
+    if (!Array.isArray(data)) {
+        let matchHover = data.match(regexHover);
+        let matchOut = data.match(regexOut);
+        let matchClick = data.match(regexClick);
+        if (matchHover) {
+            let i = parseInt(matchHover[1], 10);
+            //console.log('in ' + i);
+            elementsHover[i].classList.add('hoverEffect');
+        }
+        if (matchOut) {
+            let i = parseInt(matchOut[1], 10); 
+            //console.log('out ' + i);
+            elementsHover[i].classList.remove('hoverEffect');
+        }
+        if (matchClick) {
+            let i = parseInt(matchClick[1], 10); 
+            i--
+            //console.log('click ' + i);
+            let click = document.getElementById('image'+ String(i+1))
+            click.dispatchEvent(clickEvent)
+        }
+    }
+});
 
 clicks = 0
 mistakes = 0
@@ -343,6 +348,8 @@ function areTheySame(a,b) {
     }
 }
 
+// tämä tapah
+if (MyTurn = true) {
 for (let i = 0; i < 24; i++) {
 document.getElementById('image'+ String(i+1)).addEventListener("click", function() {
     socket.emit('send-message', serverNumber, 'Player1click ' + this.id.match(/\d+/g));
@@ -385,7 +392,7 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
     }
 });
 }
-
+}
 
 </script>
 

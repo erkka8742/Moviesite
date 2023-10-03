@@ -480,42 +480,36 @@ io.on('connection', (socket) => {
             }
             // vastaanottaa viestejä ja lähettää ne eteenpäin
             socket.on('send-message', (room, message) => {
-                // mitä tapahtuu kun on pelaajan vuoro
-            function Player1Turn() {
-            if (message.match(regexClick1)) {
-                clickCount++
-                }
-            if (clickCount == 2) {
-            io.to(Servernumber).emit('message', 'Player2 turn');
-            clickCount = 0
-                Player2Turn()
-            }
-            }
-function Player2Turn() {
-    if (message.match(regexClick2)) {
-        clickCount++
-    }
-    if (clickCount == 2) {
-        io.to(Servernumber).emit('message', 'Player1 turn');
-        clickCount = 0
-        Player1Turn()
-    }
-}
+            
                 io.to(Servernumber).emit('message', message);
                 console.log(message)
                 regexClick1 = /^Player1click (\d+)$/;
                 regexClick2 = /^Player2click (\d+)$/;
-                let clickCount = 0
+                let Player1Clicks = 0
+                let Player2Clicks = 0
 
-                    // määrätään kumman vuoro aloittaa
-                    if (player1Starts) {
-                        io.to(Servernumber).emit('message', 'Player1 turn');
-                        Player1Turn()
-                    }
-                    if (!player1Starts) {
-                        io.to(Servernumber).emit('message', 'Player2 turn');
-                        Player2Turn()
-                    }
+                // määrätään kumman vuoro aloittaa
+                if (player1Starts) {
+                    io.to(Servernumber).emit('message', 'Player1 turn');
+                }
+                if (!player1Starts) {
+                    io.to(Servernumber).emit('message', 'Player2 turn');
+                }
+
+            // vaihdetaan pelivuoroja kahden klikin jälkeen
+            if (message.match(regexClick1)) {
+                Player1Clicks++
+            }
+            if (message.match(regexClick2)) {
+                Player2Clicks++
+            }
+            if (Player1Clicks == 2) {
+                io.to(Servernumber).emit('message', 'Player2 turn');
+            }
+            if (Player2Clicks == 2) {
+                io.to(Servernumber).emit('message', 'Player1 turn');
+            }
+
             });
             
 
