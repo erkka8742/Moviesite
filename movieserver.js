@@ -28,7 +28,7 @@ const io = new Server(server, {
 });
 
 // tämä testausta varen, ettei tarvitse odotella
-findmovies = false
+findmovies = true
 
 // favicon
 app.get('/favicon.ico', (req, res) => {
@@ -487,7 +487,13 @@ io.on('connection', (socket) => {
                 }
                 
                 io.to(Servernumber).emit('message', moviesC);
-                
+                // määrätään kumman vuoro aloittaa
+                if (player1Starts) {
+                    io.to(Servernumber).emit('message', 'Player1 turn');
+                }
+                if (!player1Starts) {
+                    io.to(Servernumber).emit('message', 'Player2 turn');
+                }
             }
             // vastaanottaa viestejä ja lähettää ne eteenpäin
             socket.on('send-message', (room, message) => {
@@ -499,13 +505,7 @@ io.on('connection', (socket) => {
                 let Player1Clicks = 0
                 let Player2Clicks = 0
 
-                // määrätään kumman vuoro aloittaa
-                if (player1Starts) {
-                    io.to(Servernumber).emit('message', 'Player1 turn');
-                }
-                if (!player1Starts) {
-                    io.to(Servernumber).emit('message', 'Player2 turn');
-                }
+                
 
             // vaihdetaan pelivuoroja kahden klikin jälkeen
             if (message.match(regexClick1)) {
@@ -520,7 +520,7 @@ io.on('connection', (socket) => {
             if (Player2Clicks == 2) {
                 io.to(Servernumber).emit('message', 'Player1 turn');
             }
-
+            
             });
             
 

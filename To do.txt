@@ -64,3 +64,21 @@ background-image: linear-gradient(
         hsl(23deg 82% 56%) 94%,
         hsl(39deg 94% 55%) 100%
       );
+
+
+
+
+
+
+
+
+
+
+
+      Player1                       Player2
+
+
+
+
+
+                Palvelin

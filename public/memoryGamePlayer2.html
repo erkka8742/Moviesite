@@ -257,12 +257,12 @@ socket.emit('join-room', serverNumber);
 socket.on('message', (data) => {
     //console.log(data);
     
-    if (data === 'Player 1 turn') {
+    if (data === 'Player1 turn') {
         console.log('others turn')
         MyTurn == false
     }
 
-    if (data === 'Player 2 turn') {
+    if (data === 'Player2 turn') {
         console.log('my turn')
         MyTurn == true
     }
@@ -273,7 +273,7 @@ socket.on('message', (data) => {
             document.getElementById('image'+ String(i+1)).src = data[i].poster;
         }
     }
-
+    // vastaanotetaan hover
     if (!Array.isArray(data)) {
         let matchHover = data.match(regexHover);
         let matchOut = data.match(regexOut);
@@ -294,12 +294,11 @@ socket.on('message', (data) => {
             //console.log('click ' + i);
             let click = document.getElementById('image'+ String(i+1))
             click.dispatchEvent(clickEvent)
-            incomingClick = true
         }
     }
 });
 
-// lähetetään cursor hover toiselle pelaajalle
+// lähetetään hover toiselle pelaajalle
 for (var i = 0; i < elementsHover.length; i++) {
     // Using an IIFE (Immediately Invoked Function Expression) to capture the value of i for each iteration
     (function(index) {
