@@ -6,8 +6,9 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    
     background-color: rgb(0, 0, 0);
+    transform: scale(0.87);
+    transform-origin: center center;
 }
 .main-container {
     display: flex;
@@ -24,28 +25,21 @@ body {
     position: relative;
     z-index: 1;
     background-image: linear-gradient(
-        150deg,
-        hsl(24deg 100% 55%) 0%,
-        hsl(9deg 85% 57%) 3%,
-        hsl(353deg 65% 52%) 6%,
-        hsl(339deg 74% 41%) 10%,
-        hsl(327deg 83% 31%) 15%,
-        hsl(315deg 80% 22%) 20%,
-        hsl(307deg 75% 18%) 26%,
-        hsl(303deg 74% 16%) 33%,
-        hsl(299deg 74% 14%) 41%,
-        hsl(294deg 75% 13%) 49%,
-        hsl(289deg 76% 12%) 57%,
-        hsl(300deg 73% 13%) 65%,
-        hsl(326deg 69% 25%) 73%,
-        hsl(344deg 59% 40%) 80%,
-        hsl(4deg 57% 53%) 87%,
-        hsl(23deg 82% 56%) 94%,
-        hsl(39deg 94% 55%) 100%
-    ); 
+  145deg,
+  hsl(245deg 92% 25%) 0%,
+  hsl(273deg 91% 31%) 18%,
+  hsl(288deg 90% 37%) 33%,
+  hsl(300deg 89% 42%) 46%,
+  hsl(328deg 100% 50%) 56%,
+  hsl(354deg 100% 60%) 66%,
+  hsl(29deg 100% 48%) 75%,
+  hsl(25deg 100% 70%) 84%,
+  hsl(25deg 100% 85%) 92%,
+  hsl(0deg 0% 100%) 100%
+);
     filter: brightness(120%);
     border-radius: 54px;
-    margin-top: 3.5%;
+    margin-top: 5%;
     text-align: center;
   }
   
@@ -162,29 +156,49 @@ body {
     display: block;
     width: 100%;
     text-align: left;
-    margin-top: 16%;
-    margin-left: 3.3%;  
+    margin-top: 13%;
+    text-align: center; 
     font-family: 'Comfortaa', cursive;
-    font-size: 260%;
+    font-size: 235%;
 }
 
 #title {
+    position: relative;
     margin-top: 0%;
     font-family: 'Comfortaa', cursive;
     text-align: left;
-    margin-left: -40%;
-    margin-top: 2%;
-    font-size: 190%;
-    font-weight: 100;
+    margin-left: 0%;
+    margin-top: -9%;
+    font-size: 250%;
+    font-weight: 300;
+    padding-bottom: 5px; /* Ensure there's space beneath the text for the underline */
 }
 
+
+
 #title::after {
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;  /* Adjust to control the distance from the text */
-    height: 2px;
+    bottom: 0;
+    height: 5px;  /* Adjust this to change the thickness of the underline */
+    background: linear-gradient(to right, #744DCF 0%, #C642FF 26%, #FF4086 47%, #FF8742 72%, #CFB184 100%);
+    border-radius: 10px;
 }
+
+#games {
+    color: white;
+    text-decoration: none; 
+    transition: color 0.2s;
+    font-size: 80%;
+    margin-left: 74%;
+}
+
+#games:hover {
+    color: #ff4086;
+}
+
 
 
 .container {

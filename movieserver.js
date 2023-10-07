@@ -438,7 +438,7 @@ roomNumber = 1
 // kuunnellaan käskyä aloittaa peli    
 app.post('/start_memory_game', (req, res) => {
     let receivedData = req.body.data;
-    console.log(receivedData);
+    //console.log(receivedData);
 
     // kun frontista tulee viesti niin palvelin käynnistää kaksi sivua
     if (receivedData == "start") {
@@ -456,18 +456,28 @@ app.post('/start_memory_game', (req, res) => {
     }
 });
 
+regexClick1 = /^Player1click (\d+)$/; 
+regexClick2 = /^Player2click (\d+)$/;
+regexHover = /^Player[12](hover|out) (\d+)$/;
 
+const roomStates = {};
 
 io.on('connection', (socket) => {
 
-    // luodaan room tälle multiplayer-pelille
     socket.on('join-room', (Servernumber) => {
-        
+        // If room does not exist in roomStates, initialize its values
+        if (!roomStates[Servernumber]) {
+            roomStates[Servernumber] = {
+                Player1Clicks: 0,
+                Player2Clicks: 0,
+                Player1Turn: undefined // We'll assign a value to this when two players join
+            };
+        }
 
-        // katsotaan onko
+        // katsotaan onko 2 pelaajaa
         let room = io.sockets.adapter.rooms.get(Servernumber);
         let roomSize = room ? room.size : 0; 
-        let player1Starts = false
+
         if (roomSize == 2) {
             console.log(Servernumber + ' is full')
             socket.emit('message', 'room is full');
@@ -481,65 +491,54 @@ io.on('connection', (socket) => {
             let room = io.sockets.adapter.rooms.get(Servernumber);
             let roomSize = room ? room.size : 0;
             if (roomSize == 2) {
-                let random69 = randomNumber2()
-                if (random69 == true) {
-                    player1Starts = true
-                }
-                
                 io.to(Servernumber).emit('message', moviesC);
+
                 // määrätään kumman vuoro aloittaa
-                if (player1Starts) {
+                roomStates[Servernumber].Player1Turn = randomNumber2(); // <-- use the roomStates
+                if (roomStates[Servernumber].Player1Turn) {
                     io.to(Servernumber).emit('message', 'Player1 turn');
-                }
-                if (!player1Starts) {
+                } else {
                     io.to(Servernumber).emit('message', 'Player2 turn');
                 }
             }
-            // vastaanottaa viestejä ja lähettää ne eteenpäin
+
             socket.on('send-message', (room, message) => {
-            
-                io.to(Servernumber).emit('message', message);
-                console.log(message)
-                regexClick1 = /^Player1click (\d+)$/;
-                regexClick2 = /^Player2click (\d+)$/;
-                let Player1Clicks = 0
-                let Player2Clicks = 0
 
-                
+                if (message.match(regexHover)) {
+                    io.to(Servernumber).emit('message', message);
+                }
 
-            // vaihdetaan pelivuoroja kahden klikin jälkeen
-            if (message.match(regexClick1)) {
-                Player1Clicks++
-            }
-            if (message.match(regexClick2)) {
-                Player2Clicks++
-            }
-            if (Player1Clicks == 2) {
-                io.to(Servernumber).emit('message', 'Player2 turn');
-            }
-            if (Player2Clicks == 2) {
-                io.to(Servernumber).emit('message', 'Player1 turn');
-            }
-            
+                if (message.match(regexClick1) && roomStates[Servernumber].Player1Turn) {
+                    roomStates[Servernumber].Player1Clicks++;
+                    io.to(Servernumber).emit('message', message);
+                }
+                if (message.match(regexClick2) && !roomStates[Servernumber].Player1Turn) {
+                    roomStates[Servernumber].Player2Clicks++;
+                    io.to(Servernumber).emit('message', message);
+                }
+
+                if (roomStates[Servernumber].Player1Clicks == 2) {
+                    setTimeout(function() {
+                        io.to(Servernumber).emit('message', 'Player2 turn');
+                    }, 4000);
+                    
+                    roomStates[Servernumber].Player1Clicks = 0;
+                    console.log('Player2 turn');
+                    roomStates[Servernumber].Player1Turn = false;
+                }
+                if (roomStates[Servernumber].Player2Clicks == 2) {
+                    setTimeout(function() {
+                        io.to(Servernumber).emit('message', 'Player1 turn');
+                    }, 4000);
+
+                    roomStates[Servernumber].Player2Clicks = 0;
+                    console.log('Player1 turn');
+                    roomStates[Servernumber].Player1Turn = true;
+                }
             });
             
 
         }
-
-        
-
-            
-               // console.log('User ' + socket.id + ' joined room: ' + Servernumber);
-                //socket.join(Servernumber);
-                //let random69 = randomNumber2()
-
-                //if (random69 == true) {
-                 //   io.to(Servernumber).emit('message', 'Player1 starts');
-                //}
-                //else {
-                //io.to(Servernumber).emit('message', 'Player2 starts');
-               // }
-            
         
        
     });
@@ -552,35 +551,6 @@ io.on('connection', (socket) => {
 server.listen(7926, () => {
     console.log('listening on port:7926');
 });
-
-let dipadupa = 'joo123'
-// luodaan socket johon voidaan yhdistää
-
-
-  // <-- Added the missing closing bracket and parenthesis here.
-
-
-
-
-
-
-
-// kirjoitetaan dataa movies.json tiedostoon
-
-
-// luetaan dataa
-// npm install express body-parser
-//let jsonData2 = fs.readFileSync('movies.json');
-//let movieList = JSON.parse(jsonData);
-
-//function getRandomElement(array) {
- //   return array[Math.floor(Math.random() * array.length)];
-//}
-
-//for (let i=0; i<=3; i++){
- //   console.log(getRandomElement(movieList));
-//}
-
 }
 // laittamalla koko koodi funktioon voidaan käyttää await
 everything()

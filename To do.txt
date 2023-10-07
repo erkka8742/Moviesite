@@ -66,19 +66,4 @@ background-image: linear-gradient(
       );
 
 
-
-
-
-
-
-
-
-
-
-      Player1                       Player2
-
-
-
-
-
-                Palvelin
+tee glow alue isommaksi ja vähennä värejä
