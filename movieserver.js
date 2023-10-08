@@ -518,19 +518,13 @@ io.on('connection', (socket) => {
                 }
 
                 if (roomStates[Servernumber].Player1Clicks == 2) {
-                    setTimeout(function() {
-                        io.to(Servernumber).emit('message', 'Player2 turn');
-                    }, 4000);
-                    
+                    io.to(Servernumber).emit('message', 'Player2 turn');
                     roomStates[Servernumber].Player1Clicks = 0;
                     console.log('Player2 turn');
                     roomStates[Servernumber].Player1Turn = false;
                 }
                 if (roomStates[Servernumber].Player2Clicks == 2) {
-                    setTimeout(function() {
-                        io.to(Servernumber).emit('message', 'Player1 turn');
-                    }, 4000);
-
+                    io.to(Servernumber).emit('message', 'Player1 turn');
                     roomStates[Servernumber].Player2Clicks = 0;
                     console.log('Player1 turn');
                     roomStates[Servernumber].Player1Turn = true;
