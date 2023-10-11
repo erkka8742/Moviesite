@@ -8,44 +8,79 @@ body {
 }
 
 .background {
-    /* The actual color of the page content background */
-    background-image: linear-gradient(
-  145deg,
-  hsl(245deg 92% 25%) 0%,
-  hsl(273deg 91% 31%) 18%,
-  hsl(288deg 90% 37%) 33%,
-  hsl(300deg 89% 42%) 46%,
-  hsl(328deg 100% 50%) 56%,
-  hsl(354deg 100% 60%) 66%,
-  hsl(29deg 100% 48%) 75%,
-  hsl(25deg 100% 70%) 84%,
-  hsl(25deg 100% 85%) 92%,
-  hsl(0deg 0% 100%) 100%
-);
     /* Adjust this padding value to change the size of the background relative to the content */
-    margin-top: 5%;
+    margin-top: 15%;
     margin-bottom: 10%;
     padding: 3%;
     border-radius: 35px;
-   
+    position: relative;
     /* Set a maximum width if desired, or remove if not */
     max-width: 90em;
     /* Ensure div takes the necessary space */
     width: 400%;
     /* For centering the text */
     color: white;
-    
+    z-index: 1;
 }
+.background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2; /* Send it behind the content */
+
+    /* Move your gradient background here */
+    background-image: linear-gradient(
+      145deg,
+      hsl(245deg 92% 25%) 0%,
+      hsl(273deg 91% 31%) 18%,
+      hsl(288deg 90% 37%) 33%,
+      hsl(300deg 89% 42%) 46%,
+      hsl(328deg 100% 50%) 56%,
+      hsl(354deg 100% 60%) 66%,
+      hsl(29deg 100% 48%) 75%,
+      hsl(25deg 100% 70%) 84%,
+      hsl(25deg 100% 85%) 92%,
+      hsl(0deg 0% 100%) 100%
+    );
+
+    border-radius: 35px;
+    filter: brightness(0.5);
+}
+
 
 h1 {
     margin-top: 1%;
     color: white;
     font-weight: 500;
-    font-size: 300%;
     font-family: 'Rubik', sans-serif;
-    padding-left: 0%; /* adjust this to set the consistent start position */
-    box-sizing: border-box; /* ensures padding is included in width calculation */
+    padding-left: 0%; 
+    box-sizing: border-box; 
     margin-bottom: 10%;
+    font-size: 240%;
+}
+
+.header {
+    position: absolute;
+    margin-top: -7%;
+    left: 0;
+    right: 0;
+    margin-left: 0%;
+    margin-right: auto;
+    width: 93%;
+    background-color: rgb(20, 20, 20); 
+    padding-left: 4%;
+    padding-right: 3%;
+    padding-top: 3%;
+    padding-bottom: 1.4%;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    z-index: -2;
+}
+.header .rating {
+    font-size: 210%; /* adjust the value as needed, it was 220% before */
 }
 
 #movie-name2 {
@@ -65,8 +100,6 @@ h1 {
     display: flex;
     align-items: center;  /* To align star and score on the same line and vertically centered */
     gap: 5px;  /* Optional: Adds a little space between the star and the score */
-    font-size: 220%;
-    
 }
 .rating .star, .rating .movie-score {
     margin: 0;  /* Removes default top and bottom margins */
@@ -111,21 +144,6 @@ h1 {
     font-weight: 550;
 
 }
-
-.content-wrapper {
-    display: flex;               /* Enable flexbox */
-    justify-content: space-between;  /* Space between the credits and video player */
-    align-items: flex-start;    /* Align items to the top of the container */
-}
-
-#youtubePlayer {
-    flex-basis: 756px;          /* Updated width of the video player */
-    height: 426px;
-    margin-left: -8%;
-    margin-top: 9%; 
-    /* Other styles if needed */
-}
-
 #plot {
     font-family: 'Rubik', sans-serif;
     font-size: 150%;
@@ -134,23 +152,43 @@ h1 {
     font-weight: 100;
 }
 
-/* Add to your movieInfo.css file */
-
-.youtube-video-container {
-    position: relative;
+.content-wrapper {
+    display: flex;               /* Enable flexbox */
+    justify-content: space-between;  /* Space between the credits and video player */
+    align-items: flex-start;    /* Align items to the top of the container */
 }
 
-.youtube-thumbnail {
+
+
+.youtube-video-container {
+    position: relative; 
+    width: 80%;
+    margin: 20px auto;
+    height: 0;
+    padding-bottom: 45%; 
+    overflow: hidden; 
+}
+
+.youtube-thumbnail, 
+#youtubePlayer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    cursor: pointer;
 }
 
 .youtube-thumbnail img {
     width: 100%;
-    height: auto;
+    display: block;
 }
+
+#youtubePlayer {
+    display: none;
+}
+
+
+
+
+
 

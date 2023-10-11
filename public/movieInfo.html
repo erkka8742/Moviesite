@@ -25,14 +25,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap" rel="stylesheet">   
-    </head>
+</head>
     <body>
         <div class="background">
-            <div class="header-line">
-                <h1 id = "movie-name2"></h1>
-                <div class="rating">
-                    <p class="star">&#9733;</p>
-                    <p class="movie-score" id="movie_score"></p>
+            <div class="header">
+                <div class="header-line">
+                    <h1 id = "movie-name2"></h1>
+                    <div class="rating">
+                        <p class="star">&#9733;</p>
+                        <p class="movie-score" id="movie_score"></p>
+                    </div>
                 </div>
             </div>  
             <div class="content-wrapper">     
@@ -55,9 +57,91 @@
                 </div>
                 <p id="plot"></p>
             </div>
+            <script>
+    var videoId = null;
+
+    function extractVideoID(url) {
+    let videoId = null;
+    let regex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)|youtu\.be\/([^?]+)/;
+    let match = url.match(regex);
+
+    if (match && match[1]) {
+        videoId = match[1];
+    } else if (match && match[2]) {
+        videoId = match[2];
+    }
+
+    return videoId;
+}
+
+function playVideo() {
+    var iframe = document.getElementById('youtubePlayer');
+    
+    // Explicitly set the iframe's display to block
+    iframe.style.display = 'block';
+    
+    iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=1&modestbranding=1&iv_load_policy=3&mute=1";
+
+    
+    // Hide the thumbnail
+    var thumbnail = document.querySelector('.youtube-thumbnail');
+    thumbnail.style.display = 'none';
+}
+
+                fetch('http://localhost:3000/getData')
+                         .then(response => response.json())
+                         .then(json => {
+                           movie1 = json[0]
+                           movie2 = json[1]
+                           movie3 = json[2]
+                           movie4 = json[3]
+                           movie5 = json[4]
+                           movie6 = json[5]
+                           movie7 = json[6]
+                           movie8 = json[7]
+                           movie9 = json[8]
+                           movie10 = json[9]
+                           movie11 = json[10]
+                           movie12 = json[11]
+                           movie13 = json[12]
+                           movie14 = json[13]
+                           movie15 = json[14]
+               
+                       let thisMovie
+                       let url = window.location.href;
+                       let regex = /\/([^/]+)$/;
+                       // otetaan tämän sivun url ja verrataan sitä elokuviin 
+                       let movieName = url.match(regex)[1];
+               
+                      for (let i = 0; i <= 14; i++){
+                       if (movieName == json[i].name.replace(/ /g, "-").toLowerCase()){
+                           thisMovie = json[i]
+                       }
+                      }
+                      document.getElementById('movie-name1').textContent = thisMovie.name + ' - moviesite';
+                      document.getElementById('movie-name2').textContent = thisMovie.name;
+                      document.getElementById('movie_score').textContent = thisMovie.score;
+                      document.getElementById('director').textContent = thisMovie.director;
+                      document.getElementById('writers').textContent = thisMovie.writers;
+                      document.getElementById('actors').textContent = thisMovie.stars;
+                      document.getElementById('runtime').textContent = thisMovie.runtime;
+                      document.getElementById('plot').textContent = thisMovie.plot;
+               
+                      var youtubeUrl = thisMovie.trailer;
+        videoId = extractVideoID(youtubeUrl); // Update the videoId value here
+
+        // Set the thumbnail image
+        var thumbnailImage = document.getElementById('youtubeThumbnailImage');
+        thumbnailImage.src = "https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg";
+
+        // Attach the click event handler here
+        var container = document.querySelector('.youtube-video-container');
+        container.addEventListener("click", playVideo);
+    });
+               </script>
 
             <div class="youtube-video-container">
-                <div class="youtube-thumbnail" onclick="playVideo()">
+                <div class="youtube-thumbnail">
                     <!-- Image source will be set dynamically by the JavaScript -->
                     <img id="youtubeThumbnailImage" alt="Video Thumbnail">
                 </div>
@@ -69,87 +153,7 @@
         </div>
 
         
-<script>
- fetch('http://localhost:3000/getData')
-          .then(response => response.json())
-          .then(json => {
-            movie1 = json[0]
-            movie2 = json[1]
-            movie3 = json[2]
-            movie4 = json[3]
-            movie5 = json[4]
-            movie6 = json[5]
-            movie7 = json[6]
-            movie8 = json[7]
-            movie9 = json[8]
-            movie10 = json[9]
-            movie11 = json[10]
-            movie12 = json[11]
-            movie13 = json[12]
-            movie14 = json[13]
-            movie15 = json[14]
 
-        let thisMovie
-        let url = window.location.href;
-        let regex = /\/([^/]+)$/
-;
-        // otetaan tämän sivun url ja verrataan sitä elokuviin 
-        let movieName = url.match(regex)[1];
-
-       for (let i = 0; i <= 14; i++){
-        if (movieName == json[i].name.replace(/ /g, "-").toLowerCase()){
-            thisMovie = json[i]
-        }
-       }
-       document.getElementById('movie-name1').textContent = thisMovie.name + ' - moviesite';
-       document.getElementById('movie-name2').textContent = thisMovie.name;
-       document.getElementById('movie_score').textContent = thisMovie.score;
-       document.getElementById('director').textContent = thisMovie.director;
-       document.getElementById('writers').textContent = thisMovie.writers;
-       document.getElementById('actors').textContent = thisMovie.stars;
-       document.getElementById('runtime').textContent = thisMovie.runtime;
-       document.getElementById('plot').textContent = thisMovie.plot;
-
-       function extractVideoID(url) {
-    let videoId = null;
-    let regex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)|youtu\.be\/([^?]+)/;
-    let match = url.match(regex);
-    
-    if (match && match[1]) {
-        videoId = match[1];
-    } else if (match && match[2]) {
-        videoId = match[2];
-    }
-    
-    return videoId;
-}
-
-function playVideo() {
-    var iframe = document.getElementById('youtubePlayer');
-    iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=1&modestbranding=1&iv_load_policy=3";
-
-    // Hide the thumbnail
-    var thumbnail = document.querySelector('.youtube-thumbnail');
-    thumbnail.style.display = 'none';
-}
-
-var youtubeUrl = thisMovie.trailer;
-var videoId = extractVideoID(youtubeUrl);
-
-// Set the thumbnail image
-var thumbnailImage = document.getElementById('youtubeThumbnailImage');
-thumbnailImage.src = "https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg";
-
-if (!videoId) {
-    console.error("Invalid YouTube URL provided.");
-}
-
-    })
-
-    
-
-
-</script>
 
 
     </body>
