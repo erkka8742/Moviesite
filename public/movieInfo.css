@@ -1,27 +1,39 @@
+.mainContainer {
+    width: 100%;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(14, 4, 19);
     
-    background-color: black;
-    
+}
+body::before {
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
 }
 
 .background {
     /* Adjust this padding value to change the size of the background relative to the content */
-    margin-top: 15%;
+    margin-top: 20%;
     margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 3%;
     border-radius: 35px;
     position: relative;
     /* Set a maximum width if desired, or remove if not */
     max-width: 90em;
     /* Ensure div takes the necessary space */
-    width: 400%;
+    width: 99%;
     /* For centering the text */
     color: white;
     z-index: 1;
 }
+
 .background::before {
     content: "";
     position: absolute;
@@ -51,6 +63,49 @@ body {
 }
 
 
+#title {
+    position: relative;
+    margin-top: 0%;
+    font-family: 'Comfortaa', cursive;
+    text-align: left;
+    margin-left: 35%; 
+    margin-top: 3%;
+    font-size: 195%;
+    font-weight: 100;
+    padding-bottom: 7px;
+}
+
+
+
+#title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;  /* Adjust this to change the thickness of the underline */
+    background: linear-gradient(to right, #744DCF 0%, #C642FF 26%, #FF4086 47%, #FF8742 72%, #CFB184 100%);
+    border-radius: 10px;
+    width: 70%;
+    max-width: 40em;
+
+}
+
+#games {
+    color: white;
+    text-decoration: none; 
+    transition: color 0.2s;
+    font-size: 80%;
+    margin-left: 40%;
+    font-size: 150;
+}
+
+#games:hover {
+    color: #ff4086;
+}
+
+
+
 h1 {
     margin-top: 1%;
     color: white;
@@ -59,28 +114,28 @@ h1 {
     padding-left: 0%; 
     box-sizing: border-box; 
     margin-bottom: 10%;
-    font-size: 240%;
+    font-size: 220%;
 }
 
 .header {
     position: absolute;
-    margin-top: -7%;
+    margin-top: -5.8%;
     left: 0;
     right: 0;
     margin-left: 0%;
     margin-right: auto;
-    width: 93%;
+    width: 92%;
     background-color: rgb(20, 20, 20); 
     padding-left: 4%;
-    padding-right: 3%;
-    padding-top: 3%;
-    padding-bottom: 1.4%;
+    padding-right: 4%;
+    padding-top: 2.5%;
+    padding-bottom: 0.97%;
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
     z-index: -2;
 }
 .header .rating {
-    font-size: 210%; /* adjust the value as needed, it was 220% before */
+    font-size: 180%; /* adjust the value as needed, it was 220% before */
 }
 
 #movie-name2 {
@@ -117,7 +172,7 @@ h1 {
     margin-left: 3%;}
 
 .credits {
-    margin-top: 9%;
+    margin-top: 5%;
     flex: 1;  
 }
 
@@ -159,36 +214,60 @@ h1 {
 }
 
 
-
-.youtube-video-container {
-    position: relative; 
-    width: 80%;
-    margin: 20px auto;
-    height: 0;
-    padding-bottom: 45%; 
-    overflow: hidden; 
+#youtubeThumbnailImage {
+    width: 40%;
+    border-radius: 25px;
+    margin-top: 4.7%;
+    margin-right: 1.5%;
+}
+#youtubeThumbnailImage:hover{
+    cursor: pointer;
 }
 
-.youtube-thumbnail, 
-#youtubePlayer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.youtube-thumbnail img {
-    width: 100%;
-    display: block;
-}
-
-#youtubePlayer {
+.modal_wrapper {
     display: none;
 }
+.modal_inner {
+    position: absolute;
+    height: auto;
+}
+.modal_close {
+    position: absolute;
+    top: 4%;
+    left: 3%;
+    z-index: 99999;
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    font-family: Arial;
+    transition: opacity 0.1s;
+    font-size: 170%;
+}
+.modal_close:hover {
+    background-color: #121212;
+}
 
+.modal_inner iframe {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
 
+.modal_inner iframe, .modal_wrapper, .modal_inner {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
 
-
-
-
+.modal_wrapper.active {
+    opacity:1;
+    z-index: 99;
+    position: fixed;
+    display: block;
+}
