@@ -18,7 +18,7 @@ body::before {
 
 .background {
     /* Adjust this padding value to change the size of the background relative to the content */
-    margin-top: 20%;
+    margin-top: 12%;
     margin-bottom: 10%;
     margin-left: auto;
     margin-right: auto;
@@ -26,12 +26,12 @@ body::before {
     border-radius: 35px;
     position: relative;
     /* Set a maximum width if desired, or remove if not */
-    max-width: 90em;
-    /* Ensure div takes the necessary space */
-    width: 99%;
-    /* For centering the text */
+    max-width: 75em;
+    min-width: 71em;
+    min-height: 47em;
     color: white;
     z-index: 1;
+    padding-bottom: 15%;
 }
 
 .background::before {
@@ -59,7 +59,7 @@ body::before {
     );
 
     border-radius: 35px;
-    filter: brightness(0.5);
+    filter: brightness(0.4);
 }
 
 
@@ -200,27 +200,57 @@ h1 {
 
 }
 #plot {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 150%;
-    max-width: 80%;
-    margin-top: 5%;
-    font-weight: 100;
+    width: 60%;
+    margin-top: 5.5%;
+    line-height: 135%;
 }
 
-.content-wrapper {
-    display: flex;               /* Enable flexbox */
-    justify-content: space-between;  /* Space between the credits and video player */
-    align-items: flex-start;    /* Align items to the top of the container */
+.content-wrapper {            
+    justify-content: space-between; 
+    align-items: flex-start;
+    font-size: 95%;
+    bottom: 4%;
 }
 
 
 #youtubeThumbnailImage {
-    width: 40%;
+    width: 43%;
     border-radius: 25px;
-    margin-top: 4.7%;
-    margin-right: 1.5%;
+    margin-top: 2%;
+    margin-left: 0%;
+    filter: brightness(50%)
 }
 #youtubeThumbnailImage:hover{
+    cursor: pointer;
+}
+
+#playbutton {
+    width: 2.1%;
+    position: absolute;
+    margin-left: -14.9%;
+    margin-top: 20%;
+    z-index: 1;
+}
+#playbutton:hover{
+    cursor: pointer;
+}
+#videotext {
+    font-size: 150%;
+    position: absolute;
+    margin-top: -5.8%;
+    margin-left: 24.7%;
+    font-family: 'Rubik', sans-serif;
+    background-color: #121212c7;
+    padding-left: 3.3%;
+    padding-top: 0.8%;
+    padding-right: 0.8%;
+    padding-bottom: 0.8%;
+    border-radius: 20px;
+}
+#videotext:hover{
     cursor: pointer;
 }
 
@@ -270,4 +300,32 @@ h1 {
     z-index: 99;
     position: fixed;
     display: block;
+}
+
+#imdb {
+    position: absolute;
+    font-size: 140%;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+    margin-left: 70%;
+    top: 59%;
+}
+#finnkino {
+    position: absolute;
+    font-size: 140%;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+    top: 62.4%;
+    margin-left: 70%;
+}
+
+#poster {
+    
+    width: 26%;
+    top: 9%;
+    left: 69%;
+    margin-right: 100%;
+    border-radius: 30px;
+    position: absolute;
+    
 }

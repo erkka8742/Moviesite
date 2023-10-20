@@ -24,7 +24,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap" rel="stylesheet">   
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">   
 </head>
     <body>
         <div class="outer">
@@ -56,8 +58,16 @@
                     <p class="permanent">Runtime:</p>
                     <p class = "changing" id="runtime"></p>
                 </div>
-                <p id="plot"></p>
             </div>
+            
+                <p id="plot"></p>
+
+                <br>
+                <a id="imdb" href="">IMDb page</a>
+                <br>
+                <br>
+                <a id="finnkino" href="">Finnkino page</a>
+            
 
 
                     <div class="modal_wrapper">
@@ -65,7 +75,15 @@
                             <span class="modal_close">&#8592</span>
                         </div>
                     </div>
-                    <img id="youtubeThumbnailImage" onclick="">
+                 
+                            <img id="youtubeThumbnailImage" src="your_thumbnail_image_url.jpg" onclick="">
+                            <img id='playbutton' src="play256.png">
+                            <p id="videotext">Play trailer</p>
+
+
+                            <img id="poster" src="">
+
+                    
 
     </div>
 
@@ -130,7 +148,11 @@
                           document.getElementById('actors').textContent = thisMovie.stars;
                           document.getElementById('runtime').textContent = thisMovie.runtime;
                           document.getElementById('plot').textContent = thisMovie.plot;
-                   
+                          document.getElementById('plot').textContent = thisMovie.plot;
+                          document.getElementById('imdb').href = thisMovie.imdb;
+                          document.getElementById('finnkino').href = thisMovie.finnkino;
+                          document.getElementById('poster').src = thisMovie.poster;
+
                           var youtubeUrl = thisMovie.trailer;
             videoId = extractVideoID(youtubeUrl); // Update the videoId value here
     
@@ -138,6 +160,12 @@
             var thumbnailImage = document.getElementById('youtubeThumbnailImage');
             thumbnailImage.src = "https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg";
             document.getElementById('youtubeThumbnailImage').addEventListener("click", function() {
+                playvideo()
+            })
+            document.getElementById('playbutton').addEventListener("click", function() {
+                playvideo()
+            })
+            document.getElementById('videotext').addEventListener("click", function() {
                 playvideo()
             })
 

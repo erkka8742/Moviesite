@@ -90,7 +90,7 @@ body {
         hsl(23deg 82% 56%) 94%,
         hsl(39deg 94% 55%) 100%
     ); 
-    filter: blur(20px);
+    filter: blur(0px);
     border-radius: 64px; /* The sum of the outer's border-radius and the offset of the pseudo-element */
   }
 
