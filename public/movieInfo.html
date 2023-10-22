@@ -154,6 +154,12 @@
                           document.getElementById('poster').src = thisMovie.poster;
 
                           var youtubeUrl = thisMovie.trailer;
+
+            const regex8 = /www\.finnkino\.fi/;
+            if (!regex8.test(thisMovie.finnkino)) {
+                document.getElementById("finnkino").remove();;
+            } 
+
             videoId = extractVideoID(youtubeUrl); // Update the videoId value here
     
             // Set the thumbnail image

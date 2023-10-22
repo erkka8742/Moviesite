@@ -108,7 +108,7 @@ async function findInfo(movie) {
             }
         });
 
-        re_writers = String(response.data.Writers);
+        re_writers = String(response.data.Writer);
         re_stars = String(response.data.Actors);
 
     } catch (error) {

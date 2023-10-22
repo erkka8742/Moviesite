@@ -28,10 +28,10 @@ body::before {
     /* Set a maximum width if desired, or remove if not */
     max-width: 75em;
     min-width: 71em;
-    min-height: 47em;
+    height: 51em;
     color: white;
     z-index: 1;
-    padding-bottom: 15%;
+    padding-bottom: 6%;
 }
 
 .background::before {
@@ -172,7 +172,7 @@ h1 {
     margin-left: 3%;}
 
 .credits {
-    margin-top: 5%;
+    margin-top: 5.5%;
     flex: 1;  
 }
 
@@ -219,9 +219,10 @@ h1 {
 #youtubeThumbnailImage {
     width: 43%;
     border-radius: 25px;
-    margin-top: 2%;
-    margin-left: 0%;
-    filter: brightness(50%)
+    top: 64.6%;
+    left: 3%;
+    filter: brightness(50%);
+    position: absolute;
 }
 #youtubeThumbnailImage:hover{
     cursor: pointer;
@@ -230,8 +231,8 @@ h1 {
 #playbutton {
     width: 2.1%;
     position: absolute;
-    margin-left: -14.9%;
-    margin-top: 20%;
+    left: 32%;
+    top: 90.6%;
     z-index: 1;
 }
 #playbutton:hover{
@@ -240,8 +241,8 @@ h1 {
 #videotext {
     font-size: 150%;
     position: absolute;
-    margin-top: -5.8%;
-    margin-left: 24.7%;
+    top: 87%;
+    left: 31%;
     font-family: 'Rubik', sans-serif;
     background-color: #121212c7;
     padding-left: 3.3%;
@@ -308,14 +309,14 @@ h1 {
     font-family: 'Rubik', sans-serif;
     color: white;
     margin-left: 70%;
-    top: 59%;
+    top: 61.4%;
 }
 #finnkino {
     position: absolute;
     font-size: 140%;
     font-family: 'Rubik', sans-serif;
     color: white;
-    top: 62.4%;
+    top: 64.4%;
     margin-left: 70%;
 }
 
