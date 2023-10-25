@@ -9,24 +9,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Rubik&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Red+Hat+Display:ital,wght@0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
     
 </head>
 <body>
-    <h1>Memory Game</h1>
-<div class="outer">
-<div class="main-container">  
+    <div class="text">
+        <h1>Memory Game</h1>
+        <p id="left">Pairs left: 10</p>
+        <br>
+        <p id="mistakes">Mistakes: 0</p>
+    </div>
+
 <div class="background">
     <div class="container">
-        <p id="mistakes">Mistakes: 0</p>
         <div class="row gy-3">
             <div id="movie1div" class="col-custom-5">
                 <div class="image-box">
@@ -217,16 +224,30 @@
                 </div>
             </div>
         </div>
+        <div class="end">
+        <p id="nice">Nice!</p>
+        <a id="again" href="http://localhost:3000/memory-game">Play again</a>
+        </div>
     </div>
+<div class="inner">
 </div>
-</div>  
+<div class="inner2">
+</div>
+<div class="inner3">
+</div>
+
 
 <script>
+var divs = document.querySelectorAll('.end');
+  divs.forEach(function(div) {
+    div.classList.add('invisible-noninteractive');
+  });
+
+
 // laitetaan musta kuva
 for (let i = 0; i < 20; i++) {
     document.getElementById('image'+String(i+1)).src = 'black.png';
 }
-
 
 fetch('http://localhost:3000/getData')
           .then(response => response.json())
@@ -272,6 +293,7 @@ for (let i = 0; i < 20; i++) {
 
 clicks = 0
 mistakes = 0
+left = 10
 selected1 = ""
 selected2 = ""
 
@@ -309,9 +331,17 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
         let same = areTheySame(selected1,selected2)
         if (same == true) {
             console.log("same")
+            left--
+            document.getElementById('left').textContent = "Pairs left: " + left;
             selected1.parentNode.removeChild(selected1);
             selected2.parentNode.removeChild(selected2);
 
+            if (left == 0) {
+                var divs = document.querySelectorAll('.end');
+                divs.forEach(function(div) {
+                    div.classList.add('visible-interactive');
+                });
+            }
         }
         else {
             mistakes++
@@ -334,6 +364,8 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
     else if (clicks == 2 && selected1 == this) {
         clicks = 1
     }
+
+    
 });
 }
 

@@ -1,75 +1,92 @@
 body {
     margin: 0;
     padding: 0;
-}
-
-body {
-    /* Ensure the body takes full viewport height and width */
-    
-    /* https://animated-gradient-background-generator.netlify.app 
-    display: flex;
-    justify-content: center;
+    /*display: flex;*/
     align-items: center;
-    */
+    justify-content: center;
+
+}
+.end {
+    position: absolute;
+    display: inline-block;
+    top: 40%;
+    left: 47%;
+    font-size: 300%;
+    margin: 0 auto;
+}
+#again {
+    color: white;
+}
+body {
     color: white;
     background-color: black;
+    min-width: 80em;
 }
-.main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    transform: none;
+
+  .centered-div {
+    width: 50%; /* or whatever width you want */
+  }
+
+
+.text {
+    left: 30%;
+    top: 3.5%; 
+    margin: 0 auto;
+    position: absolute;
+    width: 18%;
 }
+#left {
+    position: absolute;
+    left: 3%;
+    margin-top: 4%;
+    font-family: 'Lato', sans-serif;
+    font-size: 150%;
+}
+
+#mistakes {
+    position: absolute;
+    left: 3%;
+    margin-top: 6%;
+    font-family: 'Lato', sans-serif;
+    font-size: 150%;
+}
+
 .background {
-    background-color: rgb(20, 20, 20);
-    padding: 3%;
+    background-color: rgba(20, 20, 20, 0);
+    padding-top: 3%;
+    padding-left: -10%;
+    padding-right: -10%;
     border-radius: 35px;
-    max-width: 100em;
-    width: 80%; /* Adjust this to your preference */
+    width: 100%;
     text-align: center;
     transform: scale(0.7);
     transform-origin: center;
     min-height: 120%;
+    margin-top: 0%;
 }
-
-.outer {
-    width: 80vw;
-    margin-left: auto;
-    margin-right: auto;
+.inner {
+    display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     padding: 0;
-    z-index: 1;
-    background-image: linear-gradient(
-  145deg,
-  hsl(245deg 92% 25%) 0%,
-  hsl(273deg 91% 31%) 18%,
-  hsl(288deg 90% 37%) 33%,
-  hsl(300deg 89% 42%) 46%,
-  hsl(328deg 100% 50%) 56%,
-  hsl(354deg 100% 60%) 66%,
-  hsl(29deg 100% 48%) 75%,
-  hsl(25deg 100% 70%) 84%,
-  hsl(25deg 100% 85%) 92%,
-  hsl(0deg 0% 100%) 100%
-);
-    filter: brightness(120%);
+    z-index: -9;
+    background-color: rgb(15, 15, 15);
     border-radius: 54px;
     margin-top: 5%;
-    text-align: center;
-  }
-  
-  .outer:before {
-    content: "";
+    width: 87em;
+    height: 103em;
     position: absolute;
-    top: -5px;
-    right: -5px;
-    bottom: -5px;
-    left: -5px;
-    z-index: -1;
+    bottom: 0.2%;
+    left: 50.937%;                      
+    transform: translateX(-50%);
+  }
+
+  .inner2 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+    z-index: -10;
     background-image: linear-gradient(
         150deg,
         hsl(24deg 100% 55%) 0%,
@@ -89,10 +106,55 @@ body {
         hsl(4deg 57% 53%) 87%,
         hsl(23deg 82% 56%) 94%,
         hsl(39deg 94% 55%) 100%
-    ); 
-    filter: blur(0px);
-    border-radius: 64px; /* The sum of the outer's border-radius and the offset of the pseudo-element */
+    );
+    border-radius: 64px;
+    margin-top: 5%;
+    width: 88em;
+    height: 104em;
+    position: absolute;
+    bottom: -0.2%;
+    left: 50.937%;                      
+    transform: translateX(-50%);
   }
+
+  .inner3 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+    z-index: -11;
+    background-image: linear-gradient(
+        150deg,
+        hsl(24deg 100% 55%) 0%,
+        hsl(9deg 85% 57%) 3%,
+        hsl(353deg 65% 52%) 6%,
+        hsl(339deg 74% 41%) 10%,
+        hsl(327deg 83% 31%) 15%,
+        hsl(315deg 80% 22%) 20%,
+        hsl(307deg 75% 18%) 26%,
+        hsl(303deg 74% 16%) 33%,
+        hsl(299deg 74% 14%) 41%,
+        hsl(294deg 75% 13%) 49%,
+        hsl(289deg 76% 12%) 57%,
+        hsl(300deg 73% 13%) 65%,
+        hsl(326deg 69% 25%) 73%,
+        hsl(344deg 59% 40%) 80%,
+        hsl(4deg 57% 53%) 87%,
+        hsl(23deg 82% 56%) 94%,
+        hsl(39deg 94% 55%) 100%
+    );
+    border-radius: 64px;
+    margin-top: 5%;
+    width: 90em;
+    height: 106em;
+    position: absolute;
+    bottom: -1%;
+    left: 50.937%;                      
+    transform: translateX(-50%);
+    filter: blur(40px) brightness(80%);
+  }
+
+
 
 
 .row {
@@ -105,6 +167,7 @@ h1 {
     text-align: left;
     margin-top: 3%;  
     font-family: 'Comfortaa', cursive;
+    font-size: 230%;
 }
 
 .container {
@@ -207,4 +270,14 @@ h1 {
     margin: 0;
     cursor: pointer;
 }
- 
+
+
+  .invisible-noninteractive {
+    display: none;
+    pointer-events: none;
+  }
+
+  .visible-interactive {
+    display: block;
+    pointer-events: auto;
+  }
