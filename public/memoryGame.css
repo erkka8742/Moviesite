@@ -1,20 +1,26 @@
 body {
-    margin: 0;
-    padding: 0;
-    /*display: flex;*/
-    align-items: center;
-    justify-content: center;
+    
+    min-height: calc(120vh + 1px);
+    overflow-y: scroll;
 
 }
 .end {
     position: absolute;
     display: inline-block;
-    top: 40%;
-    left: 47%;
+    top: 35%;
+    left: 43%;
     font-size: 300%;
-    margin: 0 auto;
 }
+#nice {
+    width: 150%;
+    border-radius: 35px;
+}
+
 #again {
+    position: absolute;
+    top: 110%;
+    left: 5%;
+    width: 120%;
     color: white;
 }
 body {
@@ -57,12 +63,9 @@ body {
     padding-left: -10%;
     padding-right: -10%;
     border-radius: 35px;
-    width: 100%;
     text-align: center;
     transform: scale(0.7);
-    transform-origin: center;
-    min-height: 120%;
-    margin-top: 0%;
+    width: 100vw;
 }
 .inner {
     display: flex;
@@ -72,7 +75,7 @@ body {
     z-index: -9;
     background-color: rgb(15, 15, 15);
     border-radius: 54px;
-    margin-top: 5%;
+    margin-top: 0%;
     width: 87em;
     height: 103em;
     position: absolute;
@@ -108,7 +111,7 @@ body {
         hsl(39deg 94% 55%) 100%
     );
     border-radius: 64px;
-    margin-top: 5%;
+    margin-top: 0%;
     width: 88em;
     height: 104em;
     position: absolute;
@@ -144,7 +147,6 @@ body {
         hsl(39deg 94% 55%) 100%
     );
     border-radius: 64px;
-    margin-top: 5%;
     width: 90em;
     height: 106em;
     position: absolute;
@@ -191,7 +193,16 @@ h1 {
 .img-fluid.poster-image {
     filter: brightness(0%);
 }
-
+.disabled {
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    border-radius: 35px;
+    width: 120%;
+    height: auto;
+    pointer-events: none;
+  }
 
 
 .image-box:hover {
