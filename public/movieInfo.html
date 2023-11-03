@@ -148,7 +148,7 @@
 
                           var youtubeUrl = thisMovie.trailer;
 
-            const regex8 = /www\.finnkino\.fi/;
+            const regex8 = /www\.finnkino\.fi(?!.*elokuvat\/ohjelmistossa)/;
             if (!regex8.test(thisMovie.finnkino)) {
                 document.getElementById("finnkino").remove();;
             } 

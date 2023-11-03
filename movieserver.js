@@ -224,8 +224,16 @@ async function findInfo(movie) {
     const regexPlot = /(?<={"plotText":{"plainText":")[^"]*(?=")/;
     let match3Plot = content2.match(regexPlot);;
     
-    console.log(match3Plot[0])
-    re_plot = match3Plot[0]
+    try {
+        console.log(match3Plot[0])
+        re_plot = match3Plot[0]
+    }
+    catch (error) {
+        console.log("something wrong")
+        console.log('An error occurred:', error.message);
+      }
+    
+    
 
     // etsi kirjoittajat
     

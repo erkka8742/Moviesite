@@ -25,8 +25,14 @@
     <div class="another-container">
         <h1 id="title">
             <span>moviesite</span>
-            <a id="games" href="http://localhost:3000/memory-game" class="link">games</a>
+            <a id="games" href="javascript:void(0);" onmouseover="enableDiv()" onmouseout="disableDiv()" class="link">games</a>
         </h1>
+    <div class="memGames" >
+        <img id="gameIMG" src="game2.png">
+        <a id="single" href="http://localhost:3000/memory-game">SinglePlayer</a>
+        <br>
+        <a id="multi" href="http://localhost:3000/memory-game">MultiPlayer (2p)</a>
+    </div>
     <h1 id="theaters">New releases</h1>
     <div class="outer">
     <div class="background">
@@ -325,6 +331,22 @@
 
 
     <script>
+
+
+  function enableDiv() {
+    var divs = document.querySelectorAll('.memGames');
+  divs.forEach(function(div) {
+    div.classList.add('invisible-noninteractive');
+  });
+  }
+
+  function disableDiv() {
+    var divs = document.querySelectorAll('.memGames');
+  divs.forEach(function(div) {
+    div.classList.add('invisible-noninteractive');
+  });
+  }   
+    
         fetch('http://localhost:3000/getData')
           .then(response => response.json())
           .then(json => {

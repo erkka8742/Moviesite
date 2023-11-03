@@ -306,4 +306,42 @@ body {
     cursor: pointer;
   }
 
- 
+
+.memGames {
+    position: absolute;
+    z-index: 99;
+    background-color: black;
+    border-radius: 35px;
+    left: 50%;
+    width: 35%;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+    font-family: 'Rubik', sans-serif;
+    display: block; /* Makes the <a> elements stack vertically */
+  
+  
+}
+
+#gameIMG {
+    width: 300px;
+    border-radius: 15px;
+}
+
+#single {
+    color: white;
+    text-decoration: none;
+    font-size: 200%;
+}
+#multi {
+    color: white;
+    text-decoration: none;
+    font-size: 200%;
+    float: right;
+    bottom: 30%
+}
+
+.invisible-noninteractive {
+    display: none;
+    pointer-events: none;
+  }
