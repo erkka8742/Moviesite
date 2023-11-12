@@ -340,10 +340,12 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
             parentDiv2.className = 'disabled';
 
             if (left == 0) {
+                setTimeout(function() {
                 var divs = document.querySelectorAll('.end');
                 divs.forEach(function(div) {
                     div.classList.add('visible-interactive');
                 });
+                }, 200);
             }
         }
         else {

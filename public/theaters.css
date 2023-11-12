@@ -197,12 +197,6 @@ body {
     color: white;
 }
 
-#games:hover {
-    color: #ff4086;
-}
-
-
-
 .container {
     /* Allow the container to take full width and height of the parent div */
     width: 100%;
@@ -309,36 +303,51 @@ body {
 
 .memGames {
     position: absolute;
-    z-index: 99;
-    background-color: black;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.811);
     border-radius: 35px;
     left: 50%;
-    width: 35%;
+    width: 40em;
     padding-top: 1%;
     padding-left: 1%;
     padding-bottom: 1%;
     font-family: 'Rubik', sans-serif;
-    display: block; /* Makes the <a> elements stack vertically */
-  
-  
+    display: block;
+    margin-top: -2%;
+    margin-left: 2%;
 }
 
 #gameIMG {
-    width: 300px;
+    width: 230px;
     border-radius: 15px;
+}
+.gamesText {
+    float: right;
+    margin-top: 8%;
+    margin-left: -20%;
 }
 
 #single {
     color: white;
     text-decoration: none;
-    font-size: 200%;
+    font-size: 180%;
+}
+#single:hover {
+    color: #ff4086;
 }
 #multi {
     color: white;
     text-decoration: none;
-    font-size: 200%;
-    float: right;
-    bottom: 30%
+    font-size: 180%;
+    cursor: pointer;
+}
+#multi:hover {
+    color: #ff4086;
+} 
+#gam {
+    color: white;
+    text-decoration: none;
+    font-size: 220%;
 }
 
 .invisible-noninteractive {

@@ -25,13 +25,16 @@
     <div class="another-container">
         <h1 id="title">
             <span>moviesite</span>
-            <a id="games" href="javascript:void(0);" onmouseover="enableDiv()" onmouseout="disableDiv()" class="link">games</a>
+            <a id="games" href="javascript:void(0);" onmouseover="enableDiv()"  class="link">games</a>
         </h1>
-    <div class="memGames" >
-        <img id="gameIMG" src="game2.png">
-        <a id="single" href="http://localhost:3000/memory-game">SinglePlayer</a>
-        <br>
-        <a id="multi" href="http://localhost:3000/memory-game">MultiPlayer (2p)</a>
+    <div class="invisible-noninteractive">
+        <img id="gameIMG" src="game2.png" onmouseover="enableDiv()">
+        <div class="gamesText">
+            <p id="gam">Memory Game&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <a id="single" href="http://localhost:3000/memory-game">SinglePlayer</a>
+            <br>
+            <a id="multi" >MultiPlayer (2p)</a>
+        </div>
     </div>
     <h1 id="theaters">New releases</h1>
     <div class="outer">
@@ -334,19 +337,22 @@
 
 
   function enableDiv() {
-    var divs = document.querySelectorAll('.memGames');
-  divs.forEach(function(div) {
-    div.classList.add('invisible-noninteractive');
-  });
+    try {var divElement = document.querySelector('.invisible-noninteractive');
+        divElement.className = 'memGames';}
+        catch {
+        "hehe"
+    }
   }
 
-  function disableDiv() {
-    var divs = document.querySelectorAll('.memGames');
-  divs.forEach(function(div) {
-    div.classList.add('invisible-noninteractive');
-  });
-  }   
-    
+// Select the div you're interested in
+var myDiv = document.querySelector('.invisible-noninteractive');
+
+// Add a 'mouseleave' event listener to the div
+myDiv.addEventListener('mouseleave', function() {
+    var divElement = document.querySelector('.memGames');
+    divElement.className = 'invisible-noninteractive';
+});
+
         fetch('http://localhost:3000/getData')
           .then(response => response.json())
           .then(json => {
@@ -467,6 +473,34 @@
   
   $('.radial-gradient').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #3498db, #9b59b6)');
 });
+
+
+// lähettää pelinkäynnistysviestin palvelimelle
+document.getElementById('multi').addEventListener('click', async function(event) {
+    event.preventDefault();
+    
+    // lähettää pelinkäynnistysviestin palvelimelle
+    try {
+        const response = await fetch('http://localhost:3000/start_memory_game', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: "start" })
+        });
+        
+        let responseText = await response.text();
+        console.log(responseText);
+        // avaa vastaanotetun pelisivun linkin 
+        window.open(responseText, '_blank');
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+    window.location.href = 'http://localhost:3000/' + responseText
+
+});
+
 
         </script>
 

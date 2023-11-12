@@ -22,12 +22,14 @@
 </head>
 <body>
     <h1>Memory Game</h1>
-    <a href="" id="copyButton">Copy Player 2 link</a>
 
-    <div class="main-container">  
+    <div class="link_stuff">
+    <p id='text'>Player 2 link on your clipboard!</p>
+    <a href="" id="copyButton">Copy again</a>
+    </div>
+
         <div class="background">
             <div class="container">
-                <p id="mistakes">Mistakes: 0</p>
                 <div class="row gy-3">
                     <div id="movie1div" class="col-custom-5">
                         <div class="image-box">
@@ -327,7 +329,7 @@ socket.on('message', (data) => {
         }
     }
 
-    // laitetaan elokuvat sivulle 
+    // laitetaan elokuvat sivulle kun toinen pelaaja liityy
     if (Array.isArray(data)) {
         
         for (let i = 0; i < 24; i++) {
@@ -337,6 +339,9 @@ socket.on('message', (data) => {
         for (let i = 0; i < 24; i++) {
         document.getElementById('image'+String(i+1)).src = '/black.png';
         }
+
+        var divElement = document.querySelector('.link_stuff');
+        divElement.className = 'invisible-noninteractive';
     }
     
     // tehdään toisen pelaajan input
@@ -378,6 +383,13 @@ for (var i = 0; i < elementsHover.length; i++) {
 
 // luodaan player2 linkki
 let player2Url = url.slice(0, -1) + '2';
+let textToCopy = player2Url
+navigator.clipboard.writeText(textToCopy).then(function() {
+    }).catch(function(err) {
+        console.error('Unable to copy text: ', err);
+    });
+
+
 document.getElementById('copyButton').addEventListener('click', function(event) {
     event.preventDefault();
     let textToCopy = player2Url
@@ -435,7 +447,7 @@ document.getElementById('image'+ String(i+1)).addEventListener("click", function
         }
         else {
             mistakes++
-            document.getElementById('mistakes').textContent = "Mistakes: " + mistakes;
+            //document.getElementById('mistakes').textContent = "Mistakes: " + mistakes;
             console.log("not same")
             selected2.style.filter = "brightness(0%)"
             selected1.style.filter = "brightness(0%)"

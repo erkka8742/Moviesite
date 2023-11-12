@@ -59,7 +59,7 @@ body::before {
     );
 
     border-radius: 35px;
-    filter: brightness(0.4);
+    filter: brightness(0.3);
 }
 
 
@@ -264,12 +264,12 @@ h1 {
 }
 .modal_close {
     position: absolute;
-    top: 4%;
+    top: 5%;
     left: 3%;
     z-index: 99999;
     display: block;
     padding-top: 5px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 35px;
@@ -279,7 +279,7 @@ h1 {
     font-size: 170%;
 }
 .modal_close:hover {
-    background-color: #121212;
+    background-color: #121212a0;
 }
 
 .modal_inner iframe {
