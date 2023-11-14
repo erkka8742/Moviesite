@@ -1,0 +1,301 @@
+body {
+    
+    min-height: calc(120vh + 1px);
+    overflow-y: scroll;
+
+}
+.end {
+    position: absolute;
+    display: inline-block;
+    top: 35%;
+    left: 43%;
+    font-size: 300%;
+}
+#nice {
+    width: 150%;
+    border-radius: 35px;
+}
+
+#again {
+    position: absolute;
+    top: 110%;
+    left: 5%;
+    width: 120%;
+    color: white;
+}
+body {
+    color: white;
+    background-color: black;
+    min-width: 80em;
+}
+
+  .centered-div {
+    width: 50%; /* or whatever width you want */
+  }
+
+
+.text {
+    left: 30%;
+    top: 3.5%; 
+    margin: 0 auto;
+    position: absolute;
+    width: 18%;
+}
+#left {
+    position: absolute;
+    left: 3%;
+    margin-top: 4%;
+    font-family: 'Lato', sans-serif;
+    font-size: 150%;
+}
+
+#mistakes {
+    position: absolute;
+    left: 3%;
+    margin-top: 6%;
+    font-family: 'Lato', sans-serif;
+    font-size: 150%;
+}
+
+.background {
+    background-color: rgba(20, 20, 20, 0);
+    padding-top: 3%;
+    padding-left: -10%;
+    padding-right: -10%;
+    border-radius: 35px;
+    text-align: center;
+    transform: scale(0.7);
+    width: 100vw;
+}
+.inner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+    z-index: -9;
+    background-color: rgb(15, 15, 15);
+    border-radius: 54px;
+    margin-top: 0%;
+    width: 87em;
+    height: 128em;
+    position: absolute;
+    bottom: 0.2%;
+    left: 50.937%;                      
+    transform: translateX(-50%);
+  }
+
+  .inner2 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+    z-index: -10;
+    background-image: linear-gradient(
+        150deg,
+        hsl(24deg 100% 55%) 0%,
+        hsl(9deg 85% 57%) 3%,
+        hsl(353deg 65% 52%) 6%,
+        hsl(339deg 74% 41%) 10%,
+        hsl(327deg 83% 31%) 15%,
+        hsl(315deg 80% 22%) 20%,
+        hsl(307deg 75% 18%) 26%,
+        hsl(303deg 74% 16%) 33%,
+        hsl(299deg 74% 14%) 41%,
+        hsl(294deg 75% 13%) 49%,
+        hsl(289deg 76% 12%) 57%,
+        hsl(300deg 73% 13%) 65%,
+        hsl(326deg 69% 25%) 73%,
+        hsl(344deg 59% 40%) 80%,
+        hsl(4deg 57% 53%) 87%,
+        hsl(23deg 82% 56%) 94%,
+        hsl(39deg 94% 55%) 100%
+    );
+    border-radius: 64px;
+    margin-top: 0%;
+    width: 88em;
+    height: 129em;
+    position: absolute;
+    bottom: -0.2%;
+    left: 50.937%;                      
+    transform: translateX(-50%);
+  }
+
+  .inner3 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+    z-index: -11;
+    background-image: linear-gradient(
+        150deg,
+        hsl(24deg 100% 55%) 0%,
+        hsl(9deg 85% 57%) 3%,
+        hsl(353deg 65% 52%) 6%,
+        hsl(339deg 74% 41%) 10%,
+        hsl(327deg 83% 31%) 15%,
+        hsl(315deg 80% 22%) 20%,
+        hsl(307deg 75% 18%) 26%,
+        hsl(303deg 74% 16%) 33%,
+        hsl(299deg 74% 14%) 41%,
+        hsl(294deg 75% 13%) 49%,
+        hsl(289deg 76% 12%) 57%,
+        hsl(300deg 73% 13%) 65%,
+        hsl(326deg 69% 25%) 73%,
+        hsl(344deg 59% 40%) 80%,
+        hsl(4deg 57% 53%) 87%,
+        hsl(23deg 82% 56%) 94%,
+        hsl(39deg 94% 55%) 100%
+    );
+    border-radius: 64px;
+    width: 90em;
+    height: 131em;
+    position: absolute;
+    bottom: -1%;
+    left: 50.937%;                      
+    transform: translateX(-50%);
+    filter: blur(40px) brightness(80%);
+  }
+
+
+
+
+.row {
+    margin-bottom: 2%;
+}
+
+h1 {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-top: 3%;  
+    font-family: 'Comfortaa', cursive;
+    font-size: 230%;
+}
+
+.container {
+    /* Allow the container to take full width and height of the parent div */
+    width: 100%;
+    height: 100%;
+    /* Additional space around the content if needed */
+    padding: 1em;
+}
+
+.image-box {
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.25s ease;
+    border-radius: 35px;
+    width: 120%;
+    height: auto;
+}
+
+.img-fluid.poster-image {
+    filter: brightness(0%);
+}
+.disabled {
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    border-radius: 35px;
+    width: 120%;
+    height: auto;
+    pointer-events: none;
+  }
+
+
+.image-box:hover {
+    transform: scale(1.15);
+    z-index: 2;
+    outline: 8px solid rgb(255, 255, 255);
+    outline-offset: -5px;
+}
+
+.poster-image {
+    transition: filter 0.2s ease-in-out;
+}
+
+
+.image-box:hover .imdb-image {
+    opacity: 1; /* The logo becomes visible when hovering over the image box */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10px; /* adjust as needed */
+    opacity: 0;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    z-index: 2; /* Ensure the overlay is under the logo */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.image-box:hover .overlay {
+    opacity: 1;
+}
+
+.data-set {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px; /* Added some margin to separate score from other info */
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-label,
+.info-content {
+    margin: 0; /* remove standard paragraph margins */
+}
+
+.score-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image-box:hover .score-item {
+    opacity: 1; /* The score becomes visible when hovering over the image box */
+}
+
+
+
+  .col-custom-5 {
+    flex: 0 0 20%;
+    max-width: 20%;
+    padding: 0 1.5rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+  .invisible-noninteractive {
+    display: none;
+    pointer-events: none;
+  }
+
+  .visible-interactive {
+    display: block;
+    pointer-events: auto;
+  }
+
+  .image-box.hoverEffect {
+    transform: scale(1.15);
+    z-index: 2;
+    outline: 8px solid rgb(173, 10, 102);
+    outline-offset: -5px;
+}
