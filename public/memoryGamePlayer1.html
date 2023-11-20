@@ -425,6 +425,7 @@
             clicks = 0
             MyPoints = 0
             OthersPoints = 0
+            left = 12
             selected1 = ""
             selected2 = ""
 
@@ -465,20 +466,21 @@
                         clicks = 0
 
                         same = areTheySameIMG(selected1, selected2)
+                        NewPoint = ''
                         if (same) {
                             if (MyTurn) {
-                                NewMyPoint
+                                NewPoint = 'me'
                                 MyPoints++
-                                document.getElementById('Ypoints').textContent = "Your points: " + MyPoints
                             }
                             if (!MyTurn) {
-                                NewOtherPoint
+                                NewPoint = 'other'
                                 OthersPoints++
-                                document.getElementById('Opoints').textContent = "Player 2 points: " + OthersPoints
                             }
                         }
                         setTimeout(function () {
                             if (same) {
+                                left--
+                                document.getElementById('left').textContent = "Pairs left: " + left
                                 console.log("same")
                                 selected1.parentNode.removeChild(selected1);
                                 selected2.parentNode.removeChild(selected2);
@@ -491,6 +493,12 @@
                                     selected2.src = '/black.png'
                                     selected1.src = '/black.png'
                                 }, 500);
+                            }
+                            if (NewPoint == 'me') {
+                                document.getElementById('Ypoints').textContent = "Your points: " + MyPoints
+                            }
+                            if (NewPoint == 'other') {
+                                document.getElementById('Opoints').textContent = "Player 2 points: " + OthersPoints
                             }
                         }, 1500);
                     }

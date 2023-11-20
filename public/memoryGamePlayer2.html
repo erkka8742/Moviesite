@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>MemoryGame - Player 2</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css"  rel="stylesheet" href="/MG2.css">
+    <link type="text/css" rel="stylesheet" href="/MG2.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,436 +18,460 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Rubik&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">    
-    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
     <div class="text">
         <h1>Memory Game - Player 2</h1>
-        <p id="left">Pairs left: 10</p>
+        <p id="left">Pairs left: 12</p>
         <br>
-        <p id="mistakes">Mistakes: 0</p>
+        <p id="Ypoints">Your points: 0</p>
+        <p id="Opoints">Player 1 points: 0</p>
     </div>
 
-<div class="background">
-    <div class="container">
-        <div class="row gy-3">
-            <div id="movie1div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie1name">
-                            <img src="" id="image1" class="img-fluid poster-image"/>
+    <div class="background">
+        <div class="container">
+            <div class="row gy-3">
+                <div id="movie1div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie1name">
+                                <img src="" id="image1" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie2div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie2name">
+                                <img src="" id="image2" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie3div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie3name">
+                                <img src="" id="image3" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie4div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie4name">
+                                <img src="" id="image4" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie5div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie5name">
+                                <img src="" id="image5" class="img-fluid poster-image" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="movie2div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie2name">
-                            <img src="" id="image2" class="img-fluid poster-image"/>
+            <div class="row gy-3">
+                <div id="movie6div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie6name">
+                                <img src="" id="image6" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie7div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie7name">
+                                <img src="" id="image7" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie8div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie8name">
+                                <img src="" id="image8" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie9div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie9name">
+                                <img src="" id="image9" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="movie10div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie10name">
+                                <img src="" id="image10" class="img-fluid poster-image" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="movie3div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie3name">
-                            <img src="" id="image3" class="img-fluid poster-image"/>
+            <div class="row gy-3">
+                <div id="movie11div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie11name">
+                                <img src="" id="image11" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie12div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie12name">
+                                <img src="" id="image12" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie13div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie13name">
+                                <img src="" id="image13" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="movie14div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie14name">
+                                <img src="" id="image14" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie15div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie15name">
+                                <img src="" id="image15" class="img-fluid poster-image" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="movie4div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie4name">
-                            <img src="" id="image4" class="img-fluid poster-image"/>
+            <div class="row gy-3">
+                <div id="movie16div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie16name">
+                                <img src="" id="image16" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie17div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie17name">
+                                <img src="" id="image17" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie18div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie18name">
+                                <img src="" id="image18" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie19div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie19name">
+                                <img src="" id="image19" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie20div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie20name">
+                                <img src="" id="image20" class="img-fluid poster-image" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="movie5div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie5name">
-                            <img src="" id="image5" class="img-fluid poster-image"/>
+            <div class="row gy-3">
+                <div id="movie21div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie21name">
+                                <img src="" id="image21" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie22div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie22name">
+                                <img src="" id="image22" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie23div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie23name">
+                                <img src="" id="image23" class="img-fluid poster-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="movie24div" class="col-custom-5">
+                    <div class="image-box">
+                        <div class="image-border">
+                            <div id="movie24name">
+                                <img src="" id="image24" class="img-fluid poster-image" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row gy-3">    
-            <div id="movie6div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie6name">
-                            <img src="" id="image6" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie7div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie7name">
-                            <img src="" id="image7" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie8div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie8name">
-                            <img src="" id="image8" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie9div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie9name">
-                            <img src="" id="image9" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div id="movie10div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie10name">
-                            <img src="" id="image10" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="inner">
         </div>
-        <div class="row gy-3">
-            <div id="movie11div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie11name">
-                            <img src="" id="image11" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie12div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie12name">
-                            <img src="" id="image12" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie13div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie13name">
-                            <img src="" id="image13" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div id="movie14div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie14name">
-                            <img src="" id="image14" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie15div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie15name">
-                            <img src="" id="image15" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="inner2">
         </div>
-        <div class="row gy-3">
-            <div id="movie16div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie16name">
-                            <img src="" id="image16" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie17div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie17name">
-                            <img src="" id="image17" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie18div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie18name">
-                            <img src="" id="image18" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie19div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie19name">
-                            <img src="" id="image19" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie20div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie20name">
-                            <img src="" id="image20" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="inner3">
         </div>
-        <div class="row gy-3">
-            <div id="movie21div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie21name">
-                            <img src="" id="image21" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie22div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie22name">
-                            <img src="" id="image22" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie23div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie23name">
-                            <img src="" id="image23" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="movie24div" class="col-custom-5">
-                <div class="image-box">
-                    <div class="image-border">
-                        <div id="movie24name">
-                            <img src="" id="image24" class="img-fluid poster-image"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="inner">
-</div>
-<div class="inner2">
-</div>
-<div class="inner3">
-</div> 
 
-<script src="http://localhost:7926/socket.io/socket.io.js"></script>
-<script>
+        <script src="http://localhost:7926/socket.io/socket.io.js"></script>
+        <script>
 
-// setupataan liittyminen
-const socket = io('http://localhost:7926');
+            // setupataan liittyminen
+            const socket = io('http://localhost:7926');
 
-// Get the current site URL
-let url = window.location.href;
+            // Get the current site URL
+            let url = window.location.href;
 
-let regex = /.*\/([^\/]+)\/player/;
-let match = url.match(regex);
-let serverNumber = match[1];
+            let regex = /.*\/([^\/]+)\/player/;
+            let match = url.match(regex);
+            let serverNumber = match[1];
 
 
-function mouseOff() {
-    var elements = document.getElementsByClassName('image-box');
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].style.pointerEvents = 'none';
-        }
-}
-function mouseOn() {
-    var elements = document.getElementsByClassName('image-box');
-    for (var i = 0; i < elements.length; i++) {
-            elements[i].style.pointerEvents = 'auto';
-        }
-}
+            function mouseOff() {
+                var elements = document.getElementsByClassName('image-box');
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.pointerEvents = 'none';
+                }
+            }
+            function mouseOn() {
+                var elements = document.getElementsByClassName('image-box');
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.pointerEvents = 'auto';
+                }
+            }
 
-regexHover = /^Player1hover (\d+)$/;
-regexOut = /^Player1out (\d+)$/;
-regexClick = /^Player1click (\d+)$/;
-var elementsHover = document.getElementsByClassName('image-box');
-let incomingClick = false
+            regexHover = /^Player1hover (\d+)$/;
+            regexOut = /^Player1out (\d+)$/;
+            regexClick = /^Player1click (\d+)$/;
+            var elementsHover = document.getElementsByClassName('image-box');
+            let incomingClick = false
 
-var clickEvent = new MouseEvent('click', {
-    'bubbles': true,
-    'cancelable': true,
-    'view': window
-});
+            var clickEvent = new MouseEvent('click', {
+                'bubbles': true,
+                'cancelable': true,
+                'view': window
+            });
 
-MyTurn = false
-var elements = document.getElementsByClassName('image-box');
-// Liitytään oikeaan huoneeseen
-socket.emit('join-room', serverNumber);
+            MyTurn = false
+            var elements = document.getElementsByClassName('image-box');
+            // Liitytään oikeaan huoneeseen
+            socket.emit('join-room', serverNumber);
 
-socket.on('message', (data) => {
-    //console.log(data);
-    
-    if (data === 'Player1 turn') {
-        console.log('others turn')
-        MyTurn = false
+            socket.on('message', (data) => {
+                //console.log(data);
 
-        // click pois
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].style.pointerEvents = 'none';
-        }
-    }
+                if (data === 'Player1 turn') {
+                    console.log('others turn')
+                    MyTurn = false
 
-    if (data === 'Player2 turn') {
-        console.log('my turn')
-        MyTurn = true
+                    // click pois
+                    for (var i = 0; i < elements.length; i++) {
+                        elements[i].style.pointerEvents = 'none';
+                    }
+                }
 
-        // click päällä
-        setTimeout(function() {
-            for (var i = 0; i < elements.length; i++) {
-            elements[i].style.pointerEvents = 'auto';
-        }
-        }, 1600);
-    }
+                if (data === 'Player2 turn') {
+                    console.log('my turn')
+                    MyTurn = true
 
-    if (Array.isArray(data)) {
-        // elokuvat laitetaan sivulle 
-        for (let i = 0; i < 24; i++) {
-            document.getElementById('movie'+ String(i+1)+'name').id = data[i].poster;
-        }
-        // laitetaan musta kuva
-        for (let i = 0; i < 24; i++) {
-            document.getElementById('image'+String(i+1)).src = '/black.png';
-        }
-    }
+                    // click päällä
+                    setTimeout(function () {
+                        for (var i = 0; i < elements.length; i++) {
+                            elements[i].style.pointerEvents = 'auto';
+                        }
+                    }, 1600);
+                }
 
-    // tehdään toisen pelaajan input
-    if (!Array.isArray(data)) {
-        let matchHover = data.match(regexHover);
-        let matchOut = data.match(regexOut);
-        let matchClick = data.match(regexClick);
-        if (matchHover) {
-            let i = parseInt(matchHover[1], 10);
-            elementsHover[i].classList.add('hoverEffect');
-        }
-        if (matchOut) {
-            let i = parseInt(matchOut[1], 10); 
-            elementsHover[i].classList.remove('hoverEffect');
-        }
-        if (matchClick) {
-            let i = parseInt(matchClick[1], 10); 
-            i--
-            let click = document.getElementById('image'+ String(i+1))
-            click.dispatchEvent(clickEvent)
-        }
-    }
-});
+                if (Array.isArray(data)) {
+                    // elokuvat laitetaan sivulle 
+                    for (let i = 0; i < 24; i++) {
+                        document.getElementById('movie' + String(i + 1) + 'name').id = data[i].poster;
+                    }
+                    // laitetaan musta kuva
+                    for (let i = 0; i < 24; i++) {
+                        document.getElementById('image' + String(i + 1)).src = '/black.png';
+                    }
+                }
 
-// lähetetään hover toiselle pelaajalle
-for (var i = 0; i < elementsHover.length; i++) {
-    (function(index) {
-        elementsHover[index].addEventListener('mouseover', function() {
-            socket.emit('send-message', serverNumber, 'Player2hover ' + String(index));
-        });
-    })(i);
-    (function(index) {
-        elementsHover[index].addEventListener('mouseout', function() {
-            socket.emit('send-message', serverNumber, 'Player2out ' + String(index));
-        });
-    })(i);
-}
+                // tehdään toisen pelaajan input
+                if (!Array.isArray(data)) {
+                    let matchHover = data.match(regexHover);
+                    let matchOut = data.match(regexOut);
+                    let matchClick = data.match(regexClick);
+                    if (matchHover) {
+                        let i = parseInt(matchHover[1], 10);
+                        elementsHover[i].classList.add('hoverEffect');
+                    }
+                    if (matchOut) {
+                        let i = parseInt(matchOut[1], 10);
+                        elementsHover[i].classList.remove('hoverEffect');
+                    }
+                    if (matchClick) {
+                        let i = parseInt(matchClick[1], 10);
+                        i--
+                        let click = document.getElementById('image' + String(i + 1))
+                        click.dispatchEvent(clickEvent)
+                    }
+                }
+            });
 
-clicks = 0
-mistakes = 0
-selected1 = ""
-selected2 = ""
+            // lähetetään hover toiselle pelaajalle
+            for (var i = 0; i < elementsHover.length; i++) {
+                (function (index) {
+                    elementsHover[index].addEventListener('mouseover', function () {
+                        socket.emit('send-message', serverNumber, 'Player2hover ' + String(index));
+                    });
+                })(i);
+                (function (index) {
+                    elementsHover[index].addEventListener('mouseout', function () {
+                        socket.emit('send-message', serverNumber, 'Player2out ' + String(index));
+                    });
+                })(i);
+            }
 
-function areTheySameIMG(a,b) {
-    if (a.src == b.src){
-        return true
-    }
-    else {
-        return false
-    }
-}
+            clicks = 0
+            MyPoints = 0
+            OthersPoints = 0
+            left = 12
+            selected1 = ""
+            selected2 = ""
 
-// pelilogiikka
-for (let i = 0; i < 24; i++) {
-document.getElementById('image'+ String(i+1)).addEventListener("click", function() {
-    clicks++
-    var parentDiv = this.closest('div');
-    var parentId = parentDiv.id;
+            function areTheySameIMG(a, b) {
+                if (a.src == b.src) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            }
 
-    if (clicks == 1 && selected1 != this) {
-        selected1 = this
-        this.src = parentId
-        this.style.filter = "brightness(100%)";
-        if (MyTurn) {socket.emit('send-message', serverNumber, 'Player2click ' + this.id.match(/\d+/g));}
-    }
+            // pelilogiikka
+            for (let i = 0; i < 24; i++) {
+                document.getElementById('image' + String(i + 1)).addEventListener("click", function () {
+                    clicks++
+                    var parentDiv = this.closest('div');
+                    var parentId = parentDiv.id;
 
-    if (clicks == 2 && selected1 != this) {
-        selected2 = this
-        this.src = parentId
-        this.style.filter = "brightness(100%)";
-        if (MyTurn) {socket.emit('send-message', serverNumber, 'Player2click ' + this.id.match(/\d+/g));}
-        if (!MyTurn) {
-            for (var i = 0; i < elements.length; i++) {
-            elements[i].style.pointerEvents = 'none';}
-        }
-        clicks = 0
-        setTimeout(function() {
-        if (areTheySameIMG(selected1,selected2)) {
-            console.log("same")
-            selected1.parentNode.removeChild(selected1);
-            selected2.parentNode.removeChild(selected2);
-        }
-        else {
-            mistakes++
-            document.getElementById('mistakes').textContent = "Mistakes: " + mistakes;
-            console.log("not same")
-            selected2.style.filter = "brightness(0%)"
-            selected1.style.filter = "brightness(0%)"
-            setTimeout(() => {
-                selected2.src = '/black.png'
-                selected1.src = '/black.png'
-            }, 500);
-        }
-        }, 1500); 
-    }
-    else if (clicks == 2 && selected1 == this) {
-        clicks = 1
-    }
-});
-}
+                    if (clicks == 1 && selected1 != this) {
+                        selected1 = this
+                        this.src = parentId
+                        this.style.filter = "brightness(100%)";
+                        if (MyTurn) { socket.emit('send-message', serverNumber, 'Player2click ' + this.id.match(/\d+/g)); }
+                    }
+
+                    if (clicks == 2 && selected1 != this) {
+                        selected2 = this
+                        this.src = parentId
+                        this.style.filter = "brightness(100%)";
+                        if (MyTurn) { socket.emit('send-message', serverNumber, 'Player2click ' + this.id.match(/\d+/g)); }
+                        if (!MyTurn) {
+                            for (var i = 0; i < elements.length; i++) {
+                                elements[i].style.pointerEvents = 'none';
+                            }
+                        }
+                        clicks = 0
+                        same = areTheySameIMG(selected1, selected2)
+                        NewPoint = ''
+                        if (same) {
+                            if (MyTurn) {
+                                NewPoint = 'me'
+                                MyPoints++
+                            }
+                            if (!MyTurn) {
+                                NewPoint = 'other'
+                                OthersPoints++
+                            }
+                        }
+                        setTimeout(function () {
+                            if (same) {
+                                left--
+                                document.getElementById('left').textContent = "Pairs left: " + left
+                                console.log("same")
+                                selected1.parentNode.removeChild(selected1);
+                                selected2.parentNode.removeChild(selected2);
+                            }
+                            else {
+                                console.log("not same")
+                                selected2.style.filter = "brightness(0%)"
+                                selected1.style.filter = "brightness(0%)"
+                                setTimeout(() => {
+                                    selected2.src = '/black.png'
+                                    selected1.src = '/black.png'
+                                }, 500);
+                            }
+                            if (NewPoint == 'me') {
+                                document.getElementById('Ypoints').textContent = "Your points: " + MyPoints
+                            }
+                            if (NewPoint == 'other') {
+                                document.getElementById('Opoints').textContent = "Player 1 points: " + OthersPoints
+                            }
+                        }, 1500);
+                    }
+                    else if (clicks == 2 && selected1 == this) {
+                        clicks = 1
+                    }
+                });
+            }
 
 
-</script>
+        </script>
 
 </body>
+
 </html>
