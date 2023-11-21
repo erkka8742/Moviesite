@@ -43,7 +43,7 @@ body {
     top: 2.1%;
     margin: 0 auto;
     position: absolute;
-    width: 18%;
+    width: 50%;
 }
 
 #left {
@@ -62,7 +62,8 @@ body {
     font-size: 150%;
 }
 
-#Opoints {
+#Opoints,
+#turn {
     position: relative;
     left: 3%;
     margin-top: -4%;
