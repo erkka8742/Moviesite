@@ -24,21 +24,26 @@
 
 <body>
     <div class="text">
-        <h1>Memory Game - Player 1</h1>
+        <h1 id="turn">Player 1 |</h1>
         <p id="left">Pairs left: 12</p>
         <br>
         <p id="Ypoints">Your points: 0</p>
         <p id="Opoints">Player 2 points: 0</p>
+        <div class="link_stuff">
+            <br><br><br><br><br><br><br>
+            <p id='text'>Player 2 link on your clipboard!</p>
+            <a href="" id="copyButton">Copy again</a>
+        </div>
     </div>
 
-    <div class="link_stuff">
-        <p id='text'>Player 2 link on your clipboard!</p>
-        <a href="" id="copyButton">Copy again</a>
+    <div class="end">
+        <img id="nice" src="/kid.gif">
+        <a id="again" href="">Play again</a>
     </div>
+
 
     <div class="background">
         <div class="container">
-            <p id="turn1">Your turn</p>
             <div class="row gy-3">
                 <div id="movie1div" class="col-custom-5">
                     <div class="image-box">
@@ -282,6 +287,11 @@
             var divElement = document.querySelector('.background');
             divElement.className = 'invisible-noninteractive';
 
+            var divs = document.querySelectorAll('.end');
+            divs.forEach(function (div) {
+                div.classList.add('invisible-noninteractive');
+            });
+
 
             // setupataan liittyminen
             const socket = io('http://localhost:7926');
@@ -329,6 +339,10 @@
                     MyTurn = true
                     console.log('my turn')
 
+                    setTimeout(function () {
+                        document.getElementById('turn').textContent = 'Player 1 | Your turn'
+                    }, 1500)
+
                     // click päällä
                     setTimeout(function () {
                         for (var i = 0; i < elements.length; i++) {
@@ -340,6 +354,11 @@
                 if (data === 'Player2 turn') {
                     MyTurn = false
                     console.log('others turn')
+
+                    setTimeout(function () {
+                        document.getElementById('turn').textContent = 'Player 1 | Others turn'
+                    }, 1500)
+
 
                     // click pois
                     for (var i = 0; i < elements.length; i++) {
@@ -485,6 +504,15 @@
                                 console.log("same")
                                 selected1.parentNode.removeChild(selected1);
                                 selected2.parentNode.removeChild(selected2);
+
+                                if (left == 0) {
+                                    setTimeout(function () {
+                                        var divs = document.querySelectorAll('.end');
+                                        divs.forEach(function (div) {
+                                            div.classList.add('visible-interactive');
+                                        });
+                                    }, 200);
+                                }
                             }
                             else {
                                 console.log("not same")

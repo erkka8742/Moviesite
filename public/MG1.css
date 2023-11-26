@@ -57,7 +57,7 @@ body {
 #Ypoints {
     position: relative;
     left: 3%;
-    margin-top: -7%;
+    margin-top: -8%;
     font-family: 'Lato', sans-serif;
     font-size: 150%;
 }
@@ -327,4 +327,14 @@ h1 {
     z-index: 2;
     outline: 8px solid rgb(173, 10, 102);
     outline-offset: -5px;
+}
+
+.link_stuff {
+    font-family: 'Comfortaa', cursive;
+    font-size: 200%;
+    margin-left: 40%;
+}
+
+#copyButton {
+    color: #ff4086;
 }
